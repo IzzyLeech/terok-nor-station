@@ -1,1 +1,1 @@
-web: gunicorn terok-nor-station.wsgi
+web: gunicorn terok_nor_station.wsgi
