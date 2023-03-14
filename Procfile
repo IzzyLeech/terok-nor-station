@@ -1,0 +1,1 @@
+web: gunicorn terok-nor-station.wsgi
