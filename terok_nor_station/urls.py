@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from fan_database.views import index_view
+from fan_database.views import season_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_view, name='Home'),
+    path('season', season_view, name='Season'),
 ]
