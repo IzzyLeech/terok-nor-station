@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Season
+from .models import Episode
 
-# Register your models here.
+admin.site.register(Season)
+admin.site.register(Episode)
