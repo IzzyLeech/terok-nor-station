@@ -14,4 +14,4 @@ class Episode(models.Model):
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     title = models.CharField(max_length=220)
     air_date = models.DateField()
-    stardate = models.DecimalField(max_digits=5, decimal_places=1)
+    stardate = models.DecimalField(max_digits=6, decimal_places=1)
