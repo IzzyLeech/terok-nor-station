@@ -7,9 +7,6 @@ class Season(models.Model):
     end_date = models.DateField()
     episode_count = models.IntegerField()
 
-    def __str__(self):
-        return self.season_number
-
 
 class Episode(models.Model):
     overall_episode_number = models.IntegerField()
@@ -17,4 +14,4 @@ class Episode(models.Model):
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     title = models.CharField(max_length=220)
     air_date = models.DateField()
-    stardate = models.IntegerField()
+    stardate = models.DecimalField(max_digits=5, decimal_places=1)
