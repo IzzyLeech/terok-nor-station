@@ -1,7 +1,7 @@
-# APPLICATION TITLE
+# Terok Nor Station
 
 # Goal for this Project
-
+My overall goal for my project is to create a fan website for Star Trek Deep Space Nine, where the user of the website can contribute to the development of the website by contributing data about the show. The user will be able to create an account so that they will be able to add, edit and delete information about the site and also be able to interact with other users of the website in the community section. The community section will be an open forum where user can discuss their enjoyment of the show and also give updates, and input on the development of the website.
 
 # Table of Contents
 * [UX](#ux "UX")
