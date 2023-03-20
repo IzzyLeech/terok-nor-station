@@ -32,8 +32,9 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Seasons</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a href="#" class="dropdown-item">Season 1</a>
-                        <a href="#" class="dropdown-item">Season 2</a>
+                        {% for season in seasons %}
+                            <a href="#" class="dropdown-item"> Season {{ season.season_number }}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="nav-item">

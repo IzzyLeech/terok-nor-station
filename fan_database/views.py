@@ -1,7 +1,11 @@
 from django.shortcuts import render
-
-# Create your views here.
+from .models import Season
 
 
 def index_view(request):
-    return render(request, 'index.html')
+    seasons = Season.objects.all()
+    context = {'seasons': seasons}
+    return render(request, 'index.html', context)
+
+
+
