@@ -2,6 +2,9 @@
 
 {% block content %}
 <h1> SEASON</h1>
+
+<a href="{% url 'add-episode' %}">Add Episode</a>
+
 {% for episode in episodes %}
 
     <p>{{ episode.title }}</p>

@@ -8,7 +8,7 @@ class Season(models.Model):
     episode_count = models.IntegerField()
 
     def __str__(self):
-        return self.season_number
+        return str(self.season_number)
 
 
 class Episode(models.Model):

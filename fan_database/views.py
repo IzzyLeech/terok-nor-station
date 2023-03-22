@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Season
 from .models import Episode
+from .form import EpisodeForm
 
 
 def index_view(request):
@@ -19,3 +20,14 @@ def season_view(request):
     return render(request, 'season.html', context)
 
 
+def add_episode(request):
+    form = EpisodeForm()
+
+    if request.method == 'POST':
+        form = EpisodeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('Season')
+
+    context = {'form': form}
+    return render(request, 'episode_form.html', context)
