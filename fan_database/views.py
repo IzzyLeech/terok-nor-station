@@ -45,3 +45,11 @@ def update_episode(request, pk):
 
     context = {'form': form}
     return render(request, 'episode_form.html', context)
+
+
+def delete_episode(request, pk):
+    episode = Episode.objects.get(id=pk)
+    if request.method == 'POST':
+        episode.delete()
+        return redirect('Season')
+    return render(request, 'delete.html', {'obj': episode})

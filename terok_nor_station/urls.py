@@ -19,6 +19,7 @@ from fan_database.views import index_view
 from fan_database.views import season_view
 from fan_database.views import add_episode
 from fan_database.views import update_episode
+from fan_database.views import delete_episode
 
 
 urlpatterns = [
@@ -27,4 +28,5 @@ urlpatterns = [
     path('season', season_view, name='Season'),
     path('add-episode/', add_episode, name='add-episode'),
     path('update-episode/<str:pk>/', update_episode, name='update-episode'),
+    path('delete-episode/<str:pk>/', delete_episode, name='delete-episode'),
 ]
