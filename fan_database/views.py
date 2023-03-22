@@ -31,3 +31,17 @@ def add_episode(request):
 
     context = {'form': form}
     return render(request, 'episode_form.html', context)
+
+
+def update_episode(request, pk):
+    episode = Episode.objects.get(id=pk)
+    form = EpisodeForm(instance=episode)
+
+    if request.method == 'POST':
+        form = EpisodeForm(request.POST, instance=episode)
+        if form.is_valid():
+            form.save()
+            return redirect('Season')
+
+    context = {'form': form}
+    return render(request, 'episode_form.html', context)

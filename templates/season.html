@@ -6,9 +6,12 @@
 <a href="{% url 'add-episode' %}">Add Episode</a>
 
 {% for episode in episodes %}
-
+    <div>
+    <a href="{% url 'update-episode' episode.id %}">Edit</a>
+    <p>{{ episode.season_episode_number }}</p>
     <p>{{ episode.title }}</p>
-
+    <hr>
+    </div>
 {% endfor %}
 
 {% endblock %}

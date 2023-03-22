@@ -19,5 +19,8 @@ class Episode(models.Model):
     air_date = models.DateField()
     stardate = models.DecimalField(max_digits=6, decimal_places=1)
 
+    class Meta:
+        ordering = ['season_episode_number']
+
     def __str__(self):
         return self.title

@@ -18,11 +18,13 @@ from django.urls import path
 from fan_database.views import index_view
 from fan_database.views import season_view
 from fan_database.views import add_episode
+from fan_database.views import update_episode
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_view, name='Home'),
     path('season', season_view, name='Season'),
-    path('add-episode/', add_episode, name='add-episode')
+    path('add-episode/', add_episode, name='add-episode'),
+    path('update-episode/<str:pk>/', update_episode, name='update-episode'),
 ]
