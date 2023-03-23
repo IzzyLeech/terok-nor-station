@@ -5,16 +5,17 @@ from .form import EpisodeForm
 
 
 def index_view(request):
+    return render(request, 'index.html',)
+
+
+def display_season_all_pages(request):
     seasons = Season.objects.all()
-    context = {'seasons': seasons}
-    return render(request, 'index.html', context)
+    return {'seasons': seasons}
 
 
 def season_view(request):
-    seasons = Season.objects.all()
     episodes = Episode.objects.all()
     context = {
-                'seasons': seasons,
                 'episodes': episodes
                 }
     return render(request, 'season.html', context)
