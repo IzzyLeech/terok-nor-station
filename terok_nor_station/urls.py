@@ -25,7 +25,7 @@ from fan_database.views import delete_episode
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_view, name='Home'),
-    path('season', season_view, name='Season'),
+    path('season/<str:season_id>/episodes', season_view, name='Season'),
     path('add-episode/', add_episode, name='add-episode'),
     path('update-episode/<str:pk>/', update_episode, name='update-episode'),
     path('delete-episode/<str:pk>/', delete_episode, name='delete-episode'),

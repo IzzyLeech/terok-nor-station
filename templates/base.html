@@ -33,7 +33,7 @@
                         Seasons</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         {% for season in seasons %}
-                            <a href="{% url 'Season' %}" class="dropdown-item"> Season {{ season.season_number }}</a>
+                            <a href="{% url 'Season' season.id  %}" class="dropdown-item"> Season {{ season.season_number }}</a>
                         {% endfor %}
                     </div>
                 </li>

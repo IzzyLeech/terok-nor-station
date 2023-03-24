@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Season
-from .models import Episode
+from .models import Season, Episode
 from .form import EpisodeForm
 
 
@@ -8,16 +7,14 @@ def index_view(request):
     return render(request, 'index.html',)
 
 
-def display_season_all_pages(request):
+def display_season_all_pages(request, ):
     seasons = Season.objects.all()
     return {'seasons': seasons}
 
 
-def season_view(request):
-    episodes = Episode.objects.all()
-    context = {
-                'episodes': episodes
-                }
+def season_view(request, season_id):
+    episodes = Episode.objects.filter(season=season_id)
+    context = {'episodes': episodes}
     return render(request, 'season.html', context)
 
 

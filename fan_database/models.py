@@ -7,6 +7,9 @@ class Season(models.Model):
     end_date = models.DateField()
     episode_count = models.IntegerField()
 
+    class Meta:
+        ordering = ['season_number']
+
     def __str__(self):
         return str(self.season_number)
 
