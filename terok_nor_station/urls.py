@@ -15,22 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from fan_database.views import index_view
-from fan_database.views import season_view
-from fan_database.views import episode_view
-from fan_database.views import add_episode
-from fan_database.views import update_episode
-from fan_database.views import delete_episode
-from fan_database.views import search_query
-
+from fan_database import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_view, name='Home'),
-    path('season/<str:season_id>/episodes', season_view, name='Season'),
-    path('episode/<int:episode_id>/', episode_view, name='Episode'),
-    path('add-episode/', add_episode, name='add-episode'),
-    path('update-episode/<str:pk>/', update_episode, name='update-episode'),
-    path('delete-episode/<str:pk>/', delete_episode, name='delete-episode'),
-    path('search-query', search_query, name='search-query'),
+    path('', views.index_view, name='Home'),
+    path('season/<str:season_id>/episodes', views.season_view, name='Season'),
+    path('episode/<int:episode_id>/', views.episode_view, name='Episode'),
+    path('add-episode/', views.add_episode, name='add-episode'),
+    path('update-episode/<str:pk>/', views.update_episode, name='update-episode'),
+    path('delete-episode/<str:pk>/', views.delete_episode, name='delete-episode'),
+    path('search-query', views.search_query, name='search-query'),
 ]
