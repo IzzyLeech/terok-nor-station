@@ -9,5 +9,3 @@ class EpisodeForm(ModelForm):
         fields = '__all__'
 
 
-#class SearchForm(forms.Form):
-#    search = forms.CharField(max_length=100)
