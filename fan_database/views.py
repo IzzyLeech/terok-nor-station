@@ -4,10 +4,10 @@ from .form import EpisodeForm
 
 
 def index_view(request):
-    return render(request, 'index.html',)
+    return render(request, 'index.html')
 
 
-def display_season_all_pages(request, ):
+def display_season_all_pages(request):
     seasons = Season.objects.all()
     return {'seasons': seasons}
 
@@ -16,6 +16,12 @@ def season_view(request, season_id):
     episodes = Episode.objects.filter(season=season_id)
     context = {'episodes': episodes}
     return render(request, 'season.html', context)
+
+
+def episode_view(request, episode_id):
+    episode = Episode.objects.get(pk=episode_id)
+    context = {'episode': episode}
+    return render(request, 'episode.html', context)
 
 
 def add_episode(request):
@@ -51,3 +57,13 @@ def delete_episode(request, pk):
         episode.delete()
         return redirect('Season')
     return render(request, 'delete.html', {'obj': episode})
+
+
+def search_query(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        episodes = Episode.objects.filter(title__icontains=searched)
+        context = {'searched': searched, 'episodes': episodes}
+        return render(request, 'search_query.html', context)
+    else:
+        return render(request, 'search_query.html')

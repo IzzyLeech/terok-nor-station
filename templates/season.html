@@ -11,7 +11,8 @@
     <a href="{% url 'delete-episode' episode.id %}">Delete</a>
     <p>Season {{ episode.season }}</p>
     <p>Season episode {{ episode.season_episode_number }}</p>
-    <p>{{ episode.title }}</p>
+    
+    <a href="{% url 'Episode' episode.id %}">{{ episode.title }}</a>
     <hr>
     </div>
 {% endfor %}

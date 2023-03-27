@@ -2,4 +2,11 @@
 
 {% block content %}
 <h1> INDEX</h1>
+<form method="POST" action="{% url 'search-query' %}">
+    {% csrf_token %}
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+    <button class=" btn btn-outline-secondary" type="submit"></button>
+</form>
+
+
 {% endblock %}
