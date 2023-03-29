@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Season, Episode
-from .form import EpisodeForm
+from .form import EpisodeForm, RegisterForm
 
 
 def index_view(request):
@@ -67,3 +67,16 @@ def search_query(request):
         return render(request, 'search_query.html', context)
     else:
         return render(request, 'search_query.html')
+
+
+def sign_up(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('Home')
+    else:
+        form = RegisterForm()
+
+    return render(request, 'sign_up.html', {"form": form})
