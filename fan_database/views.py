@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Season, Episode
 from .form import EpisodeForm, RegisterForm
+from django.contrib.auth import login
 
 
 def index_view(request):
@@ -79,4 +80,4 @@ def sign_up(request):
     else:
         form = RegisterForm()
 
-    return render(request, 'sign_up.html', {"form": form})
+    return render(request, 'registration/sign_up.html', {"form": form})
