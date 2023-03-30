@@ -8,6 +8,6 @@ urlpatterns = [
     path('add-episode/', views.add_episode, name='add-episode'),
     path('update-episode/<str:pk>/', views.update_episode, name='update-episode'),
     path('delete-episode/<str:pk>/', views.delete_episode, name='delete-episode'),
-    path('search-query', views.search_query, name='search-query'),
-    path('sign-up', views.sign_up, name='sign-up'),
+    path('search-query/', views.search_query, name='search-query'),
+    path('sign-up/', views.sign_up, name='sign-up'),
 ]
