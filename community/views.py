@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from .models import CommunitySection
+from django.shortcuts import render, redirect
+from .models import CommunitySection, Post
 from .form import PostForm
 
 # Create your views here.
@@ -7,7 +7,8 @@ from .form import PostForm
 
 def community_view(request):
     sections = CommunitySection.objects.all()
-    context = {'sections': sections}
+    posts = Post.objects.all()
+    context = {'sections': sections, 'posts': posts}
     return render(request, 'community.html', context)
 
 

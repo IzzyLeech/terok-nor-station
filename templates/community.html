@@ -13,5 +13,18 @@
 
 <a href="{% url 'create-post' %}">Create Post</a>
 
+<div>
+{% for post in posts %}
+<div>
+    <a href="#">Edit Post</a>
+    <a href="#">Delete Post</a>
+
+    <p>post.created_by</p>
+    <p>{{ post.id }} -- <a href="#">{{ post.name }}</a></p>
+    <small>{{ post.section.name }}</small>
+    <p>{{ post.description }}</p>
+</div>
+{% endfor %}
+</div>
 </div>
 {% endblock content %}
