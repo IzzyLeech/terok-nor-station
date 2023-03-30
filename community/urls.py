@@ -4,4 +4,3 @@ from . import views
 urlpatterns = [
     path('community/', views.community_view, name='community')
 ]
-
