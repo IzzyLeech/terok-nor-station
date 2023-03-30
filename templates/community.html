@@ -6,12 +6,12 @@
 <hr>
 
 {% for section in sections %}
-
 <div>
     <p>{{ section.section }}</p>
 </div>
-
 {% endfor %}
+
+<a href="{% url 'create-post' %}">Create Post</a>
 
 </div>
 {% endblock content %}
