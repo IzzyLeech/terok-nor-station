@@ -1,4 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>community</h1>
+<div>
+<h3>Choose Section</h3>
+<hr>
+
+{% for section in sections %}
+
+<div>
+    <p>{{ section.section }}</p>
+</div>
+
+{% endfor %}
+
+</div>
 {% endblock content %}
