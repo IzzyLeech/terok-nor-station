@@ -5,10 +5,15 @@
 <h3>Choose Section</h3>
 <hr>
 
+<div>
+    <a href="{% url 'community' %}">All</a>
+</div>
+<hr>
 {% for section in sections %}
 <div>
-    <p>{{ section.section }}</p>
+    <a href="{% url 'community' %}?q={{section.section}}">{{ section.section }}</a>
 </div>
+<hr>
 {% endfor %}
 
 <a href="{% url 'create-post' %}">Create Post</a>
@@ -18,11 +23,12 @@
 <div>
     <a href="#">Edit Post</a>
     <a href="#">Delete Post</a>
-
+    <p>{{ post.section.section }}</p>
     <p>{{post.created_by.username}}</p>
     <p>{{ post.id }} -- <a href="#">{{ post.name }}</a></p>
     <small>{{ post.section.name }}</small>
     <p>{{ post.description }}</p>
+    <hr>
 </div>
 {% endfor %}
 </div>
