@@ -25,7 +25,7 @@
     <a href="#">Delete Post</a>
     <p>{{ post.section.section }}</p>
     <p>{{post.created_by.username}}</p>
-    <p>{{ post.id }} -- <a href="{% url 'post' %}">{{ post.name }}</a></p>
+    <p>{{ post.id }} -- <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
     <small>{{ post.section.name }}</small>
     <p>{{ post.description }}</p>
     <hr>

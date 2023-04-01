@@ -30,6 +30,7 @@ def create_post(request):
     return render(request, 'post_form.html', context)
 
 
-def view_post(request):
-    context = {}
+def view_post(request, pk):
+    post = Post.objects.get(id=pk)
+    context = {'post': post}
     return render(request, 'post.html', context)
