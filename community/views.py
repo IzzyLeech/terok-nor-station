@@ -12,7 +12,7 @@ def community_view(request):
     posts = Post.objects.filter(Q(section__section__icontains=q))
 
     sections = CommunitySection.objects.all()
-    
+
     context = {'sections': sections, 'posts': posts}
     return render(request, 'community.html', context)
 
@@ -28,4 +28,8 @@ def create_post(request):
 
     context = {'form': form}
     return render(request, 'post_form.html', context)
-    
+
+
+def view_post(request):
+    context = {}
+    return render(request, 'post.html', context)
