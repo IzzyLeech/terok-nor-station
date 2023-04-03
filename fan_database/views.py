@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from .models import Season, Episode
 from .form import EpisodeForm, RegisterForm
 from django.contrib.auth import login
@@ -29,12 +30,14 @@ def episode_view(request, episode_id):
 @login_required(login_url='login')
 def add_episode(request):
     form = EpisodeForm()
-
+    
     if request.method == 'POST':
         form = EpisodeForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('Season')
+            season_value = request.POST.get('season')
+            url = reverse('Season', args=[season_value])
+            return redirect(url)
 
     context = {'form': form}
     return render(request, 'episode_form.html', context)
@@ -42,25 +45,26 @@ def add_episode(request):
 
 @login_required(login_url='login')
 def update_episode(request, pk):
-    episode = Episode.objects.get(id=pk)
+    episode = get_object_or_404(Episode, id=pk)
     form = EpisodeForm(instance=episode)
+    season_id = episode.season.pk
 
     if request.method == 'POST':
         form = EpisodeForm(request.POST, instance=episode)
         if form.is_valid():
             form.save()
-            return redirect('Season')
+            return redirect(reverse('Season', kwargs={'season_id': season_id}))
 
     context = {'form': form}
     return render(request, 'episode_form.html', context)
 
 
-@login_required(login_url='login')
 def delete_episode(request, pk):
     episode = get_object_or_404(Episode, id=pk)
+    season_id = episode.season.pk
     if request.method == 'POST':
         episode.delete()
-        return redirect('Season')
+        return redirect(reverse('Season', kwargs={'season_id': season_id}))
     return render(request, 'delete.html', {'obj': episode})
 
 
