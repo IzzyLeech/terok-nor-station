@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Season, Episode
 from .form import EpisodeForm, RegisterForm
 from django.contrib.auth import login
@@ -53,7 +53,7 @@ def update_episode(request, pk):
 
 
 def delete_episode(request, pk):
-    episode = Episode.objects.get(id=pk)
+    episode = get_object_or_404(Episode, id=pk)
     if request.method == 'POST':
         episode.delete()
         return redirect('Season')

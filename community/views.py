@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.db.models import Q
 from .models import CommunitySection, Post, Comment
@@ -32,7 +32,7 @@ def create_post(request):
 
 
 def delete_post(request, pk):
-    post = Post.objects.get(id=pk)
+    post = get_object_or_404(Post, id=pk)
 
     if request.method == 'POST':
         post.delete()
@@ -56,9 +56,9 @@ def view_post(request, pk):
 
 
 def delete_comment(request, pk):
-    comment = Comment.objects.get(id=pk)
+    comment = get_object_or_404(Comment, id=pk)
     post_pk = comment.post.pk
     if request.method == 'POST':
         comment.delete()
-        return redirect('post', pk=post_pk)
+        return redirect(reverse('post', kwargs={'pk': post_pk}))
     return render(request, 'delete.html', {'obj': comment})
