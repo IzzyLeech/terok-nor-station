@@ -11,7 +11,7 @@
 
     {% for comment in post_comments %}
         <div>
-            {% if request.user.is_authenticated %}
+            {% if request.user == comment.user %}
             <a href="{% url 'delete-comment' comment.id %}">Delete Comment</a>
             {% endif %}
             <p>{{ comment.body }}</p>
