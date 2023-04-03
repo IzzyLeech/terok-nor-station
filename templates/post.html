@@ -11,7 +11,9 @@
 
     {% for comment in post_comments %}
         <div>
+            {% if request.user.is_authenticated %}
             <a href="{% url 'delete-comment' comment.id %}">Delete Comment</a>
+            {% endif %}
             <p>{{ comment.body }}</p>
             <small>{{ comment.user }} {{ comment.created|timesince }} ago </small>
             <hr>
@@ -19,13 +21,13 @@
     {% endfor %}
 </div>
 
-
+{% if request.user.is_authenticated %}
 <div class="comment-form">
     <form action="" method="POST" >
         {% csrf_token %}
         <input type="text" name="body" placeholder="Write your comment here..."  >
     </form>
 </div>
-
+{% endif %}
 
 {% endblock content %}

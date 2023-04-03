@@ -15,14 +15,16 @@
 </div>
 <hr>
 {% endfor %}
-
+{% if request.user.is_authenticated %}
 <a href="{% url 'create-post' %}">Create Post</a>
-
+{% endif %}
 <div>
 {% for post in posts %}
 <div>
+    {% if request.user.is_authenticated %}
     <a href="#">Edit Post</a>
     <a href="{% url 'delete-post' post.id %}">Delete Post</a>
+    {% endif %}
     <p>{{ post.section.section }}</p>
     <p>{{post.created_by.username}}</p>
     <p>{{ post.id }} -- <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
