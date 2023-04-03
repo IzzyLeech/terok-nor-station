@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.db.models import Q
 from .models import CommunitySection, Post, Comment
 from .form import PostForm
@@ -30,6 +31,15 @@ def create_post(request):
     return render(request, 'post_form.html', context)
 
 
+def delete_post(request, pk):
+    post = Post.objects.get(id=pk)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('community')
+    return render(request, 'delete.html', {'obj': post})
+
+
 def view_post(request, pk):
     post = Post.objects.get(id=pk)
     post_comments = post.comment_set.all()
@@ -43,3 +53,12 @@ def view_post(request, pk):
 
     context = {'post': post, 'post_comments': post_comments}
     return render(request, 'post.html', context)
+
+
+def delete_comment(request, pk):
+    comment = Comment.objects.get(id=pk)
+    post_pk = comment.post.pk
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('post', pk=post_pk)
+    return render(request, 'delete.html', {'obj': comment})

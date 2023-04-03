@@ -22,7 +22,7 @@
 {% for post in posts %}
 <div>
     <a href="#">Edit Post</a>
-    <a href="#">Delete Post</a>
+    <a href="{% url 'delete-post' post.id %}">Delete Post</a>
     <p>{{ post.section.section }}</p>
     <p>{{post.created_by.username}}</p>
     <p>{{ post.id }} -- <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
