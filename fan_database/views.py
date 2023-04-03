@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Season, Episode
 from .form import EpisodeForm, RegisterForm
 from django.contrib.auth import login
@@ -25,6 +26,7 @@ def episode_view(request, episode_id):
     return render(request, 'episode.html', context)
 
 
+@login_required(login_url='login')
 def add_episode(request):
     form = EpisodeForm()
 
@@ -38,6 +40,7 @@ def add_episode(request):
     return render(request, 'episode_form.html', context)
 
 
+@login_required(login_url='login')
 def update_episode(request, pk):
     episode = Episode.objects.get(id=pk)
     form = EpisodeForm(instance=episode)
@@ -52,6 +55,7 @@ def update_episode(request, pk):
     return render(request, 'episode_form.html', context)
 
 
+@login_required(login_url='login')
 def delete_episode(request, pk):
     episode = get_object_or_404(Episode, id=pk)
     if request.method == 'POST':
