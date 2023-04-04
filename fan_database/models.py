@@ -19,8 +19,11 @@ class Episode(models.Model):
     season_episode_number = models.IntegerField()
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     title = models.CharField(max_length=220)
+    synopsis = models.TextField(default="Enter synopsis for episode")
     air_date = models.DateField()
     stardate = models.DecimalField(max_digits=6, decimal_places=1)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['season_episode_number']
