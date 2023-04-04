@@ -15,9 +15,10 @@ def display_season_all_pages(request):
     return {'seasons': seasons}
 
 
-def season_view(request, season_id):
-    episodes = Episode.objects.filter(season=season_id)
-    context = {'episodes': episodes}
+def season_view(request, pk):
+    season = get_object_or_404(Season, pk=pk)
+    episodes = season.episode_set.all()
+    context = {'episodes': episodes, 'season': season}
     return render(request, 'season.html', context)
 
 
@@ -30,7 +31,7 @@ def episode_view(request, episode_id):
 @login_required(login_url='login')
 def add_episode(request):
     form = EpisodeForm()
-    
+
     if request.method == 'POST':
         form = EpisodeForm(request.POST)
         if form.is_valid():
@@ -53,7 +54,7 @@ def update_episode(request, pk):
         form = EpisodeForm(request.POST, instance=episode)
         if form.is_valid():
             form.save()
-            return redirect(reverse('Season', kwargs={'season_id': season_id}))
+            return redirect(reverse('Season', kwargs={'pk': season_id}))
 
     context = {'form': form}
     return render(request, 'episode_form.html', context)
@@ -64,7 +65,7 @@ def delete_episode(request, pk):
     season_id = episode.season.pk
     if request.method == 'POST':
         episode.delete()
-        return redirect(reverse('Season', kwargs={'season_id': season_id}))
+        return redirect(reverse('Season', kwargs={'pk': season_id}))
     return render(request, 'delete.html', {'obj': episode})
 
 
