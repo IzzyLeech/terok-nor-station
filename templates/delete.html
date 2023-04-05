@@ -3,10 +3,12 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    <p>Are you sure you want to delete "{{obj}}"?</p>
-    
+    <p>Please give a reason for deletion:</p>
+    <textarea name="reason"></textarea>
+    <br>
+    <p>Are you sure you want to send a request to delete "{{obj}}"?</p>
     <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
-    <input type="submit" value="Confirm">
+    <button type="submit" name="delete" value="true">Yes, send request</button>
 </form>
 
 {% endblock content %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse
-from .models import Season, Episode
+from .models import Season, Episode, DeleteRequest
 from .form import EpisodeForm, RegisterForm
 from django.contrib.auth import login
 
@@ -64,9 +64,29 @@ def delete_episode(request, pk):
     episode = get_object_or_404(Episode, id=pk)
     season_id = episode.season.pk
     if request.method == 'POST':
-        episode.delete()
+        reason = request.POST.get('reason')
+        if not reason:
+            messages.error(request, 'Please provide a reason for the deletion.')
+            return redirect(reverse('delete_episode', kwargs={'pk': pk}))
+        delete_request = DeleteRequest(user=request.user, object_to_delete=episode, reason=reason)
+        delete_request.save()
         return redirect(reverse('Season', kwargs={'pk': season_id}))
     return render(request, 'delete.html', {'obj': episode})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def delete_request_list(request):
+    delete_requests = DeleteRequest.objects.filter(approved=False)
+    return render(request, 'delete_request.html', {'delete_requests': delete_requests})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def approve_delete_request(request, pk):
+    delete_request = get_object_or_404(DeleteRequest, pk=pk)
+    delete_request_approved = True
+    delete_request.save()
+    delete_request.object_to_delete.delete()
+    return redirect('Home')
 
 
 def search_query(request):

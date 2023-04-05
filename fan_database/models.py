@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Season(models.Model):
@@ -30,3 +31,10 @@ class Episode(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class DeleteRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    object_to_delete = models.ForeignKey(Episode, on_delete=models.CASCADE)
+    reason = models.TextField(default="Enter reason for deletion")
+    approved = models.BooleanField(default=False)

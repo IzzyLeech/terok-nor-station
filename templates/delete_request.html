@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Delete Requests</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Episode to delete</th>
+        <th>Reason</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for delete_request in delete_requests %}
+        <tr>
+          <td>{{ delete_request.user }}</td>
+          <td>{{ delete_request.object_to_delete }}</td>
+          <td>{{delete_request.reason}}</td>
+          <td>
+            <form method="post" action="{% url 'approve_delete_request' delete_request.id %}">
+              {% csrf_token %}
+              <button type="submit" name="approve" value="true">Approve</button>
+              <button type="submit" name="reject" value="true">Reject</button>
+            </form>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">No delete requests</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+{% endblock %}
