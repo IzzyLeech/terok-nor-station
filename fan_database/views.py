@@ -93,10 +93,15 @@ def search_query(request):
     if request.method == "POST":
         searched = request.POST['searched']
         episodes = Episode.objects.filter(title__icontains=searched)
-        context = {'searched': searched, 'episodes': episodes}
+        if not episodes:
+            message = 'No items found for "{}".'.format(searched)
+        else:
+            message = 'Search results for "{}":'.format(searched)
+        context = {'searched': searched, 'episodes': episodes, 'message': message}
         return render(request, 'search_query.html', context)
     else:
-        return render(request, 'search_query.html')
+        context = {'searched': None, 'episodes': None, 'message': None}
+        return render(request, 'search_query.html', context)
 
 
 def sign_up(request):
