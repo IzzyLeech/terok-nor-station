@@ -38,3 +38,9 @@ class DeleteRequest(models.Model):
     object_to_delete = models.ForeignKey(Episode, on_delete=models.CASCADE)
     reason = models.TextField(default="Enter reason for deletion")
     approved = models.BooleanField(default=False)
+
+
+class ApprovalRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    object_to_approve = models.ForeignKey(Episode, on_delete=models.CASCADE)
+    approved = models.BooleanField(default=False)

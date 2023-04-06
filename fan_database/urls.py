@@ -9,7 +9,8 @@ urlpatterns = [
     path('update-episode/<str:pk>/', views.update_episode, name='update-episode'),
     path('delete-episode/<str:pk>/', views.delete_episode, name='delete-episode'),
     path('delete-list-request/', views.delete_request_list, name='delete-request-list'),
-    path('delete-requests/<int:pk>/approve/', views.approve_delete_request, name='approve_delete_request'),
+    path('delete-request/<int:pk>/approve/confirm/', views.approve_delete_request_confirm, name='approve_delete_request_confirm'),
+    path('delete-request/<int:pk>/reject/confirm/', views.reject_delete_request_confirm, name='reject_delete_request_confirm'),
     path('search-query/', views.search_query, name='search-query'),
     path('sign-up/', views.sign_up, name='sign-up'),
 ]

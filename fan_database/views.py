@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse
+from django.contrib import messages
 from .models import Season, Episode, DeleteRequest
 from .form import EpisodeForm, RegisterForm
 from django.contrib.auth import login
@@ -80,13 +81,50 @@ def delete_request_list(request):
     return render(request, 'delete_request.html', {'delete_requests': delete_requests})
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def approve_delete_request(request, pk):
+def delete_request(request, pk):
     delete_request = get_object_or_404(DeleteRequest, pk=pk)
-    delete_request_approved = True
-    delete_request.save()
-    delete_request.object_to_delete.delete()
-    return redirect('Home')
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'approve':
+            # redirect to approval confirm page with delete request pk as parameter
+            return redirect('approve_delete_request_confirm', pk=pk)
+        elif action == 'reject':
+            # redirect to reject confirm page with delete request pk as parameter
+            return redirect('reject_delete_request_confirm')
+        else:
+            messages.error(request, 'Invalid action.')
+    context = {'delete_request': delete_request}
+    return render(request, 'delete_request.html', context)
+
+
+def approve_delete_request_confirm(request, pk):
+    delete_request = get_object_or_404(DeleteRequest, pk=pk)
+    if request.method == 'POST':
+        form_data = request.POST
+        if form_data.get('approve_confirm'):
+            # approve the delete request and delete the object
+            delete_request.approved = True
+            delete_request.save()
+            delete_request.object_to_delete.delete()
+            messages.success(request, 'The delete request has been approved.')
+            return redirect('delete-request-list')
+        else:
+            messages.error(request, 'Invalid action.')
+    return render(request, 'approve_delete_request_confirm.html', {'delete_request': delete_request})
+
+
+def reject_delete_request_confirm(request, pk):
+    delete_request = get_object_or_404(DeleteRequest, pk=pk)
+    if request.method == 'POST':
+        form_data = request.POST
+        if form_data.get('reject_confirm'):
+            delete_request.delete()
+            messages.success(request, 'The delete request has been rejected.')
+            return redirect('delete-request-list')
+        else:
+            messages.error(request, 'Invalid action.')
+    return render(request, 'reject_delete_request_confirm.html', {'delete_request': delete_request})
 
 
 def search_query(request):

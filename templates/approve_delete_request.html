@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
 {% block content %}
   <h1>Approve Delete Request</h1>
   <p>Are you sure you want to approve the delete request for {{ delete_request.object_to_delete }}?</p>

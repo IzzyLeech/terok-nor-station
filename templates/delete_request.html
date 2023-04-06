@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
 <h1>Delete Requests</h1>
   <table>
     <thead>
@@ -18,11 +26,16 @@
           <td>{{ delete_request.object_to_delete }}</td>
           <td>{{delete_request.reason}}</td>
           <td>
-            <form method="post" action="{% url 'approve_delete_request' delete_request.id %}">
+            <form method="post" action="{% url 'approve_delete_request_confirm' delete_request.pk %}">
               {% csrf_token %}
-              <button type="submit" name="approve" value="true">Approve</button>
-              <button type="submit" name="reject" value="true">Reject</button>
-            </form>
+              <input type="hidden" name="action" value="approve">
+              <button type="submit">Approve</button>
+          </form>
+          <form method="post" action="{% url 'reject_delete_request_confirm' delete_request.pk %}">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="reject">
+              <button type="submit">Reject</button>
+          </form>
           </td>
         </tr>
       {% empty %}
@@ -32,6 +45,22 @@
       {% endfor %}
     </tbody>
   </table>
+
+  <h1>Objects waiting for approval</h1>
+  <ul>
+    {% for obj in approval_requests %}
+      <li>
+        Object {{ obj.id }} created by {{ obj.user.username }}
+        <form method="post" action="{% url 'approve_delete_request' delete_request.pk %}">
+          {% csrf_token %}
+          <input type="submit" name="action" value="Approve">
+          <input type="submit" name="action" value="Reject">
+        </form>
+      </li>
+    {% empty %}
+      <p>No objects waiting for approval.</p>
+    {% endfor %}
+  </ul>
 
 
 {% endblock %}
