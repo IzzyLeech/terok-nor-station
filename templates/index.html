@@ -7,5 +7,8 @@
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
     <button class=" btn btn-outline-secondary" type="submit"></button>
 </form>
-<a href="{% url 'delete-request-list' %}">Delete request list</a>
+
+{% if user.is_superuser %}
+<a href="{% url 'admin-request' %}">Admin request list</a>
+{% endif %}
 {% endblock %}

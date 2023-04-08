@@ -46,21 +46,42 @@
     </tbody>
   </table>
 
-  <h1>Objects waiting for approval</h1>
-  <ul>
-    {% for obj in approval_requests %}
-      <li>
-        Object {{ obj.id }} created by {{ obj.user.username }}
-        <form method="post" action="{% url 'approve_delete_request' delete_request.pk %}">
-          {% csrf_token %}
-          <input type="submit" name="action" value="Approve">
-          <input type="submit" name="action" value="Reject">
-        </form>
-      </li>
-    {% empty %}
-      <p>No objects waiting for approval.</p>
-    {% endfor %}
-  </ul>
+  <h1>Pending Episode Approval Requests</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Episode Title</th>
+            <th>Submitted By</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for approval_request in approval_requests %}
+            <tr>
+              <td>{{ approval_request.object_to_approve}}</td>
+              <td>{{ approval_request.user.username }}</td>
+              <td>
+                <form method="post" action="{% url 'approve_add_request_confirm' approval_request.pk %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="req_{{ approval_request.id }}" value="approve">
+                  <button type="submit">Approve</button>
+              </form>
+              <td>
+                <form method="post" action="{% url 'reject_add_request_confirm' approval_request.pk %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="req_{{ approval_request.id }}" value="reject">
+                  <button type="submit">Reject</button>
+              </form>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="3">No add requests</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  
 
 
 {% endblock %}

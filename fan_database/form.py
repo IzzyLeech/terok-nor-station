@@ -9,6 +9,7 @@ class EpisodeForm(ModelForm):
     class Meta:
         model = Episode
         fields = '__all__'
+        exclude = ['approved']
 
 
 class RegisterForm(UserCreationForm):

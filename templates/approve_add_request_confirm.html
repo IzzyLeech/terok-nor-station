@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Approve Delete Request</h1>
-  <p>Are you sure you want to approve the delete request for {{ delete_request.object_to_delete }}?</p>
+  <h1>Approve Add Request</h1>
+  <p>Are you sure you want to approve the Add request for {{ delete_request.object_to_delete }}?</p>
   <form method="post">
     {% csrf_token %}
     <button type="submit" name="approve_confirm" value="true">Yes, approve</button>
