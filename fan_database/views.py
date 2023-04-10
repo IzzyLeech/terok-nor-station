@@ -323,3 +323,7 @@ def sign_up(request):
         form = RegisterForm()
 
     return render(request, 'registration/sign_up.html', {"form": form})
+
+
+def error_404(request, exception):
+    return render(request, '404.html', {})

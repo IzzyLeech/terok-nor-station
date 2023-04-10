@@ -64,3 +64,8 @@ def delete_comment(request, pk):
         comment.delete()
         return redirect(reverse('post', kwargs={'pk': post_pk}))
     return render(request, 'delete.html', {'obj': comment})
+
+
+def error_404(request, exception):
+    return render(request, '404.html', {})
+    

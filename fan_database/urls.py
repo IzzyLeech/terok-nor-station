@@ -18,3 +18,5 @@ urlpatterns = [
     path('search-query/', views.search_query, name='search-query'),
     path('sign-up/', views.sign_up, name='sign-up'),
 ]
+
+handler404 = 'fan_database.views.error_404'

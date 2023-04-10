@@ -8,3 +8,5 @@ urlpatterns = [
     path('post/<str:pk>/', views.view_post, name='post'),
     path('delete-comment/<str:pk>/', views.delete_comment, name='delete-comment')
 ]
+
+handler404 = 'community.views.error_404'
