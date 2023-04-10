@@ -1,8 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h1>SEASON {{ season.season_number }}</h1>
+<div class="container">
+<table class="table-bordered">
+    <tbody>
+        <tr>
+            <td>SEASON {{ season.season_number }}</td>
+        </tr>
+        <tr class="image-container">
+            <td><img class="fluid" src="{{ season.image.url }}"></td>
+        </tr>
+        <tr>
+            <td>Episodes: {{ season.episode_count }}</td>
+        </tr>
+        <tr>
+            <td>First Aired: {{ season.start_date }}</td>
+        </tr>
+        <tr>
+            <td>Last Aired: {{ season.end_date }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
 <hr>
 {% if request.user.is_authenticated %}
     <a href="{% url 'add-episode' %}">Add Episode</a>

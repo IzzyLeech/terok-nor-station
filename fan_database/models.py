@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 class Season(models.Model):
@@ -7,6 +8,7 @@ class Season(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     episode_count = models.IntegerField()
+    image = CloudinaryField("image", default='placeholder')
 
     class Meta:
         ordering = ['season_number']
