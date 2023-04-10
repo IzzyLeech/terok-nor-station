@@ -6,6 +6,8 @@ from .models import Episode
 
 
 class EpisodeForm(ModelForm):
+    reason = forms.CharField(max_length=255, required=True)
+
     class Meta:
         model = Episode
         fields = '__all__'

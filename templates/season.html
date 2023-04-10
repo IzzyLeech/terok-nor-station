@@ -22,28 +22,26 @@
             </tr>
         </thead>
         {% for episode in episodes %}
-        <tbody>
-            <tr>
-                <td> {{ episode.overall_episode_number }}</td>
-                <td>{{ episode.season_episode_number }}</td>
-                <td>"<a href="{% url 'Episode' episode.id %}">{{ episode.title }}</a>"</td>
-                <td>{{ episode.air_date }}</td>
-                <td>{{ episode.stardate }}</td>
-            </tr>
-            <tr>
-                <td colspan="5" >{{ episode.synopsis }}</td>
-            </tr>
-            <tr>
-                {% if request.user.is_authenticated %}
-                    <td colspan="1"><a href="{% url 'update-episode' episode.id %}">Edit Episode</a></td>
-                    <td colspan="1"><a href="{% url 'delete-episode' episode.id %}">Delete Episode</a></td>
-                    <td colspan="1">Created on {{ episode.created }}</td>
-                    <td colspan="2">Last Edited on {{ episode.updated }}</td>
-                {% endif %}
-            </tr>
-        </tbody>
-
-        
+                <tbody>
+                    <tr>
+                        <td> {{ episode.overall_episode_number }}</td>
+                        <td>{{ episode.season_episode_number }}</td>
+                        <td>"<a href="{% url 'Episode' episode.id %}">{{ episode.title }}</a>"</td>
+                        <td>{{ episode.air_date }}</td>
+                        <td>{{ episode.stardate }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" >{{ episode.synopsis }}</td>
+                    </tr>
+                    <tr>
+                        {% if request.user.is_authenticated %}
+                            <td colspan="1"><a href="{% url 'update-episode' episode.id %}">Edit Episode</a></td>
+                            <td colspan="1"><a href="{% url 'delete-episode' episode.id %}">Delete Episode</a></td>
+                            <td colspan="1">Created on {{ episode.created }}</td>
+                            <td colspan="2">Last Edited on {{ episode.updated }}</td>
+                        {% endif %}
+                    </tr>
+                </tbody>
         {% endfor %}
         </table>
         </div>

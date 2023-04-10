@@ -34,15 +34,14 @@ class Episode(models.Model):
         return self.title
 
 
-class DeleteRequest(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    object_to_delete = models.ForeignKey(Episode, on_delete=models.CASCADE)
-    reason = models.TextField(default="Enter reason for deletion")
-    approved = models.BooleanField(default=False)
-
-
 class ApprovalRequest(models.Model):
+    REQUEST_TYPES = (
+        ('approval', 'Approval'),
+        ('edit', 'Edit'),
+        ('delete', 'Delete')
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     object_to_approve = models.ForeignKey(Episode, on_delete=models.CASCADE)
     approved = models.BooleanField(default=False)
-    
+    reason = models.TextField(default="Enter inforamtion on the request")
+    request_type = models.CharField(max_length=10, choices=REQUEST_TYPES,)

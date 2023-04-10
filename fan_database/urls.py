@@ -13,6 +13,8 @@ urlpatterns = [
     path('delete-request/<int:pk>/reject/confirm/', views.reject_delete_request_confirm, name='reject_delete_request_confirm'),
     path('add-request/<int:pk>/approve/confirm/', views.approve_add_request_confirm, name='approve_add_request_confirm'),
     path('add-request/<int:pk>/reject/confirm/', views.reject_add_request_confirm, name='reject_add_request_confirm'),
+    path('approve_edit_request_confirm/<int:pk>/', views.approve_edit_request_confirm, name='approve_edit_request_confirm'),
+    path('reject_edit_request_confirm/<int:pk>/', views.reject_edit_request_confirm, name='reject_edit_request_confirm'),
     path('search-query/', views.search_query, name='search-query'),
     path('sign-up/', views.sign_up, name='sign-up'),
 ]
