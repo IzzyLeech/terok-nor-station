@@ -132,7 +132,7 @@ def add_request(request):
     if request.method == 'POST':
         action = request.POST.get('action')
         if action == 'approve':
-            # redirect to approval confirm page 
+            # redirect to approval confirm page
             # with approval request pk as parameter
             return redirect('approve_add_request_confirm')
         elif action == 'reject':
