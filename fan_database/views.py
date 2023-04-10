@@ -104,7 +104,7 @@ def delete_episode(request, pk):
         )
         approval_request.save()
         return redirect(reverse('Season', kwargs={'pk': season_id}))
-    return render(request, 'delete.html', {'obj': episode})
+    return render(request, 'delete_request.html', {'obj': episode})
 
 
 def admin_request(request):
