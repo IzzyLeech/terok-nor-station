@@ -8,6 +8,11 @@
     <button class=" btn btn-outline-secondary" type="submit"></button>
 </form>
 
+<div class="image-container">
+    <img class="img-fluid" src="/static/images/error.jpg" alt="404-error">
+</div>
+
+
 {% if user.is_superuser %}
 <a href="{% url 'admin-request' %}">Admin request list</a>
 {% endif %}
