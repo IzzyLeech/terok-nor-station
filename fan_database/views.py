@@ -19,7 +19,7 @@ def display_season_all_pages(request):
 
 def season_view(request, pk):
     season = get_object_or_404(Season, pk=pk)
-    episodes = Episode.objects.filter(approved=True)
+    episodes = Episode.objects.filter(season=season, approved=True)
 
     context = {
                 'episodes': episodes,
