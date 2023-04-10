@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'fan_database.views.display_season_all_pages',
+                'terok_nor_station.processor.context',
             ],
         },
     },
