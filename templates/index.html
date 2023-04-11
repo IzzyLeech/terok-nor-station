@@ -1,14 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1> INDEX</h1>
-<form method="POST" action="{% url 'search-query' %}">
-    {% csrf_token %}
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-    <button class=" btn btn-outline-secondary" type="submit"></button>
-</form>
+<h1>Home</h1>
+<div class="container">
+    <div class="row">
+        <div class="container welcome-container">
+            <p>Welcome to Terok Nor Station an collaborative project created by fans for fans of Star Trek Deep Space
+                Nine.
+                As an memeber of our community you can parcipate in
+                the creating an platform for fans of DS9 and help build out section of the website. Section's currently
+                being built are our season section that of our goal is to hold
+                an extensive collection of inforamtion on all the season of the show plus each episode. It you don't
+                want to
+                help in building the section, no problem come to our community
+                where you can discuss your favorite topics of the show.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="container">
+            {% if request.user.is_authenticated %}
+            <p>Register member check out our <a href="{% url 'community' %}">Community Page</a></p>
+            {% else %}
+            <p>Want to interact with other members of the community? Create an account <a href="{% url 'sign-up' %}">Here</a></p>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="container">
+            <p>Have an episode in mind that you want to look up, give it a search</p>
+            <form method="POST" action="{% url 'search-query' %}">
+                {% csrf_token %}
+                <div class="input-group">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                <button class=" btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-{% if user.is_superuser %}
-<a href="{% url 'admin-request' %}">Admin request list</a>
-{% endif %}
 {% endblock %}

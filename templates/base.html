@@ -38,6 +38,11 @@
                 <li class="nav-item">
                     <a href="{% url 'community' %}" class="nav-link">Community</a>
                 </li>
+                {% if user.is_superuser %}
+                <li class="nav-item">
+                    <a href="{% url 'admin-request' %}" class="nav-link">Admin request list</a>
+                </li>
+                {% endif %}
                 {% if request.user.is_authenticated %}
                 <p>Hello {{ request.user }}</p>
                 <li class="nav-item">
