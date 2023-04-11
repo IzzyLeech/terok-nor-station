@@ -21,6 +21,9 @@
 <div>
 {% for post in posts %}
 <div>
+    {% if post.pinned %}
+    <p><strong>PINNED</strong></p>
+    {% endif %}
     {% if request.user == post.created_by %}
     <a href="#">Edit Post</a>
     <a href="{% url 'delete-post' post.id %}">Delete Post</a>

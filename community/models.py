@@ -16,9 +16,10 @@ class Post(models.Model):
     description = models.TextField(null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    pinned = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['-updated', '-created']
+        ordering = ['-pinned', '-updated', '-created']
 
     def __str__(self):
         return self.name

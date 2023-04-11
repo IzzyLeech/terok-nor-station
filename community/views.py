@@ -19,10 +19,9 @@ def community_view(request):
 
 
 def create_post(request):
-    form = PostForm()
-
+    form = PostForm(user=request.user)
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, user=request.user)
         if form.is_valid():
             post = form.save(commit=False)
             post.created_by = request.user
