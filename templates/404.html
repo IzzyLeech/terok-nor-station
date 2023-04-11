@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
 <p>{{ exception }}</p>
+<a href="{{request.META.HTTP_REFERER}}">Beam me back</a>
 <div class="image-container">
-    <img class="img-fluid" src="{% staticfiles 'images/error.jpg' %}" alt="404-error">
+    <img class="img-fluid" src="/static/images/test.png" alt="404-error">
 </div>
 {% endblock %}
