@@ -32,7 +32,7 @@
     <p>{{post.created_by.username}}</p>
     <p>{{ post.id }} -- <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
     <small>{{ post.section.name }}</small>
-    <p>{{ post.description }}</p>
+    <p>{{ post.description | safe }}</p>
     <div>Likes: <span id="likes-count-{{ post.id }}">{{ post.likes.count }}</span></div>
     <div>Disikes: <span id="likes-count-{{ post.id }}">{{ post.dislikes.count }}</span></div>
     <hr>

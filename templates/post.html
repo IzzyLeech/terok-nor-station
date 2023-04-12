@@ -3,7 +3,7 @@
 
 <h1>{{ post.name }}</h1>
 
-<p>{{ post.description }}</p>
+<p>{{ post.description | safe }}</p>
 
 {% if request.user.is_authenticated %}
     <form action="{% url 'like_post' post.pk %}" method="POST">
