@@ -1,12 +1,16 @@
 from django import forms
 from django.forms import ModelForm
+from django_summernote.widgets import SummernoteWidget
 from .models import Post
 
 
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['section', 'name', 'description', 'pinned']
+        widgets = {
+            'description': SummernoteWidget(),
+        }
         exclude = ['created_by', 'likes', 'dislikes']
 
     def __init__(self, *args, **kwargs):
