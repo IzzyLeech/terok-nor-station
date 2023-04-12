@@ -1,20 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>community</h1>
-<div>
-<h3>Choose Section</h3>
-<hr>
+<div class="container">
 
-<div>
+<div class="row">
+<h3 class="column">Choose Section</h3>
+<hr>
+</div>
+
+<div class="row">
+<div class="column">
     <a href="{% url 'community' %}">All</a>
 </div>
-<hr>
-{% for section in sections %}
-<div>
+
+<div class="column">
+    {% for section in sections %}
     <a href="{% url 'community' %}?q={{section.section}}">{{ section.section }}</a>
+    {% endfor %}
 </div>
-<hr>
-{% endfor %}
+</div>
+
+
+</div>
 {% if request.user.is_authenticated %}
 <a href="{% url 'create-post' %}">Create Post</a>
 {% endif %}
