@@ -5,20 +5,25 @@ from .models import CommunitySection, Post, Comment
 from .form import PostForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 
 def community_view(request):
-    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    q = request.GET.get('q') if request.GET.get('q') is not None else ''
 
     posts = Post.objects.filter(Q(section__section__icontains=q))
+
+    paginator = Paginator(posts, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     sections = CommunitySection.objects.all()
 
     context = {
                 'sections': sections,
-                'posts': posts,
+                'posts': page_obj,
                 }
     return render(request, 'community.html', context)
 
@@ -46,6 +51,7 @@ def delete_post(request, pk):
         post.delete()
         return redirect('community')
     return render(request, 'delete.html', {'obj': post})
+
 
 
 def view_post(request, pk,):
