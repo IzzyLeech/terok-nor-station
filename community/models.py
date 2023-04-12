@@ -17,9 +17,14 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     pinned = models.BooleanField(default=False)
+    likes = models.ManyToManyField(User, blank=True, related_name='post_likes')
+    dislikes = models.ManyToManyField(User, blank=True, related_name='post_dislikes')
 
     class Meta:
         ordering = ['-pinned', '-updated', '-created']
+
+    def total_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return self.name

@@ -7,7 +7,7 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
-        exclude = ['created_by']
+        exclude = ['created_by', 'likes', 'dislikes']
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)

@@ -33,9 +33,14 @@
     <p>{{ post.id }} -- <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
     <small>{{ post.section.name }}</small>
     <p>{{ post.description }}</p>
+    <div>Likes: <span id="likes-count-{{ post.id }}">{{ post.likes.count }}</span></div>
     <hr>
-</div>
+    </div>
 {% endfor %}
 </div>
 </div>
 {% endblock content %}
+
+<script>
+
+  </script>

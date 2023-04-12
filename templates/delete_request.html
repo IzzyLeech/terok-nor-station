@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="" method="POST">
+<form action="" method="POST" id="deleteForm">
     {% csrf_token %}
     <p>Please give a reason for deletion:</p>
     <textarea name="reason"></textarea>
@@ -10,5 +10,10 @@
     <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
     <button type="submit" name="delete" value="true">Yes, send request</button>
 </form>
+
+
+<script>
+    
+</script>
 
 {% endblock content %}
