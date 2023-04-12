@@ -14,14 +14,11 @@ def community_view(request):
 
     posts = Post.objects.filter(Q(section__section__icontains=q))
 
-    total_likes_list = [post.total_likes() for post in posts]
-
     sections = CommunitySection.objects.all()
 
     context = {
                 'sections': sections,
                 'posts': posts,
-                'total_likes_list': total_likes_list,
                 }
     return render(request, 'community.html', context)
 
@@ -54,11 +51,17 @@ def delete_post(request, pk):
 def view_post(request, pk,):
     post = Post.objects.get(id=pk)
     post_comments = post.comment_set.all()
+
     total_likes = post.total_likes()
+    total_dislikes = post.total_dislikes()
 
     liked = False
     if post.likes.filter(id=request.user.id).exists():
         liked = True
+
+    disliked = False
+    if post.dislikes.filter(id=request.user.id).exists():
+        disliked = True
 
     if request.method == 'POST':
         comment = Comment.objects.create(
@@ -72,7 +75,9 @@ def view_post(request, pk,):
                 'post': post,
                 'post_comments': post_comments,
                 'total_likes': total_likes,
-                'liked': liked
+                'total_dislikes': total_dislikes,
+                'liked': liked,
+                'disliked': disliked,
                 }
     return render(request, 'post.html', context)
 
@@ -87,10 +92,6 @@ def delete_comment(request, pk):
     return render(request, 'delete.html', {'obj': comment})
 
 
-def error_404(request, exception):
-    return render(request, '404.html', {})
-
-
 def like_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     liked = False
@@ -98,7 +99,28 @@ def like_view(request, pk):
         post.likes.remove(request.user)
         liked = False
     else:
+        if post.dislikes.filter(pk=request.user.id).exists():
+            post.dislikes.remove(request.user)
         post.likes.add(request.user)
         liked = True
 
     return HttpResponseRedirect(reverse('post', args=[str(pk)]))
+
+
+def dislike_view(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    disliked = False
+    if post.dislikes.filter(pk=request.user.id).exists():
+        post.dislikes.remove(request.user)
+        disliked = False
+    else:
+        if post.likes.filter(pk=request.user.id).exists():
+            post.likes.remove(request.user)
+        post.dislikes.add(request.user)
+        disliked = True
+
+    return HttpResponseRedirect(reverse('post', args=[str(pk)]))
+
+
+def error_404(request, exception):
+    return render(request, '404.html', {})

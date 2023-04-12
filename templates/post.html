@@ -15,6 +15,16 @@
         {% endif %}
     </form>
     <div>Likes: <span>{{ total_likes }}</span></div>
+
+    <form action="{% url 'dislike_post' post.pk %}" method="POST">
+        {% csrf_token %}
+        {% if disliked %}
+            <button type="submit" name="post_id" value="{{ post_id }}" class="btn btn-primary btn-sm" >Undislike</button>
+        {% else %}
+            <button type="submit" name="post_id" value="{{ post_id }}" class="btn btn-danger btn-sm" >Dislike</button>
+        {% endif %}
+    </form>
+    <div>Likes: <span>{{ total_dislikes }}</span></div>
 {% endif %}
     
     
