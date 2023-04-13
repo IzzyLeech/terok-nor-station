@@ -93,7 +93,8 @@ def delete_comment(request, pk):
     comment = get_object_or_404(Comment, id=pk)
     post_pk = comment.post.pk
     if request.method == 'POST':
-        comment.delete()
+        if comment and (comment.user == request.user or request.user.has_perm("community.delete_comment")):
+            comment.delete()
         return redirect(reverse('post', kwargs={'pk': post_pk}))
     return render(request, 'delete.html', {'obj': comment})
 
