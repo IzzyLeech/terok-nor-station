@@ -48,7 +48,8 @@ def delete_post(request, pk):
     post = get_object_or_404(Post, id=pk)
 
     if request.method == 'POST':
-        post.delete()
+        if post and (post.created_by == request.user or request.user.has_perm("community.delete_post")):
+            post.delete()
         return redirect('community')
     return render(request, 'delete.html', {'obj': post})
 

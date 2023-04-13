@@ -38,7 +38,7 @@
             {% if post.pinned %}
             <p><strong>PINNED</strong></p>
             {% endif %}
-            {% if request.user == post.created_by %}
+            {% if request.user == post.created_by or perms.community.delete_post %}
             <a href="#">Edit Post</a>
             <a href="{% url 'delete-post' post.id %}">Delete Post</a>
             {% endif %}
