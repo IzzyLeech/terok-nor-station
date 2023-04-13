@@ -53,7 +53,6 @@ def delete_post(request, pk):
     return render(request, 'delete.html', {'obj': post})
 
 
-
 def view_post(request, pk,):
     post = Post.objects.get(id=pk)
     post_comments = post.comment_set.all()

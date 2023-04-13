@@ -313,14 +313,21 @@ def search_query(request):
 
 
 def sign_up(request):
+
+    if request.user.is_authenticated:
+        return redirect('home')
+
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
             login(request, user)
             return redirect('Home')
     else:
         form = RegisterForm()
+        messages.error(request, 'An error occured during registration')
 
     return render(request, 'registration/sign_up.html', {"form": form})
 
