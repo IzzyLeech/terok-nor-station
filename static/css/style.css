@@ -9,3 +9,51 @@
 #topic-section {
     background-color: crimson;
 }
+
+.btn-unlike {
+    color: grey ;
+    border: none;
+    background: transparent;
+}
+
+
+.btn-like {
+    color: #08a04b;
+    border: none;
+    background: transparent;
+}
+
+.btn-unlike:hover,
+.btn-unlike:active {
+    color: #08a04b;
+    background: transparent;
+    border: none;
+}
+
+.btn-undislike {
+    color: grey ;
+    border: none;
+    background: transparent;
+}
+
+.btn-dislike {
+    color: #FF0000;
+    background: transparent;
+    border: none;
+}
+
+.btn-undislike:hover,
+.btn-undislike:active {
+    color: #FF0000;
+    background: transparent;
+    border: none;
+}
+
+.green-icon {
+    color: #08a04b;
+}
+
+.red-icon {
+    color: #FF0000;
+}
+

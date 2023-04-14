@@ -13,7 +13,7 @@ class Post(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     section = models.ForeignKey(CommunitySection, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     pinned = models.BooleanField(default=False)

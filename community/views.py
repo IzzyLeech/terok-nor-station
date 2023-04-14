@@ -6,6 +6,8 @@ from .form import PostForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
+from django.core.exceptions import ValidationError
+from bs4 import BeautifulSoup
 
 # Create your views here.
 
@@ -34,10 +36,16 @@ def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST, user=request.user)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.created_by = request.user
-            post.save()
-            return redirect('community')
+            description_html = request.POST.get('description', '')
+            description_text = BeautifulSoup(description_html, 'html.parser').get_text().strip()
+
+            if len(description_text) == 0:
+                form.add_error('description', ValidationError("Description cannot be empty"))
+            else:
+                post = form.save(commit=False)
+                post.created_by = request.user
+                post.save()
+                return redirect('community')
 
     context = {'form': form}
     return render(request, 'post_form.html', context)

@@ -9,9 +9,9 @@
     <form action="{% url 'like_post' post.pk %}" method="POST">
         {% csrf_token %}
         {% if liked %}
-            <button type="submit" name="post_id" value="{{ post_id }}" class="btn btn-danger btn-sm" >Unlike</button>
+            <button type="submit" name="post_id" value="{{ post_id }}" class="btn-like" ><i class="fa-regular fa-thumbs-up"></i></button>
         {% else %}
-            <button type="submit" name="post_id" value="{{ post_id }}" class="btn btn-primary btn-sm" >Like</button>
+            <button type="submit" name="post_id" value="{{ post_id }}" class="btn-unlike" ><i class="fa-regular fa-thumbs-up"></i></button>
         {% endif %}
     </form>
     <div>Likes: <span>{{ total_likes }}</span></div>
@@ -19,9 +19,9 @@
     <form action="{% url 'dislike_post' post.pk %}" method="POST">
         {% csrf_token %}
         {% if disliked %}
-            <button type="submit" name="post_id" value="{{ post_id }}" class="btn btn-primary btn-sm" >Undislike</button>
+            <button type="submit" name="post_id" value="{{ post_id }}" class="btn-dislike" ><i class="fa-regular fa-thumbs-down"></i></button>
         {% else %}
-            <button type="submit" name="post_id" value="{{ post_id }}" class="btn btn-danger btn-sm" >Dislike</button>
+            <button type="submit" name="post_id" value="{{ post_id }}" class="btn-undislike" ><i class="fa-regular fa-thumbs-down"></i></button>
         {% endif %}
     </form>
     <div>Likes: <span>{{ total_dislikes }}</span></div>

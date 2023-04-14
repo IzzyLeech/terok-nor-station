@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<h1>community</h1>
+<h1>Community</h1>
 <div class="container">
     <div class="row ">
         <div class="col text-center">
@@ -14,14 +14,15 @@
         <div class="col">
             <a href="{% url 'community' %}">All</a>
         </div>
-    
+
         {% for section in sections %}
-            {% if forloop.counter0|divisibleby:2 %}
-                </div><div class="row text-center">
-            {% endif %}
-            <div class="col{% if sections|length == 2 %}-6{% endif %}">
-                <a href="{% url 'community' %}?q={{section.section}}">{{ section.section }}</a>
-            </div>
+        {% if forloop.counter0|divisibleby:2 %}
+    </div>
+    <div class="row text-center">
+        {% endif %}
+        <div class="col{% if sections|length == 2 %}-6{% endif %}">
+            <a href="{% url 'community' %}?q={{section.section}}">{{ section.section }}</a>
+        </div>
         {% endfor %}
     </div>
 
@@ -32,24 +33,51 @@
             {% endif %}
         </div>
     </div>
-    <div>
+
+    <div class="row">
         {% for post in posts %}
-        <div>
+        {% if forloop.counter0|divisibleby:4 %}
+    </div>
+    <div class="row">
+        {% endif %}
+        <div class="col-md-3 border">
             {% if post.pinned %}
             <p><strong>PINNED</strong></p>
             {% endif %}
-            {% if request.user == post.created_by or perms.community.delete_post %}
-            <a href="#">Edit Post</a>
-            <a href="{% url 'delete-post' post.id %}">Delete Post</a>
-            {% endif %}
             <p>{{ post.section.section }}</p>
-            <p>{{post.created_by.username}}</p>
-            <p>{{ post.id }} -- <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
+            <div class="row">
+            <div class="col">
+            <p>Post name: <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
+            </div>
+            </div>
             <small>{{ post.section.name }}</small>
-            <p>{{ post.description | safe }}</p>
-            <div>Likes: <span id="likes-count-{{ post.id }}">{{ post.likes.count }}</span></div>
-            <div>Disikes: <span id="likes-count-{{ post.id }}">{{ post.dislikes.count }}</span></div>
+            <div class="row">
+                <div class="col border ">
+                    <div class="h-100">
+                        <p>{{ post.description | safe | truncatewords_html:30 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><i class="fa-regular fa-thumbs-up green-icon"></i><span
+                        id="likes-count-{{ post.id }}">{{ post.likes.count }}</span></div>
+                <div class="col"><i class="fa-regular fa-thumbs-down red-icon"></i><span
+                        id="likes-count-{{ post.id }}">{{ post.dislikes.count }}</span></div>
+            </div>
+            {% if request.user == post.created_by or perms.community.delete_post %}
+            <div class="row">
+                <div class="col">
+                    <a href="#">Edit Post</a>
+                </div>
+                <div class="col">
+                    <a href="{% url 'delete-post' post.id %}">Delete Post</a>
+                </div>
+            </div>
+            {% endif %}
             <hr>
+            <div class="row">
+                <p class="col">Posted by {{post.created_by.username}}</p>
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -57,11 +85,11 @@
 
 <!-- Display pagination links here -->
 {% if posts.has_other_pages %}
-  <div class="pagination">
+<div class="pagination">
     <span class="step-links">
         {% if posts.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ posts.previous_page_number }}">&lsaquo; previous</a>
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ posts.previous_page_number }}">&lsaquo; previous</a>
         {% endif %}
 
         <span class="current-page">
@@ -69,11 +97,11 @@
         </span>
 
         {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">next &rsaquo;</a>
-            <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        <a href="?page={{ posts.next_page_number }}">next &rsaquo;</a>
+        <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
-  </div>
+</div>
 {% endif %}
 
 {% endblock content %}

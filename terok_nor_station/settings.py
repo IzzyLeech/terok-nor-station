@@ -56,6 +56,23 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%',
+        'height': '400',
+        'toolbar': [
+            ['undo', ['undo']],
+            ['redo', ['redo']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['para', ['ul', 'ol']],
+        ],
+        'fontNames': ['Sono'],
+        'fontNamesIgnoreCheck': ['Sono'],
+        'fontSizes': ['14'],
+        'fontSizeUnits': ['px'],
+    }
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -4,16 +4,12 @@
 {{ form.media }}
 {% block content %}
 
-<div>
+<div class="container">
     <form action="" method="POST" id="postForm">
         {% csrf_token %}
         {{ form|crispy }}
         <input type="submit" value="Submit">
     </form>
 </div>
-
-<script>
-
-</script>
 
 {% endblock content %}
