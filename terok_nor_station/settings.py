@@ -35,7 +35,6 @@ DEBUG = os.environ.get("DEVELOPMENT")
 
 ALLOWED_HOSTS = ["terok-nor-station.herokuapp.com", "localhost"]
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Application definition
 
