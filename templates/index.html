@@ -1,10 +1,22 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>Home</h1>
-<div class="container">
+
+<div class="container mt-3 mb-3">
+    <h1>Home</h1>
+
+    <div class="row mt-3 mb-3">
+        <div class="col-9 mx-auto">
+            <img src="{% static '/images/index-img.webp' %}" class="img-fluid" width="100%" height="100%" alt="space-station">
+        </div>
+    </div>
+
+
+
     <div class="row">
-        <div class="container welcome-container">
+        <div class="container">
+            <button class="accordion">About The Site</button>
+            <div class="panel">
             <p>Welcome to Terok Nor Station an collaborative project created by fans for fans of Star Trek Deep Space
                 Nine.
                 As an memeber of our community you can parcipate in
@@ -15,29 +27,42 @@
                 help in building the section, no problem come to our community
                 where you can discuss your favorite topics of the show.
             </p>
+            </div>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="container">
+            <button class="accordion">Community</button>
+            <div class="panel">
             {% if request.user.is_authenticated %}
-            <p>Register member check out our <a href="{% url 'community' %}">Community Page</a></p>
+            <p>Register member check out our <a href="{% url 'community' %}">Community Page</a> where you can interact with other member of the community.
+                You can browse the show discussion section where people discuss everything DS9 or you can keep updated with the development of the website.
+            </p>
             {% else %}
-            <p>Want to interact with other members of the community? Create an account <a href="{% url 'sign-up' %}">Here</a></p>
+            <p>Want to interact with other members of the community? Create an account <a href="{% url 'sign-up' %}">Here</a>. Members with an account can submit posts 
+                in either section of the community page. Want to talk all thing DS9 create a post in the show discussion section or keep up on the knowledge of the continues 
+                construction of the website check out the site development section.
+            </p>
             {% endif %}
+            </div>
         </div>
     </div>
     <hr>
-    <div class="row">
+
+    <div class="row p-4">
         <div class="container">
+            <div class="d-md-flex justify-content-between align-items-center"></div>
             <p>Have an episode in mind that you want to look up, give it a search</p>
+
             <form method="POST" action="{% url 'search-query' %}">
                 {% csrf_token %}
-                <div class="input-group">
+                <div class="input-group news-input">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-                <button class=" btn btn-outline-secondary" type="submit">Search</button>
+                <button class=" btn btn-outline-secondary ml-1" type="submit">Search</button>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 </div>
