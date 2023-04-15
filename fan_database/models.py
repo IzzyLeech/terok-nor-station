@@ -9,9 +9,18 @@ class Season(models.Model):
     end_date = models.DateField()
     episode_count = models.IntegerField()
     image = CloudinaryField("image", default='placeholder')
+    summary = models.TextField(default='Enter an summary on what happen in the season')
 
     class Meta:
         ordering = ['season_number']
+
+    @property
+    def next_season(self):
+        return Season.objects.filter(season_number__gt=self.season_number).order_by('season_number').first()
+
+    @property
+    def previous_season(self):
+        return Season.objects.filter(season_number__lt=self.season_number).order_by('-season_number').first()
 
     def __str__(self):
         return str(self.season_number)

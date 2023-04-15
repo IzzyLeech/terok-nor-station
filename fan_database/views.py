@@ -18,13 +18,13 @@ def display_season_all_pages(request):
 
 
 def season_view(request, pk):
-    season = get_object_or_404(Season, pk=pk)
-    episodes = Episode.objects.filter(season=season, approved=True)
+    current_season = get_object_or_404(Season, pk=pk)
+    episodes = Episode.objects.filter(season=current_season, approved=True)
 
     context = {
-                'episodes': episodes,
-                'season': season,
-                }
+        'current_season': current_season,
+        'episodes': episodes,
+    }
     return render(request, 'season.html', context)
 
 

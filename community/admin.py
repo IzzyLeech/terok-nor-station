@@ -6,7 +6,7 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
-    summernote_fields = ('description')
+    summernote_fields = ('summary')
 
 
 admin.site.register(CommunitySection)
