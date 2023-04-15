@@ -37,6 +37,7 @@ def episode_view(request, episode_id):
 @login_required(login_url='login')
 def add_episode(request):
     form = EpisodeForm()
+    episode = None
 
     if request.method == 'POST':
         form = EpisodeForm(request.POST)
@@ -44,10 +45,12 @@ def add_episode(request):
             episode = form.save(commit=False)
             form.save()
             # create an approval request for the created episode
+            reason = form.cleaned_data.get('reason')
             approval_request = ApprovalRequest(
                 user=request.user,
                 object_to_approve=episode,
-                request_type='approval'
+                request_type='approval',
+                reason=reason,
             )
             approval_request.save()
 
@@ -55,7 +58,7 @@ def add_episode(request):
             url = reverse('Season', args=[season_value])
             return redirect(url)
 
-    context = {'form': form}
+    context = {'form': form, 'episode_data': episode}
     return render(request, 'episode_form.html', context)
 
 
@@ -143,7 +146,11 @@ def add_request(request):
 
 
 def approve_add_request_confirm(request, pk):
-    approval_request = get_object_or_404(ApprovalRequest, pk=pk)
+    approval_request = get_object_or_404(
+                                        ApprovalRequest,
+                                        pk=pk,
+                                        )
+    episode = approval_request.object_to_approve
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('approve_confirm'):
@@ -156,12 +163,20 @@ def approve_add_request_confirm(request, pk):
             return redirect('admin-request')
         else:
             messages.error(request, 'Invalid action.')
-    context = {'approval_request': approval_request}
+    context = {
+                'approval_request': approval_request,
+                'reason': approval_request.reason,
+                'episode_data': episode
+                }
     return render(request, 'approve_add_request_confirm.html', context)
 
 
 def reject_add_request_confirm(request, pk):
-    approval_request = get_object_or_404(ApprovalRequest, pk=pk)
+    approval_request = get_object_or_404(
+                                        ApprovalRequest,
+                                        pk=pk,
+                                        )
+    episode = approval_request.object_to_approve
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('reject_confirm'):
@@ -169,7 +184,11 @@ def reject_add_request_confirm(request, pk):
             return redirect('admin-request')
         else:
             messages.error(request, 'Invalid action.')
-    context = {'approval_request': approval_request}
+    context = {
+        'approval_request': approval_request,
+        'reason': approval_request.reason,
+        'episode_data': episode,
+        }
     return render(request, 'reject_add_request_confirm.html', context)
 
 
@@ -264,6 +283,7 @@ def approve_delete_request_confirm(request, pk):
                                         pk=pk,
                                         request_type='delete'
                                         )
+    episode = delete_request.object_to_approve
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('approve_confirm'):
@@ -275,12 +295,17 @@ def approve_delete_request_confirm(request, pk):
             return redirect('admin-request')
         else:
             messages.error(request, 'Invalid action.')
-    context = {'delete_request': delete_request}
+    context = {
+                'delete_request': delete_request,
+                'episode': episode,
+                'reason': delete_request.reason
+                }
     return render(request, 'approve_delete_request_confirm.html', context)
 
 
 def reject_delete_request_confirm(request, pk):
     delete_request = get_object_or_404(ApprovalRequest, pk=pk)
+    episode = delete_request.object_to_approve
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('reject_confirm'):
@@ -289,7 +314,11 @@ def reject_delete_request_confirm(request, pk):
             return redirect('admin-request')
         else:
             messages.error(request, 'Invalid action.')
-    context = {'delete_request': delete_request}
+    context = {
+                'delete_request': delete_request,
+                'episode': episode,
+                'reason': delete_request.reason
+                }
     return render(request, 'reject_delete_request_confirm.html', context)
 
 

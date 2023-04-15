@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
   <h1>Reject Delete Request</h1>
-  <p>Are you sure you want to reject the delete request for {{ delete_request.object_to_delete }}?</p>
+  <p>Are you sure you want to reject the delete request for {{ delete_request.object_to_approve }}?</p>
+  <p>Episode Title: {{ episode.title }}</p>
+  <p>Overall Episode: {{ episode.overall_episode_number }}</p>
+  <p>Season Episode Number: {{ episode.season_episode_number }}</p>
+  <p>Synopsis: {{ episode.synopsis }}</p>
+  <p>Original Air Date: {{ episode.air_date }}</p>
+  <p>Stardate: {{episode.stardate}} </p>
+  {% if reason %}
+    <p><strong>Reason:</strong> {{ reason }}</p>
+  {% endif %}
   <form method="post">
     {% csrf_token %}
     <button type="submit" name="reject_confirm" value="true">Yes, reject</button>
     <a href="{% url 'admin-request' %}">No, go back</a>
   </form>
+</div>
 {% endblock %}
