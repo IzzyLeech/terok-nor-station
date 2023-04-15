@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
   <h1>Reject Edit Request</h1>
   <p>Are you sure you want to reject the edit request for {{ edit_request.object_to_approve }}?</p>
   <p>Episode Title: {{ episode.title }}</p>
@@ -17,4 +18,5 @@
     <button type="submit" name="reject_confirm" value="true">Yes, reject</button>
     <a href="{% url 'admin-request' %}">No, go back</a>
   </form>
+</div>
 {% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse
 from django.contrib import messages
-from .models import Season, Episode, ApprovalRequest
+from .models import Season, Episode, EpisodeLog, ApprovalRequest
 from .form import EpisodeForm, RegisterForm
 from django.contrib.auth import login
 
@@ -71,6 +71,20 @@ def update_episode(request, pk):
     if request.method == 'POST':
         form = EpisodeForm(request.POST, instance=episode)
         if form.is_valid():
+            # create a log entry for the unedited episode
+            original_episode = Episode.objects.get(id=pk)
+            EpisodeLog.objects.create(
+                episode=original_episode,
+                overall_episode_number=original_episode.overall_episode_number,
+                season_episode_number=original_episode.season_episode_number,
+                season=original_episode.season,
+                title=original_episode.title,
+                synopsis=original_episode.synopsis,
+                air_date=original_episode.air_date,
+                stardate=original_episode.stardate,
+                approved=True
+            )
+            print(original_episode.synopsis)
             episode = form.save(commit=False)
             episode.approved = False
             episode.save()
@@ -213,7 +227,6 @@ def approve_edit_request_confirm(request, pk):
                                     request_type='edit'
                                     )
     episode = edit_request.object_to_approve
-
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('approve_confirm'):
@@ -243,11 +256,32 @@ def reject_edit_request_confirm(request, pk):
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('reject_confirm'):
-            # Reload the episode object from
-            # the database to get the original state
-            episode = Episode.objects.get(id=episode.id)
+            # Reload the episode object from the EpisodeLog model to get the original state
+            original_episode_log = EpisodeLog.objects.filter(
+                episode=episode,
+                approved=True
+            ).order_by('-timestamp').first()
+            # Create a new instance of EpisodeLog with the original data
+            episode_log = EpisodeLog.objects.create(
+                episode=episode,
+                overall_episode_number=original_episode_log.overall_episode_number,
+                season_episode_number=original_episode_log.season_episode_number,
+                season=original_episode_log.season,
+                title=original_episode_log.title,
+                synopsis=original_episode_log.synopsis,
+                air_date=original_episode_log.air_date,
+                stardate=original_episode_log.stardate,
+                approved=True
+            )
+            # Update the original episode object with the data from the episode_log instance
+            episode.overall_episode_number = episode_log.overall_episode_number
+            episode.season_episode_number = episode_log.season_episode_number
+            episode.season = episode_log.season
+            episode.title = episode_log.title
+            episode.synopsis = episode_log.synopsis
+            episode.air_date = episode_log.air_date
+            episode.stardate = episode_log.stardate
             episode.approved = True
-            # Mark the original object not approved
             episode.save()
             edit_request.delete()
             messages.success(request, 'Update rejected.')
@@ -259,7 +293,6 @@ def reject_edit_request_confirm(request, pk):
         'reason': edit_request.reason,
     }
     return render(request, 'reject_edit_request_confirm.html', context)
-
 
 def delete_request(request):
     if request.method == 'POST':

@@ -45,6 +45,23 @@ class Episode(models.Model):
         return self.title
 
 
+class EpisodeLog(models.Model):
+    episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    overall_episode_number = models.IntegerField()
+    season_episode_number = models.IntegerField()
+    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    title = models.CharField(max_length=220)
+    synopsis = models.TextField()
+    air_date = models.DateField()
+    stardate = models.DecimalField(max_digits=6, decimal_places=1)
+    approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.episode} ({self.timestamp})'
+
+
 class ApprovalRequest(models.Model):
     REQUEST_TYPES = (
         ('approval', 'Approval'),

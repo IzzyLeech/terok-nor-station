@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
   <h1>Approve Edit Request</h1>
   <p>Are you sure you want to approve the Edit request for {{ edit_request.object_to_approve }}?</p>
   <p>Episode Title: {{ episode.title }}</p>
@@ -17,4 +18,5 @@
     <button type="submit" name="approve_confirm" value="true">Yes, approve</button>
     <a href="{% url 'admin-request' %}">No, go back</a>
   </form>
+</div>
 {% endblock %}
