@@ -18,6 +18,12 @@ urlpatterns = [
     path('search-query/', views.search_query, name='search-query'),
     path('sign-up/', views.sign_up, name='sign-up'),
     path('login/', views.login_view, name='login'),
+    path('password_change_done/', views.password_change_done, name='password_change_done'),
+    path('password_change_form/', views.password_change_form, name='password_change_form'),
+    path('password_reset_form/', views.password_reset_form, name='password_reset_form'),
+    path('password_reset_done/', views.password_reset_done, name='password_reset_done'),
+    path('password_reset_confirm/', views.password_reset_confirm, name='password_reset_confirm'),
+    path('password_reset_complete/', views.password_reset_complete, name='password_reset_complete'),
 ]
 
 handler404 = 'fan_database.views.error_404'

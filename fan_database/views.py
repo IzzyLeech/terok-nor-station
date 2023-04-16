@@ -124,6 +124,7 @@ def delete_episode(request, pk):
     return render(request, 'delete_request.html', {'obj': episode})
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def admin_request(request):
     delete_requests = ApprovalRequest.objects.filter(
                                                     approved=False,
@@ -415,6 +416,36 @@ def login_view(request):
             messages.error(request, 'Username or Password does not exist')
 
     return render(request, 'registration/login.html', {"form": form})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def password_change_done(request):
+    return render(request, 'registration/password_change_done.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def password_change_form(request):
+    return render(request, 'registration/password_change_form.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def password_reset_form(request):
+    return render(request, 'registration/password_reset_form.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def password_reset_done(request):
+    return render(request, 'registration/password_reset_done.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def password_reset_confirm(request):
+    return render(request, 'registration/password_reset_confirm.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def password_reset_complete(request):
+    return render(request, 'registration/password_reset_complete.html')
 
 
 def error_404(request, exception):
