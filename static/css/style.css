@@ -24,9 +24,38 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Header */
+
 h1,h2,h3,h4 {
     color: black;
     font-family: 'Merriweather', sans-serif;
+}
+
+
+.page-header {
+
+}
+
+/* Fonts */
+
+.text-xs {
+    font-size: 1.2rem;
+}
+
+.text-sm {
+    font-size: 2rem;
+}
+
+.text-md {
+    font-size: 3rem;
+}
+
+.text-lg {
+    font-size: 4rem;
+}
+
+.text-xl {
+    font-size: 5rem;
 }
 
 .season-info {

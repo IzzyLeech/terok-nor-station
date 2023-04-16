@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container mt-3 mb-3">
-    <h1>Home</h1>
+    <h1 class="page-header">Home</h1>
 
     <div class="row mt-3 mb-3">
         <div class="col-12 mx-auto">
@@ -15,9 +15,9 @@
 
     <div class="row">
         <div class="container">
-            <button class="accordion">About The Site</button>
+            <button class="accordion text-center">About The Site</button>
             <div class="panel">
-            <p>Welcome to Terok Nor Station an collaborative project created by fans for fans of Star Trek Deep Space
+            <p class="text-xs">Welcome to Terok Nor Station an collaborative project created by fans for fans of Star Trek Deep Space
                 Nine.
                 As an memeber of our community you can parcipate in
                 the creating an platform for fans of DS9 and help build out section of the website. Section's currently
@@ -33,14 +33,14 @@
     <hr>
     <div class="row">
         <div class="container">
-            <button class="accordion">Community</button>
+            <button class="accordion text-center">Community</button>
             <div class="panel">
             {% if request.user.is_authenticated %}
-            <p>Register member check out our <a href="{% url 'community' %}">Community Page</a> where you can interact with other member of the community.
+            <p class="text-xs">Register member check out our <a href="{% url 'community' %}">Community Page</a> where you can interact with other member of the community.
                 You can browse the show discussion section where people discuss everything DS9 or you can keep updated with the development of the website.
             </p>
             {% else %}
-            <p>Want to interact with other members of the community? Create an account <a href="{% url 'sign-up' %}">Here</a>. Members with an account can submit posts 
+            <p class="text-xs">Want to interact with other members of the community? Create an account <a href="{% url 'sign-up' %}">Here</a>. Members with an account can submit posts 
                 in either section of the community page. Want to talk all thing DS9 create a post in the show discussion section or keep up on the knowledge of the continues 
                 construction of the website check out the site development section.
             </p>
@@ -53,7 +53,7 @@
     <div class="row p-4">
         <div class="container">
             <div class="d-md-flex justify-content-between align-items-center"></div>
-            <p>Have an episode in mind that you want to look up, give it a search</p>
+            <p class="text-xs">Have an episode in mind that you want to look up, give it a search</p>
 
             <form method="POST" action="{% url 'search-query' %}">
                 {% csrf_token %}
@@ -67,7 +67,7 @@
     </div>
 
     <div class="container">
-        <h2 class="text-center">Future Sections</h2>
+        <h1 class="text-center">Future Sections</h2>
         <div class="row text-center">
             <div class="col-md">
                 <div class="card bg-dark text-light">
