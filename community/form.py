@@ -22,7 +22,7 @@ class PostForm(ModelForm):
             self.fields['pinned'].widget = forms.HiddenInput()
 
         self.helper = FormHelper()
-        self.helper.form_method = 'post'
+        self.helper.form_method = 'POST'
         self.helper.add_input(Submit('submit', 'Create Post'))
         self.helper.layout = Layout(
             Fieldset(

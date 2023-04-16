@@ -49,12 +49,12 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_summernote',
     'crispy_forms',
-    'crispy_bootstrap5',
+    'crispy_bootstrap4',
     'fan_database',
     'community',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SUMMERNOTE_CONFIG = {
     'summernote': {
