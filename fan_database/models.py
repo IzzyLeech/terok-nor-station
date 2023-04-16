@@ -31,6 +31,7 @@ class Episode(models.Model):
     season_episode_number = models.IntegerField()
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     title = models.CharField(max_length=220)
+    image = CloudinaryField("image", default="placeholder")
     synopsis = models.TextField(default="Enter synopsis for episode, keep it brief and in one paragraph")
     plot = models.TextField(default="Write a detail description of the episode's plot, use multiple paragraphs")
     air_date = models.DateField()

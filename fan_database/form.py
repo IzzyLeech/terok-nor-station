@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .models import Episode
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Fieldset, Div, Row, Column
+from django_summernote.widgets import SummernoteWidget
 
 
 class EpisodeForm(ModelForm):
@@ -22,6 +23,9 @@ class EpisodeForm(ModelForm):
                 'air_date',
                 'stardate',
             ]
+        widgets = {
+            'plot': SummernoteWidget(),
+        }
         exclude = ['approved']
 
     def __init__(self, *args, **kwargs):

@@ -1,7 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>Episode Title {{ episode }}</h1>
-
-
+<div class="container">
+    <div class="card my-3">
+      <div class="card-header">
+        <h2>{{ episode.title }}</h2>
+        <p class="card-subtitle mb-2 text-muted">
+          Season {{ episode.season.number }} - Episode {{ episode.season_episode_number }}
+        </p>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-4">
+            <img src="{{ episode.image.url }}" alt="title-img" class="img-fluid">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong>Air Date:</strong> {{ episode.air_date|date:"F j, Y" }}
+              </li>
+              <li class="list-group-item">
+                <strong>Stardate:</strong> {{ episode.stardate }}
+              </li>
+              <li class="list-group-item">
+                <strong>Overall Episode Number:</strong> {{ episode.overall_episode_number }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-8">
+            <h5 class="card-title">Synopsis</h5>
+            <p class="card-text">{{ episode.synopsis }}</p>
+            <h5 class="card-title">Plot</h5>
+            <p class="card-text">{{ episode.plot | safe }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
