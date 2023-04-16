@@ -128,6 +128,7 @@ def update_episode(request, pk):
     return render(request, 'episode_form.html', context)
 
 
+@login_required(login_url='login')
 def delete_episode(request, pk):
     episode = get_object_or_404(Episode, id=pk)
     season_id = episode.season.pk
@@ -186,6 +187,7 @@ def add_request(request):
         return redirect('admin-request')
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def approve_add_request_confirm(request, pk):
     approval_request = get_object_or_404(ApprovalRequest, pk=pk)
     episode = approval_request.object_to_approve
@@ -209,6 +211,7 @@ def approve_add_request_confirm(request, pk):
     return render(request, 'approve_add_request_confirm.html', context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def reject_add_request_confirm(request, pk):
     approval_request = get_object_or_404(ApprovalRequest, pk=pk)
     episode = approval_request.object_to_approve
@@ -240,6 +243,7 @@ def edit_request(request):
         return redirect('admin-request')
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def approve_edit_request_confirm(request, pk):
     edit_request = get_object_or_404(
                                     ApprovalRequest,
@@ -265,6 +269,7 @@ def approve_edit_request_confirm(request, pk):
     return render(request, 'approve_edit_request_confirm.html', context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def reject_edit_request_confirm(request, pk):
     edit_request = get_object_or_404(
                                     ApprovalRequest,
@@ -331,6 +336,7 @@ def delete_request(request):
     return render(request, 'admin_request.html')
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def approve_delete_request_confirm(request, pk):
     delete_request = get_object_or_404(
                                         ApprovalRequest,
@@ -355,6 +361,7 @@ def approve_delete_request_confirm(request, pk):
     return render(request, 'approve_delete_request_confirm.html', context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def reject_delete_request_confirm(request, pk):
     delete_request = get_object_or_404(ApprovalRequest, pk=pk)
     episode = delete_request.object_to_approve
