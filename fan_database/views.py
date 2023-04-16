@@ -251,7 +251,7 @@ def reject_edit_request_confirm(request, pk):
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('reject_confirm'):
-            # Reload the episode object from the 
+            # Reload the episode object from the
             # EpisodeLog model to get the original state
             original_episode_log = EpisodeLog.objects.filter(
                 episode=episode,
@@ -269,7 +269,8 @@ def reject_edit_request_confirm(request, pk):
                 stardate=original_episode_log.stardate,
                 approved=True
             )
-            # Update the original episode object with the data from the episode_log instance
+            # Update the original episode object 
+            # with the data from the episode_log instance
             episode.overall_episode_number = episode_log.overall_episode_number
             episode.season_episode_number = episode_log.season_episode_number
             episode.season = episode_log.season

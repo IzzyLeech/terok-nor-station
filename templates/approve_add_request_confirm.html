@@ -8,7 +8,7 @@
   <p>Overall Episode: {{ episode_data.overall_episode_number }}</p>
   <p>Season Episode Number: {{ episode_data.season_episode_number }}</p>
   <p>Synopsis: {{ episode_data.synopsis }}</p>
-  <p>Plot: {{ episode_data.plot }}</p>
+  <p>Plot: {{ episode_data.plot | safe }}</p>
   <p>Original Air Date: {{ episode_data.air_date }}</p>
   <p>Stardate: {{episode_data.stardate}} </p>
   {% if reason %}

@@ -22,6 +22,7 @@ class EpisodeForm(ModelForm):
                 'synopsis',
                 'air_date',
                 'stardate',
+                'image'
             ]
         widgets = {
             'plot': SummernoteWidget(),
@@ -49,8 +50,9 @@ class EpisodeForm(ModelForm):
                     css_class='row'
                 ),
                 Div(
-                    Div('air_date', css_class='col-md-4 mb-3'),
-                    Div('stardate', css_class='col-md-4 mb-3'),
+                    Div('air_date', css_class='col-md-2 mb-3'),
+                    Div('stardate', css_class='col-md-2 mb-3'),
+                    Div('image', css_class='col-md-4 mb-3'),
                     Div('reason', css_class='col-md-4 mb-3'),
                     css_class='row'
                 ),
