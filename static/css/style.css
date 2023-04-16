@@ -24,6 +24,14 @@ h1,h2,h3,h4 {
     background-color: crimson;
 }
 
+.post-description {
+    height: 80px;
+    overflow: hidden;
+}
+
+#user-name{
+    color: crimson;
+}
 
 /* styles for like/dislike button */
 

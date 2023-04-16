@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
-<h1>Community</h1>
-<div class="container">
+
+<div class="container mt-2 mb-2">
+    <h1>Community</h1>
     <div class="row ">
         <div class="col text-center">
             <h3 id="section-header">Choose Section</h3>
@@ -28,9 +30,11 @@
 
     <div class="container">
         <div class="row">
+            <button>
             {% if request.user.is_authenticated %}
             <a href="{% url 'create-post' %}">Create Post</a>
             {% endif %}
+            </button>
         </div>
     </div>
 
@@ -40,20 +44,20 @@
     </div>
     <div class="row">
         {% endif %}
-        <div class="col-md-3 border">
+        <div class="col-lg-3 col-md-6 mb-4 border border-dark">
             {% if post.pinned %}
             <p><strong>PINNED</strong></p>
             {% endif %}
             <p>{{ post.section.section }}</p>
             <div class="row">
-            <div class="col">
-            <p>Post name: <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
-            </div>
+                <div class="col">
+                    <p>Post name: <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
+                </div>
             </div>
             <small>{{ post.section.name }}</small>
             <div class="row">
                 <div class="col border ">
-                    <div class="h-100">
+                    <div class="post-description">
                         <p>{{ post.description | safe | truncatewords_html:30 }}</p>
                     </div>
                 </div>
