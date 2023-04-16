@@ -3,8 +3,9 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import reverse
 from django.contrib import messages
 from .models import Season, Episode, EpisodeLog, ApprovalRequest
-from .form import EpisodeForm, RegisterForm
-from django.contrib.auth import login
+from .form import EpisodeForm, RegisterForm, LoginForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User
 
 
 def index_view(request):
@@ -37,7 +38,6 @@ def episode_view(request, episode_id):
 @login_required(login_url='login')
 def add_episode(request):
     form = EpisodeForm()
-    episode = None
 
     if request.method == 'POST':
         form = EpisodeForm(request.POST)
@@ -45,12 +45,10 @@ def add_episode(request):
             episode = form.save(commit=False)
             form.save()
             # create an approval request for the created episode
-            reason = form.cleaned_data.get('reason')
             approval_request = ApprovalRequest(
                 user=request.user,
                 object_to_approve=episode,
-                request_type='approval',
-                reason=reason,
+                request_type='approval'
             )
             approval_request.save()
 
@@ -58,7 +56,7 @@ def add_episode(request):
             url = reverse('Season', args=[season_value])
             return redirect(url)
 
-    context = {'form': form, 'episode_data': episode}
+    context = {'form': form}
     return render(request, 'episode_form.html', context)
 
 
@@ -84,7 +82,6 @@ def update_episode(request, pk):
                 stardate=original_episode.stardate,
                 approved=True
             )
-            print(original_episode.synopsis)
             episode = form.save(commit=False)
             episode.approved = False
             episode.save()
@@ -160,11 +157,7 @@ def add_request(request):
 
 
 def approve_add_request_confirm(request, pk):
-    approval_request = get_object_or_404(
-                                        ApprovalRequest,
-                                        pk=pk,
-                                        )
-    episode = approval_request.object_to_approve
+    approval_request = get_object_or_404(ApprovalRequest, pk=pk)
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('approve_confirm'):
@@ -177,20 +170,12 @@ def approve_add_request_confirm(request, pk):
             return redirect('admin-request')
         else:
             messages.error(request, 'Invalid action.')
-    context = {
-                'approval_request': approval_request,
-                'reason': approval_request.reason,
-                'episode_data': episode
-                }
+    context = {'approval_request': approval_request}
     return render(request, 'approve_add_request_confirm.html', context)
 
 
 def reject_add_request_confirm(request, pk):
-    approval_request = get_object_or_404(
-                                        ApprovalRequest,
-                                        pk=pk,
-                                        )
-    episode = approval_request.object_to_approve
+    approval_request = get_object_or_404(ApprovalRequest, pk=pk)
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('reject_confirm'):
@@ -198,11 +183,7 @@ def reject_add_request_confirm(request, pk):
             return redirect('admin-request')
         else:
             messages.error(request, 'Invalid action.')
-    context = {
-        'approval_request': approval_request,
-        'reason': approval_request.reason,
-        'episode_data': episode,
-        }
+    context = {'approval_request': approval_request}
     return render(request, 'reject_add_request_confirm.html', context)
 
 
@@ -227,12 +208,14 @@ def approve_edit_request_confirm(request, pk):
                                     request_type='edit'
                                     )
     episode = edit_request.object_to_approve
+
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('approve_confirm'):
             episode.approved = True
             episode.save()
             edit_request.delete()
+
             messages.success(request, 'Update approved successfully.')
 
             return redirect('admin-request')
@@ -252,7 +235,6 @@ def reject_edit_request_confirm(request, pk):
                                     request_type='edit'
                                     )
     episode = edit_request.object_to_approve
-
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('reject_confirm'):
@@ -286,13 +268,13 @@ def reject_edit_request_confirm(request, pk):
             edit_request.delete()
             messages.success(request, 'Update rejected.')
             return redirect('admin-request')
-
     context = {
         'edit_request': edit_request,
         'episode': episode,
         'reason': edit_request.reason,
     }
     return render(request, 'reject_edit_request_confirm.html', context)
+
 
 def delete_request(request):
     if request.method == 'POST':
@@ -316,7 +298,6 @@ def approve_delete_request_confirm(request, pk):
                                         pk=pk,
                                         request_type='delete'
                                         )
-    episode = delete_request.object_to_approve
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('approve_confirm'):
@@ -328,17 +309,12 @@ def approve_delete_request_confirm(request, pk):
             return redirect('admin-request')
         else:
             messages.error(request, 'Invalid action.')
-    context = {
-                'delete_request': delete_request,
-                'episode': episode,
-                'reason': delete_request.reason
-                }
+    context = {'delete_request': delete_request}
     return render(request, 'approve_delete_request_confirm.html', context)
 
 
 def reject_delete_request_confirm(request, pk):
     delete_request = get_object_or_404(ApprovalRequest, pk=pk)
-    episode = delete_request.object_to_approve
     if request.method == 'POST':
         form_data = request.POST
         if form_data.get('reject_confirm'):
@@ -347,11 +323,7 @@ def reject_delete_request_confirm(request, pk):
             return redirect('admin-request')
         else:
             messages.error(request, 'Invalid action.')
-    context = {
-                'delete_request': delete_request,
-                'episode': episode,
-                'reason': delete_request.reason
-                }
+    context = {'delete_request': delete_request}
     return render(request, 'reject_delete_request_confirm.html', context)
 
 
@@ -383,7 +355,7 @@ def sign_up(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
+            user.username = user.username
             user.save()
             login(request, user)
             return redirect('Home')
@@ -392,6 +364,32 @@ def sign_up(request):
         messages.error(request, 'An error occured during registration')
 
     return render(request, 'registration/sign_up.html', {"form": form})
+
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+
+    if request.user.is_authenticated:
+        return redirect('Home')
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            messages.error(request, 'User does not exist')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('Home')
+        else:
+            messages.error(request, 'Username or Password does not exist')
+
+    return render(request, 'registration/login.html', {"form": form})
 
 
 def error_404(request, exception):

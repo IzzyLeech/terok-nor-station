@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Season, Episode
+from .models import Season, Episode, EpisodeLog
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -8,5 +8,5 @@ class SeasonAdmin(SummernoteModelAdmin):
 
     summernote_fields = ('summary')
 
-
 admin.site.register(Episode)
+admin.site.register(EpisodeLog)

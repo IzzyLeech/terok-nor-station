@@ -31,16 +31,20 @@
                     </tr>
                     {% if current_season.previous_season %}
                     <tr>
-                    <td>Previous season: <a href="{% url 'Season' pk=current_season.previous_season.pk %}">{{ current_season.previous_season.season_number }}</a></td>
+                        <td>Previous season: <a
+                                href="{% url 'Season' pk=current_season.previous_season.pk %}">{{ current_season.previous_season.season_number }}</a>
+                        </td>
                     </tr>
                     {% endif %}
                     {% if current_season.next_season %}
                     <tr>
-                    <td>Next season: <a href="{% url 'Season' pk=current_season.next_season.pk %}">{{ current_season.next_season.season_number }}</a></td>
+                        <td>Next season: <a
+                                href="{% url 'Season' pk=current_season.next_season.pk %}">{{ current_season.next_season.season_number }}</a>
+                        </td>
                     </tr>
                     {% endif %}
                 </tbody>
-            </table>    
+            </table>
         </div>
     </div>
 </div>
@@ -66,7 +70,7 @@
                 {% for episode in episodes %}
                 <tbody>
                     <tr>
-                        <td> {{ episode.overall_episode_number }}</td>
+                        <td>{{ episode.overall_episode_number }}</td>
                         <td>{{ episode.season_episode_number }}</td>
                         <td>"<a href="{% url 'Episode' episode.id %}">{{ episode.title }}</a>"</td>
                         <td>{{ episode.air_date }}</td>
@@ -83,6 +87,7 @@
                         <td colspan="2">Last Edited on {{ episode.updated }}</td>
                         {% endif %}
                     </tr>
+
                 </tbody>
                 {% endfor %}
             </table>

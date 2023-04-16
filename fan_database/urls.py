@@ -17,6 +17,7 @@ urlpatterns = [
     path('reject_edit_request_confirm/<int:pk>/', views.reject_edit_request_confirm, name='reject_edit_request_confirm'),
     path('search-query/', views.search_query, name='search-query'),
     path('sign-up/', views.sign_up, name='sign-up'),
+    path('login/', views.login_view, name='login'),
 ]
 
 handler404 = 'fan_database.views.error_404'
