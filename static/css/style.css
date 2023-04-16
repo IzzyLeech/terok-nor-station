@@ -1,7 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+:root {
+
+}
+
+html {
+    font-size: 62.5%;
+}
+
 body {
     background-image: url('/static/images/background.jpg');
     background-size: cover;
     background-position: center;
+    font-size: 1.6rem;
+    font-family: 'Sono', sans-serif;
 }
 
 .container {
@@ -13,6 +26,7 @@ body {
 
 h1,h2,h3,h4 {
     color: black;
+    font-family: 'Merriweather', sans-serif;
 }
 
 .season-info {
