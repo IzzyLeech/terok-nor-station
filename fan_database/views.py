@@ -6,6 +6,8 @@ from .models import Season, Episode, EpisodeLog, ApprovalRequest
 from .form import EpisodeForm, RegisterForm, LoginForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from bs4 import BeautifulSoup
 
 
 def index_view(request):
@@ -43,21 +45,35 @@ def add_episode(request):
     if request.method == 'POST':
         form = EpisodeForm(request.POST)
         if form.is_valid():
-            episode = form.save(commit=False)
-            form.save()
-            # create an approval request for the created episode
-            reason = form.cleaned_data.get('reason')
-            approval_request = ApprovalRequest(
-                user=request.user,
-                object_to_approve=episode,
-                request_type='approval',
-                reason=reason
-            )
-            approval_request.save()
+            plot_html = request.POST.get('plot', '')
+            plot_text = BeautifulSoup(
+                                            plot_html,
+                                            'html.parser').get_text().strip()
 
-            season_value = request.POST.get('season')
-            url = reverse('Season', args=[season_value])
-            return redirect(url)
+            if len(plot_text) == 0:
+                form.add_error(
+                                'plot',
+                                ValidationError("Plot cannot be empty"))
+            else:
+                episode = form.save(commit=False)
+                form.save()
+                # create an approval request for the created episode
+                reason = form.cleaned_data.get('reason')
+                approval_request = ApprovalRequest(
+                    user=request.user,
+                    object_to_approve=episode,
+                    request_type='approval',
+                    reason=reason
+                )
+                approval_request.save()
+
+                season_value = request.POST.get('season')
+                url = reverse('Season', args=[season_value])
+                messages.success(
+                            request,
+                            'Your request to add an episode has been submitted.'
+                            )
+                return redirect(url)
 
     context = {'form': form, 'episode_data': episode}
     return render(request, 'episode_form.html', context)
@@ -72,32 +88,42 @@ def update_episode(request, pk):
     if request.method == 'POST':
         form = EpisodeForm(request.POST, instance=episode)
         if form.is_valid():
-            # create a log entry for the unedited episode
-            original_episode = Episode.objects.get(id=pk)
-            EpisodeLog.objects.create(
-                episode=original_episode,
-                overall_episode_number=original_episode.overall_episode_number,
-                season_episode_number=original_episode.season_episode_number,
-                season=original_episode.season,
-                title=original_episode.title,
-                synopsis=original_episode.synopsis,
-                air_date=original_episode.air_date,
-                stardate=original_episode.stardate,
-                approved=True
-            )
-            episode = form.save(commit=False)
-            episode.approved = False
-            episode.save()
-            # create an approval request for the edited episode
-            reason = form.cleaned_data.get('reason')
-            ApprovalRequest.objects.create(
-                object_to_approve=episode,
-                user=request.user,
-                request_type='edit',
-                reason=reason,
-            )
-            messages.success(request, 'Update request submitted successfully.')
-            return redirect(reverse('Season', kwargs={'pk': season_id}))
+            plot_html = request.POST.get('plot', '')
+            plot_text = BeautifulSoup(
+                                            plot_html,
+                                            'html.parser').get_text().strip()
+
+            if len(plot_text) == 0:
+                form.add_error(
+                                'plot',
+                                ValidationError("Plot cannot be empty"))
+            else:
+                # create a log entry for the unedited episode
+                original_episode = Episode.objects.get(id=pk)
+                EpisodeLog.objects.create(
+                    episode=original_episode,
+                    overall_episode_number=original_episode.overall_episode_number,
+                    season_episode_number=original_episode.season_episode_number,
+                    season=original_episode.season,
+                    title=original_episode.title,
+                    synopsis=original_episode.synopsis,
+                    air_date=original_episode.air_date,
+                    stardate=original_episode.stardate,
+                    approved=True
+                )
+                episode = form.save(commit=False)
+                episode.approved = False
+                episode.save()
+                # create an approval request for the edited episode
+                reason = form.cleaned_data.get('reason')
+                ApprovalRequest.objects.create(
+                    object_to_approve=episode,
+                    user=request.user,
+                    request_type='edit',
+                    reason=reason,
+                )
+                messages.success(request, 'Update request submitted successfully.')
+                return redirect(reverse('Season', kwargs={'pk': season_id}))
     context = {'form': form}
     return render(request, 'episode_form.html', context)
 
@@ -172,9 +198,9 @@ def approve_add_request_confirm(request, pk):
             # Save the created episode to the database
             approval_request.object_to_approve.save()
             approval_request.save()
+            messages.error(request, 'Add request successfully.')
             return redirect('admin-request')
-        else:
-            messages.error(request, 'Invalid action.')
+
     context = {
             'approval_request': approval_request,
             'reason': approval_request.reason,
@@ -190,9 +216,8 @@ def reject_add_request_confirm(request, pk):
         form_data = request.POST
         if form_data.get('reject_confirm'):
             approval_request.delete()
+            messages.error(request, 'Add request rejected')
             return redirect('admin-request')
-        else:
-            messages.error(request, 'Invalid action.')
     context = {
                 'approval_request': approval_request,
                 'reason': approval_request.reason,
@@ -229,9 +254,7 @@ def approve_edit_request_confirm(request, pk):
             episode.approved = True
             episode.save()
             edit_request.delete()
-
             messages.success(request, 'Update approved successfully.')
-
             return redirect('admin-request')
 
     context = {
@@ -270,7 +293,7 @@ def reject_edit_request_confirm(request, pk):
                 stardate=original_episode_log.stardate,
                 approved=True
             )
-            # Update the original episode object 
+            # Update the original episode object
             # with the data from the episode_log instance
             episode.overall_episode_number = episode_log.overall_episode_number
             episode.season_episode_number = episode_log.season_episode_number
@@ -282,7 +305,7 @@ def reject_edit_request_confirm(request, pk):
             episode.approved = True
             episode.save()
             edit_request.delete()
-            messages.success(request, 'Update rejected.')
+            messages.success(request, 'Update request rejected.')
             return redirect('admin-request')
     context = {
         'edit_request': edit_request,
@@ -324,8 +347,6 @@ def approve_delete_request_confirm(request, pk):
             delete_request.object_to_approve.delete()
             messages.success(request, 'The delete request has been approved.')
             return redirect('admin-request')
-        else:
-            messages.error(request, 'Invalid action.')
     context = {
             'delete_request': delete_request,
             'episode': episode,
@@ -343,8 +364,6 @@ def reject_delete_request_confirm(request, pk):
             delete_request.delete()
             messages.success(request, 'The delete request has been rejected.')
             return redirect('admin-request')
-        else:
-            messages.error(request, 'Invalid action.')
     context = {
             'delete_request': delete_request,
             'episode': episode,
