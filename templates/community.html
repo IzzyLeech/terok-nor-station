@@ -68,7 +68,7 @@
             {% endif %}
             <p>{{ post.section.section }}</p>
             <div class="row">
-                <div class="col">
+                <div class="col post-name">
                     <p>Post name: <a href="{% url 'post' post.id %}">{{ post.name|truncatewords_html:5 }}</a></p>
                     <p><small>Posted by {{post.created_by.username}}</small></p>
                 </div>

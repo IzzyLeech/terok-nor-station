@@ -265,12 +265,22 @@ footer .btn-floating:hover {
     background-color: black;
     border: .3rem dashed white;
     color: white;
+    height: 28rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
 }
+
 
 .post-description {
         height: 8rem;
         overflow: hidden;
 }
+
+.post-name{
+    height: 10rem;
+}
+
 
 #section-header{
     color: #FF0000;
@@ -327,7 +337,7 @@ footer .btn-floating:hover {
 textarea::placeholder {
     color: white;
     font-style: italic;
-  }
+}
 
 /* styles for like/dislike button */
 
