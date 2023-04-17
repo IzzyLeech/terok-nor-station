@@ -2,21 +2,50 @@
 
 {% block content %}
 <div class="container">
-  <h1>Reject Delete Request</h1>
-  <p>Are you sure you want to reject the delete request for {{ delete_request.object_to_approve }}?</p>
-  <p>Episode Title: {{ episode.title }}</p>
-  <p>Overall Episode: {{ episode.overall_episode_number }}</p>
-  <p>Season Episode Number: {{ episode.season_episode_number }}</p>
-  <p>Synopsis: {{ episode.synopsis }}</p>
-  <p>Original Air Date: {{ episode.air_date }}</p>
-  <p>Stardate: {{episode.stardate}} </p>
-  {% if reason %}
-    <p><strong>Reason:</strong> {{ reason }}</p>
-  {% endif %}
+  <h1 class="page-header">Reject Delete Request</h1>
+  <p class="request-question"><strong>Are you sure you want to reject the delete request for</strong> {{ delete_request.object_to_approve }}?</p>
+  <div class="table-reponsive">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>Episode Title:</td>
+          <td>{{ episode.title }}</td>
+        </tr>
+        <tr>
+          <td>Overall Episode:</td>
+          <td>{{ episode.overall_episode_number }}</td>
+        </tr>
+        <tr>
+          <td>Season Episode Number:</td>
+          <td>{{ episode.season_episode_number }}</td>
+        </tr>
+        <tr>
+          <td>Synopsis:</td>
+          <td>{{ episode.synopsis }}</td>
+        </tr>
+        <tr>
+          <td>Plot:</td>
+          <td>{{ episode.plot }}</td>
+        </tr>
+        <tr>
+          <td>Original Air Date:</td>
+          <td>{{ episode.air_date }}</td>
+        </tr>
+        <tr>
+          <td>Stardate:</td>
+          <td>{{episode.stardate}}</td>
+        </tr>
+          <tr>
+            <td><strong>Reason:</strong></td>
+            <td>{{ reason }}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
   <form method="post">
     {% csrf_token %}
-    <button type="submit" name="reject_confirm" value="true">Yes, reject</button>
-    <a href="{% url 'admin-request' %}">No, go back</a>
+    <button type="submit" name="reject_confirm" value="true" class="btn btn-danger">Yes, reject</button>
+    <a href="{% url 'admin-request' %}" class="btn btn-secondary">No, go back</a>
   </form>
 </div>
 {% endblock %}

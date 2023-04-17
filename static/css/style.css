@@ -349,3 +349,10 @@ footer .btn-floating:hover {
 .red-icon {
     color: #FF0000;
 }
+
+/* Request page */
+
+.request-question {
+    font-size: 1.2rem;
+    text-decoration: underline;
+}

@@ -10,11 +10,12 @@
 {% endif %}
 
 <h1>Pending Episode Delete Requests</h1>
-  <table>
+<div class="table-responsive">
+  <table class="table table-dark table-bordered">
     <thead>
       <tr>
-        <th>User</th>
-        <th>Episode to delete</th>
+        <th>Episode Title</th>
+        <th>Submitted By</th>
         <th>Reason</th>
         <th>Action</th>
       </tr>
@@ -26,16 +27,18 @@
           <td>{{ delete_request.object_to_delete }}</td>
           <td>{{delete_request.reason}}</td>
           <td>
+            <div class="btn-group" role="group">
             <form method="post" action="{% url 'approve_delete_request_confirm' delete_request.pk %}">
               {% csrf_token %}
-              <input type="hidden" name="action" value="approve">
-              <button type="submit">Approve</button>
-          </form>
-          <form method="post" action="{% url 'reject_delete_request_confirm' delete_request.pk %}">
+              <input type="hidden" name="action" value="approve" >
+              <button type="submit" class="btn btn-primary mr-2">Approve</button>
+            </form>
+            <form method="post" action="{% url 'reject_delete_request_confirm' delete_request.pk %}">
               {% csrf_token %}
-              <input type="hidden" name="action" value="reject">
-              <button type="submit">Reject</button>
-          </form>
+              <input type="hidden" name="action" value="reject" >
+              <button type="submit" class="btn btn-danger">Reject</button>
+            </form>
+            </div>
           </td>
         </tr>
       {% empty %}
@@ -45,78 +48,88 @@
       {% endfor %}
     </tbody>
   </table>
+</div>
 
   <h1>Pending Episode Approval Requests</h1>
-      <table>
-        <thead>
+  <div class="table-responsive">
+    <table class="table table-dark table-bordered">
+      <thead>
+        <tr>
+          <th>Episode Title</th>
+          <th>Submitted By</th>
+          <th>Reason</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for approval_request in approval_requests %}
           <tr>
-            <th>Episode Title</th>
-            <th>Submitted By</th>
-            <th>Actions</th>
+            <td>{{ approval_request.object_to_approve}}</td>
+            <td>{{ approval_request.user.username }}</td>
+            <td>{{approval_request.reason}}</td>
+            <td>
+              <div class="btn-group" role="group">
+              <form method="post" action="{% url 'approve_add_request_confirm' approval_request.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="req_{{ approval_request.id }}" value="approve" >
+                <button type="submit" class="btn btn-primary mr-2">Approve</button>
+              </form>
+              <form method="post" action="{% url 'reject_add_request_confirm' approval_request.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="req_{{ approval_request.id }}"  value="reject">
+                <button type="submit" class="btn btn-danger">Reject</button>
+              </form>
+            </td>
+              </div>              
           </tr>
-        </thead>
-        <tbody>
-          {% for approval_request in approval_requests %}
-            <tr>
-              <td>{{ approval_request.object_to_approve}}</td>
-              <td>{{ approval_request.user.username }}</td>
-              <td>
-                <form method="post" action="{% url 'approve_add_request_confirm' approval_request.pk %}">
-                  {% csrf_token %}
-                  <input type="hidden" name="req_{{ approval_request.id }}" value="approve">
-                  <button type="submit">Approve</button>
-              </form>
-              <td>
-                <form method="post" action="{% url 'reject_add_request_confirm' approval_request.pk %}">
-                  {% csrf_token %}
-                  <input type="hidden" name="req_{{ approval_request.id }}" value="reject">
-                  <button type="submit">Reject</button>
-              </form>
-              </td>
-            </tr>
-            {% empty %}
-            <tr>
-              <td colspan="3">No add requests</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+          {% empty %}
+          <tr>
+            <td colspan="3">No add requests</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
   
-      <h1>Pending Edit's Episode Approval Requests</h1>
-      <table>
-        <thead>
+  <h1 class="my-4">Pending Edit's Episode Approval Requests</h1>
+  <div class="table-responsive">
+    <table class="table table-dark table-bordered">
+      <thead>
+        <tr>
+          <th>Episode Title</th>
+          <th>Submitted By</th>
+          <th>Reason</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for edit_request in edit_requests %}
           <tr>
-            <th>Episode Title</th>
-            <th>Submitted By</th>
-            <th>Actions</th>
+            <div class="btn-group" role="group">
+            <td>{{ edit_request.object_to_approve}}</td>
+            <td>{{ edit_request.user.username }}</td>
+            <td>{{edit_request.reason}}</td>
+            <td class="d-flex justify-content-between">
+              <form method="post" action="{% url 'approve_edit_request_confirm' pk=edit_request.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="req_{{ approval_request.id }}" value="approve">
+                <button type="submit" class="btn btn-primary">Approve</button>
+              </form>
+              <form method="post" action="{% url 'reject_edit_request_confirm' pk=edit_request.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="req_{{ approval_request.id }}" value="reject">
+                <button type="submit" class="btn btn-danger">Reject</button>
+              </form>
+            </div>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {% for edit_request in edit_requests %}
-            <tr>
-              <td>{{ edit_request.object_to_approve}}</td>
-              <td>{{ edit_request.user.username }}</td>
-              <td>
-                <form method="post" action="{% url 'approve_edit_request_confirm' pk=edit_request.id %}">
-                  {% csrf_token %}
-                  <input type="hidden" name="req_{{ approval_request.id }}" value="approve">
-                  <button type="submit">Approve</button>
-              </form>
-              <td>
-                <form method="post" action="{% url 'reject_edit_request_confirm' pk=edit_request.id %}">
-                  {% csrf_token %}
-                  <input type="hidden" name="req_{{ approval_request.id }}" value="reject">
-                  <button type="submit">Reject</button>
-              </form>
-              </td>
-            </tr>
-            {% empty %}
-            <tr>
-              <td colspan="3">No edit requests</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+        {% empty %}
+          <tr>
+            <td colspan="3">No edit requests</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 </div>
 
 {% endblock %}

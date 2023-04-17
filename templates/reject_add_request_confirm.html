@@ -2,23 +2,50 @@
 
 {% block content %}
 <div class="container">
-  <h1>Reject Add Request</h1>
-  <p>Are you sure you want to reject the add request for {{ approval_request.object_to_approve }}?</p>
-  <p>Are you sure you want to approve the Add request for {{ approval_request.object_to_approve }}?</p>
-  <p>Episode Title: {{ episode_data.title }}</p>
-  <p>Overall Episode: {{ episode_data.overall_episode_number }}</p>
-  <p>Season Episode Number: {{ episode_data.season_episode_number }}</p>
-  <p>Synopsis: {{ episode_data.synopsis }}</p>
-  <p>Plot: {{ episode_data.plot | safe }}</p>
-  <p>Original Air Date: {{ episode_data.air_date }}</p>
-  <p>Stardate: {{episode_data.stardate}} </p>
-  {% if reason %}
-    <p><strong>Reason:</strong> {{ reason }}</p>
-  {% endif %}
+  <h1 class="page-header">Reject Add Request</h1>
+  <p class="request-question"><strong>Are you sure you want to reject the Add request for</strong> {{ approval_request.object_to_approve }}</p>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td><strong>Episode Title:</strong></td>
+          <td>{{ episode_data.title }}</td>
+        </tr>
+        <tr>
+          <td><strong>Overall Episode:</strong></td>
+          <td>{{ episode_data.overall_episode_number }}</td>
+        </tr>
+        <tr>
+          <td><strong>Season Episode Number:</strong></td>
+          <td>{{ episode_data.season_episode_number }}</td>
+        </tr>
+        <tr>
+          <td><strong>Synopsis:</strong></td>
+          <td>{{ episode_data.synopsis }}</td>
+        </tr>
+        <tr>
+          <td><strong>Plot:</strong></td>
+          <td>{{ episode_data.plot | safe }}</td>
+        </tr>
+        <tr>
+          <td><strong>Original Air Date:</strong></td>
+          <td>{{ episode_data.air_date }}</td>
+        </tr>
+        <tr>
+          <td><strong>Stardate:</strong></td>
+          <td>{{ episode_data.stardate }}</td>
+        </tr>
+        <tr>
+          <td><strong>Reason:</strong></td>
+          <td>{{ reason }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <form method="post">
     {% csrf_token %}
-    <button type="submit" name="reject_confirm" value="true">Yes, reject</button>
-    <a href="{% url 'admin-request' %}">No, go back</a>
+    <button type="submit" class="btn btn-danger" name="reject_confirm" value="true">Yes, approve</button>
+    <a href="{% url 'admin-request' %}" class="btn btn-secondary">No, go back</a>
   </form>
 </div>
 {% endblock %}
