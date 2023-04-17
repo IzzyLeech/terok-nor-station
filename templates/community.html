@@ -4,61 +4,81 @@
 {% block content %}
 
 <div class="container mt-2 mb-2">
-    <h1 class="page-header"></h1>>Community</h1>
-    <div class="row ">
-        <div class="col text-center">
-            <h3 id="section-header">Choose Section</h3>
+    <h1 class="page-header">Community</h1>
+    <div class="row">
+        <div class="container">
+            <button class="accordion text-center">Community GuideLines</button>
+            <div class="panel">
+                <ol>
+                    <li>All posts must be related to the Star Trek universe</li>
+                    <li>Do not derail post with off-topic discussion</li>
+                    <li> Do not link</li>
+                    <li>Do not abuse other particpants</li>
+                    <li>Posts must be SFW</li>
+                    <li>Self promotion allowed, keep it reasonable</li>
+                    <li>Discrimination will not be tolerated</li>
+                    <li>Post and comments can be deleted by Moderators</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+<div class="container" id="section-container">
+    <div class="row mt-2">
+        <div class="col text-center section-header">
+            <h3 id="section-header" class="text-sm">Browse Section</h3>
             <hr>
         </div>
     </div>
 
     <div class="row text-center" id="topic-section">
         <div class="col">
-            <a href="{% url 'community' %}">All</a>
-        </div>
-
+            <a href="{% url 'community' %}" class="text-xs section-font">All</a>
+    </div>
         {% for section in sections %}
         {% if forloop.counter0|divisibleby:2 %}
     </div>
+
     <div class="row text-center">
         {% endif %}
         <div class="col{% if sections|length == 2 %}-6{% endif %}">
-            <a href="{% url 'community' %}?q={{section.section}}">{{ section.section }}</a>
+            <a href="{% url 'community' %}?q={{section.section}}" class="text-xs section-font">{{ section.section }}</a>
         </div>
         {% endfor %}
     </div>
+</div>
+    
+<div class="row">
+    {% if request.user.is_authenticated %}
+    <button>
+    <a href="{% url 'create-post' %}">Create Post</a>
+    </button>
+    {% endif %}
+</div>
 
-    <div class="container">
-        <div class="row">
-            <button>
-            {% if request.user.is_authenticated %}
-            <a href="{% url 'create-post' %}">Create Post</a>
-            {% endif %}
-            </button>
-        </div>
-    </div>
 
     <div class="row">
         {% for post in posts %}
-        {% if forloop.counter0|divisibleby:4 %}
+        {% if forloop.counter0|divisibleby:3 %}
     </div>
     <div class="row">
         {% endif %}
-        <div class="col-lg-3 col-md-6 mb-4 border border-dark">
+        <div class="col-lg-4 col-md-6 mb-4 border border-dark post-card">
             {% if post.pinned %}
             <p><strong>PINNED</strong></p>
             {% endif %}
             <p>{{ post.section.section }}</p>
             <div class="row">
                 <div class="col">
-                    <p>Post name: <a href="{% url 'post' post.id %}">{{ post.name }}</a></p>
+                    <p>Post name: <a href="{% url 'post' post.id %}">{{ post.name|truncatewords_html:5 }}</a></p>
+                    <p><small>Posted by {{post.created_by.username}}</small></p>
                 </div>
+                    
             </div>
             <small>{{ post.section.name }}</small>
             <div class="row">
                 <div class="col border ">
                     <div class="post-description">
-                        <p>{{ post.description | safe | truncatewords_html:30 }}</p>
+                        <p>{{ post.description|safe|truncatewords_html:8 }}</p>
                     </div>
                 </div>
             </div>
@@ -68,20 +88,19 @@
                 <div class="col"><i class="fa-regular fa-thumbs-down red-icon"></i><span
                         id="likes-count-{{ post.id }}">{{ post.dislikes.count }}</span></div>
             </div>
-            {% if request.user == post.created_by or perms.community.delete_post %}
             <div class="row">
-                <div class="col">
-                    <a href="#">Edit Post</a>
+            {% if request.user == post.created_by %}
+                <div class="col mt-3">
+                    <a href="{% url 'edit-post' post.id %}">Edit Post</a>
                 </div>
-                <div class="col">
+            {% endif %}    
+            {% if request.user == post.created_by or perms.community.delete_post %}
+                <div class="col mt-3">
                     <a href="{% url 'delete-post' post.id %}">Delete Post</a>
                 </div>
             </div>
             {% endif %}
-            <hr>
-            <div class="row">
-                <p class="col">Posted by {{post.created_by.username}}</p>
-            </div>
+
         </div>
         {% endfor %}
     </div>

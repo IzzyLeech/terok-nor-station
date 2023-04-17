@@ -6,6 +6,8 @@
 <p>{{ post.description | safe }}</p>
 
 {% if request.user.is_authenticated %}
+<div class="row mx-auto">
+    <div class="col-auto">
     <form action="{% url 'like_post' post.pk %}" method="POST">
         {% csrf_token %}
         {% if liked %}
@@ -15,7 +17,8 @@
         {% endif %}
     </form>
     <div>Likes: <span>{{ total_likes }}</span></div>
-
+    </div>
+    <div class="col-auto">
     <form action="{% url 'dislike_post' post.pk %}" method="POST">
         {% csrf_token %}
         {% if disliked %}
@@ -24,15 +27,23 @@
             <button type="submit" name="post_id" value="{{ post_id }}" class="btn-undislike" ><i class="fa-regular fa-thumbs-down"></i></button>
         {% endif %}
     </form>
-    <div>Likes: <span>{{ total_dislikes }}</span></div>
+    <div>Dislikes: <span>{{ total_dislikes }}</span></div>
+    </div>
 {% endif %}
-    
-    
-    <hr>
-
+</div> 
+<hr>
 <div class="comment-container">
     <h3>Comments</h3>
-    <hr>
+    {% if request.user.is_authenticated %}
+    <div class="comment-form">
+        <form action="" method="POST" >
+            {% csrf_token %}
+            <textarea id="comment-input" name="body" placeholder="Write your comment here..." rows="4" cols="50"></textarea>
+            <br>
+            <button>Submit</button>
+        </form>
+    </div>
+    {% endif %}
 
     {% for comment in post_comments %}
         <div>
@@ -40,21 +51,11 @@
             <a href="{% url 'delete-comment' comment.id %}">Delete Comment</a>
             {% endif %}
             <p>{{ comment.body }}</p>
-            <small>{{ comment.user }} {{ comment.created|timesince }} ago </small>
+            <small>{{ comment.user }} Posted: {{ comment.created|timesince }} ago </small>
             <hr>
         </div>
     {% endfor %}
 </div>
-
-{% if request.user.is_authenticated %}
-<div class="comment-form">
-    <form action="" method="POST" >
-        {% csrf_token %}
-        <input type="text" name="body" placeholder="Write your comment here..."  >
-        <button>Submit</button>
-    </form>
-</div>
-{% endif %}
 </div>
 
 {% endblock content %}

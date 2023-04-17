@@ -90,8 +90,8 @@
                     </tr>
                     <tr>
                         {% if request.user.is_authenticated %}
-                        <td colspan="1" class="ep-font"><a href="{% url 'update-episode' episode.id %}">Edit Episode</a></td>
-                        <td colspan="1" class="ep-font"><a href="{% url 'delete-episode' episode.id %}">Delete Episode</a></td>
+                        <td colspan="1" class="ep-font"><button><a href="{% url 'update-episode' episode.id %}">Edit Episode</a></button></td>
+                        <td colspan="1" class="ep-font"><button><a href="{% url 'delete-episode' episode.id %}">Delete Episode</a></button></td>
                         <td colspan="1" class="ep-font ">Created on {{ episode.created|date:'Y-m-d' }}</td>
                         <td colspan="2" class="ep-font">Edited on {{ episode.updated|date:'Y-m-d' }}</td>
                         {% endif %}

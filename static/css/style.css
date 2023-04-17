@@ -60,70 +60,6 @@ h1,h2,h3,h4 {
     font-size: 5rem;
 }
 
-.season-info {
-    margin: 40px auto;
-    padding: 20px;
-}
-
-#topic-section {
-    background-color: crimson;
-}
-
-.post-description {
-    height: 80px;
-    overflow: hidden;
-}
-
-
-/* styles for like/dislike button */
-
-.btn-unlike {
-    color: grey ;
-    border: none;
-    background: transparent;
-}
-
-
-.btn-like {
-    color: #08a04b;
-    border: none;
-    background: transparent;
-}
-
-.btn-unlike:hover,
-.btn-unlike:active {
-    color: #08a04b;
-    background: transparent;
-    border: none;
-}
-
-.btn-undislike {
-    color: grey ;
-    border: none;
-    background: transparent;
-}
-
-.btn-dislike {
-    color: #FF0000;
-    background: transparent;
-    border: none;
-}
-
-.btn-undislike:hover,
-.btn-undislike:active {
-    color: #FF0000;
-    background: transparent;
-    border: none;
-}
-
-.green-icon {
-    color: #08a04b;
-}
-
-.red-icon {
-    color: #FF0000;
-}
-
 
 /* Base css */
 
@@ -255,10 +191,10 @@ footer .btn-floating:hover {
 }
 
 .accordion {
-    background-color: #eee;
-    color: #444;
+    background-color: black;
+    color: #FF0000;
     cursor: pointer;
-    padding: 1.8rem;
+    padding: 1.5rem;
     width: 100%;
     text-align: left;
     border: none;
@@ -271,11 +207,13 @@ footer .btn-floating:hover {
 }
 
 .panel {
-    padding: 0 1.8rem;
-    background-color: white;
+    padding: 0 1.5rem;
+    background-color: black;
+    color: #eee;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+    width: 100%;
 }
 
 @media screen and (max-width:768px){
@@ -286,6 +224,11 @@ footer .btn-floating:hover {
 }
 
 /* Season page */
+
+.season-info {
+    margin: 40px auto;
+    padding: 20px;
+}
 
 @media screen and (max-width:768px) {
     
@@ -314,4 +257,95 @@ footer .btn-floating:hover {
     .ep-font a {
         text-align: center;
     }
+}
+
+/* Community */
+.post-card {
+    margin-top: 1rem;
+    background-color: black;
+    border: .3rem dashed white;
+    color: white;
+}
+
+.post-description {
+        height: 8rem;
+        overflow: hidden;
+}
+
+#section-header{
+    color: #FF0000;
+    text-decoration: underline;
+}
+
+.section-font{
+    font-size: 1rem;
+    color: #FF0000;
+}
+
+#section-container {
+    background-color: #000;
+}
+
+/* Post Form */
+.custom-select {
+    height: 100%;
+}
+
+/*Post view*/
+
+.comment-container {
+
+}
+
+#comment-input {
+    
+}
+
+/* styles for like/dislike button */
+
+.btn-unlike {
+    color: grey ;
+    border: none;
+    background: transparent;
+}
+
+
+.btn-like {
+    color: #08a04b;
+    border: none;
+    background: transparent;
+}
+
+.btn-unlike:hover,
+.btn-unlike:active {
+    color: #08a04b;
+    background: transparent;
+    border: none;
+}
+
+.btn-undislike {
+    color: grey ;
+    border: none;
+    background: transparent;
+}
+
+.btn-dislike {
+    color: #FF0000;
+    background: transparent;
+    border: none;
+}
+
+.btn-undislike:hover,
+.btn-undislike:active {
+    color: #FF0000;
+    background: transparent;
+    border: none;
+}
+
+.green-icon {
+    color: #08a04b;
+}
+
+.red-icon {
+    color: #FF0000;
 }

@@ -62,6 +62,20 @@ def delete_post(request, pk):
     return render(request, 'delete.html', {'obj': post})
 
 
+@login_required()
+def edit_post(request, pk):
+    post = get_object_or_404(Post, id=pk)
+    form = PostForm(instance=post)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('community')
+    context = {'form': form}
+    return render(request, 'post_form.html', context)
+
+
 def view_post(request, pk,):
     post = Post.objects.get(id=pk)
     post_comments = post.comment_set.all()
