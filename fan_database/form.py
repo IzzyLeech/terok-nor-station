@@ -38,10 +38,10 @@ class EpisodeForm(ModelForm):
             Fieldset(
                 'Episode Details',
                 Div(
-                    Div('overall_episode_number', css_class='col-md-2 mb-3'),
-                    Div('season_episode_number', css_class='col-md-2 mb-3'),
+                    Div('overall_episode_number', css_class='col-md-3 mb-3'),
+                    Div('season_episode_number', css_class='col-md-3 mb-3'),
                     Div('season', css_class='col-md-3 mb-3'),
-                    Div('title', css_class='col-md-4 mb-3'),
+                    Div('title', css_class='col-md-3 mb-3'),
                     css_class='row'
                 ),
                 Div(

@@ -22,6 +22,8 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
 }
 
 /* Header */
@@ -31,9 +33,9 @@ h1,h2,h3,h4 {
     font-family: 'Merriweather', sans-serif;
 }
 
-
 .page-header {
-
+    color: #FF0000 !important;
+    font-size: 2rem;
 }
 
 /* Fonts */
@@ -70,10 +72,6 @@ h1,h2,h3,h4 {
 .post-description {
     height: 80px;
     overflow: hidden;
-}
-
-#user-name{
-    color: crimson;
 }
 
 
@@ -152,3 +150,94 @@ h1,h2,h3,h4 {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+
+/* Base css */
+
+.navbar {
+    padding: .5rem 0;
+  }
+  
+  .navbar-brand {
+    padding: 0 1.5rem;
+    font-size: 3rem;
+    line-height: 5rem;
+  }
+  
+  .nav-link {
+    padding: .5rem .5rem;
+    margin-left: .5rem;
+  }
+
+  .navbar-toggler{
+    margin-right: 1rem;
+  }
+
+nav.navbar {
+    background-color: #000;
+    font-family: 'Sono', sans-serif;
+  }
+  
+  nav.navbar .navbar-brand {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  nav.navbar .navbar-nav .nav-item .nav-link {
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  
+  nav.navbar .navbar-nav .nav-item .nav-link:hover {
+    color: crimson;
+  }
+  
+  nav.navbar .navbar-nav .nav-item .dropdown-menu .dropdown-item {
+    font-size: 1.5rem;
+  }
+  
+  nav.navbar .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+    background-color: crimson;
+  }
+  
+
+  #user-name {
+    color: crimson;
+    font-size: 1.5rem;
+    margin-right: 2rem;
+  }
+
+  footer {
+    background-color: #212529;
+    color: #fff;
+    padding: 2rem;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+
+footer .btn-floating {
+    background-color: #fff;
+    color: #212529;
+}
+
+footer .btn-floating:hover {
+    background-color: #212529;
+    color: #fff;
+}
+
+.footer-link{
+    padding: 1rem;
+    margin: 0 2rem !important;
+}
+
+
+/* Page css section */
+
+/* index page*/
+
