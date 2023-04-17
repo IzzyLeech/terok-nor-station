@@ -122,7 +122,10 @@ def update_episode(request, pk):
                     request_type='edit',
                     reason=reason,
                 )
-                messages.success(request, 'Update request submitted successfully.')
+                messages.success(
+                                request,
+                                'Update request submitted successfully.'
+                                )
                 return redirect(reverse('Season', kwargs={'pk': season_id}))
     context = {'form': form}
     return render(request, 'episode_form.html', context)
