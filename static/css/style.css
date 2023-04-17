@@ -232,6 +232,17 @@ footer .btn-floating:hover {
     }
 }
 
+@media screen and (max-width: 768px) {
+
+    nav.navbar .navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    .navbar-toggler {
+        padding: 1.8rem;
+        border-width: .4rem;
+    }
+}
 
 /* Page css section */
 
@@ -274,3 +285,33 @@ footer .btn-floating:hover {
     }
 }
 
+/* Season page */
+
+@media screen and (max-width:768px) {
+    
+    .season-info {
+        margin: 0 auto;
+    }
+
+    .summary-season {
+        font-size: 1.3rem;
+    }
+
+    .table td, .table th {
+        vertical-align: middle;
+    }
+
+    .ep-font{
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    
+
+}
+
+@media screen and (max-width:576px) {
+    .ep-font a {
+        text-align: center;
+    }
+}

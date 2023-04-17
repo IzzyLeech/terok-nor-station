@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class="container">
-    <h2>SEASON {{ current_season.season_number }}</h2>
+    <h1 class="page-header" >SEASON {{ current_season.season_number }}</h2>
     <div class="row flex-column-reverse flex-md-row">
-        <div class="col-md-8">
+        <div class="col-md-8 summary-season">
             <p>{{ current_season.summary | safe }}</p>
         </div>
         <div class="col-md-4 text-center season-info">
             <table class="table-bordered mx-auto">
                 <tbody>
                     <tr>
-                        <td>SEASON {{ season.season_number }}</td>
+                        <td>SEASON {{ current_season.season_number }}</td>
                     </tr>
                     <tr class="image-container">
                         {% if debug_flag %}
@@ -79,24 +79,23 @@
                 {% for episode in episodes %}
                 <tbody>
                     <tr>
-                        <td>{{ episode.overall_episode_number }}</td>
-                        <td>{{ episode.season_episode_number }}</td>
-                        <td>"<a href="{% url 'Episode' episode.id %}">{{ episode.title }}</a>"</td>
-                        <td>{{ episode.air_date }}</td>
-                        <td>{{ episode.stardate }}</td>
+                        <td class="ep-font">{{ episode.overall_episode_number }}</td>
+                        <td class="ep-font">{{ episode.season_episode_number }}</td>
+                        <td class="ep-font">"<a href="{% url 'Episode' episode.id %}">{{ episode.title }}</a>"</td>
+                        <td class="ep-font">{{ episode.air_date }}</td>
+                        <td class="ep-font">{{ episode.stardate }}</td>
                     </tr>
                     <tr>
-                        <td colspan="5">{{ episode.synopsis }}</td>
+                        <td colspan="5" class="ep-font">{{ episode.synopsis }}</td>
                     </tr>
                     <tr>
                         {% if request.user.is_authenticated %}
-                        <td colspan="1"><a href="{% url 'update-episode' episode.id %}">Edit Episode</a></td>
-                        <td colspan="1"><a href="{% url 'delete-episode' episode.id %}">Delete Episode</a></td>
-                        <td colspan="1">Created on {{ episode.created }}</td>
-                        <td colspan="2">Last Edited on {{ episode.updated }}</td>
+                        <td colspan="1" class="ep-font"><a href="{% url 'update-episode' episode.id %}">Edit Episode</a></td>
+                        <td colspan="1" class="ep-font"><a href="{% url 'delete-episode' episode.id %}">Delete Episode</a></td>
+                        <td colspan="1" class="ep-font ">Created on {{ episode.created|date:'Y-m-d' }}</td>
+                        <td colspan="2" class="ep-font">Edited on {{ episode.updated|date:'Y-m-d' }}</td>
                         {% endif %}
                     </tr>
-
                 </tbody>
                 {% endfor %}
             </table>
