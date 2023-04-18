@@ -177,9 +177,17 @@ I have included some images that will render from local files.
 ![favicon](static/images/fav.ico)
 
 
-### Structure
+## Structure
 
+### Modal Diagram
 
+Diagram for the fan_database app
+
+![fan-modal](readmedoc/modaldiagram/teroknorstation-modal-database.png)
+
+Diagram for the community app
+
+![community-modal](readmedoc/modaldiagram/terok-nor-station-community%20modal.png)
 
 
 \
