@@ -97,9 +97,15 @@ A user of Terok Nor station could generally be a fan of Star Trek of all ages. I
 * I expect to be able to comment on post in the community section.
 * I expect to be able to delete comment on a post.
 
-
 # Wireframes
 
+I have used Balsamic to develop my wireframes for my website. I initially created the mobile version and then the wireframes and then scalled it up for both tablet and desktop. I only created layout's for page that would require alot of content and would change amongst the different screen sizes. I decide not to include the admin-request page and the approve and reject page as they will stay the same on all page sizes
+
+The wireframes are below:
+
+### [Mobile Wireframe](readmedoc/wireframe/teroknorstationmobile.bmpr)
+### [Tablet Wireframe](readmedoc/wireframe/teroknorstationtablet.bmpr)
+### [Desktop Wireframe](readmedoc/wireframe/teroknorstationdesktop.bmpr)
 
 \
 &nbsp;
