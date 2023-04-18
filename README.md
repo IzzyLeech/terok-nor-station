@@ -292,9 +292,15 @@ Comment Modal
 
 ### Non Register-User
 
+![non-register-user](readmedoc/flowchart/Non%20Register-User.jpeg)
+
 ### Authenticated-User
 
+![authenticated-user](readmedoc/flowchart/Authenticated-User.png)
+
 ### Admin
+
+![admin](readmedoc/flowchart/Adminflowchart.jpeg)
 
 \
 &nbsp;
