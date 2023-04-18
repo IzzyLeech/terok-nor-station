@@ -11,14 +11,16 @@ class CommunitySection(models.Model):
 
 class Post(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    section = models.ForeignKey(CommunitySection, on_delete=models.SET_NULL, null=True)
+    section = models.ForeignKey(
+        CommunitySection, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     pinned = models.BooleanField(default=False)
     likes = models.ManyToManyField(User, blank=True, related_name='post_likes')
-    dislikes = models.ManyToManyField(User, blank=True, related_name='post_dislikes')
+    dislikes = models.ManyToManyField(
+        User, blank=True, related_name='post_dislikes')
 
     class Meta:
         ordering = ['-pinned', '-updated', '-created']

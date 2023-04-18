@@ -37,10 +37,13 @@ def create_post(request):
         form = PostForm(request.POST, user=request.user)
         if form.is_valid():
             description_html = request.POST.get('description', '')
-            description_text = BeautifulSoup(description_html, 'html.parser').get_text().strip()
+            description_text = BeautifulSoup(
+                description_html, 'html.parser').get_text().strip()
 
             if len(description_text) == 0:
-                form.add_error('description', ValidationError("Description cannot be empty"))
+                form.add_error(
+                    'description',
+                    ValidationError("Description cannot be empty"))
             else:
                 post = form.save(commit=False)
                 post.created_by = request.user
@@ -56,7 +59,9 @@ def delete_post(request, pk):
     post = get_object_or_404(Post, id=pk)
 
     if request.method == 'POST':
-        if post and (post.created_by == request.user or request.user.has_perm("community.delete_post")):
+        if post and (
+            post.created_by == request.user or request.user.has_perm(
+                "community.delete_post")):
             post.delete()
         return redirect('community')
     return render(request, 'delete.html', {'obj': post})
@@ -115,7 +120,9 @@ def delete_comment(request, pk):
     comment = get_object_or_404(Comment, id=pk)
     post_pk = comment.post.pk
     if request.method == 'POST':
-        if comment and (comment.user == request.user or request.user.has_perm("community.delete_comment")):
+        if comment and (
+            comment.user == request.user or request.user.has_perm(
+                "community.delete_comment")):
             comment.delete()
         return redirect(reverse('post', kwargs={'pk': post_pk}))
     return render(request, 'delete.html', {'obj': comment})

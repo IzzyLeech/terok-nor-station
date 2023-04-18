@@ -70,9 +70,9 @@ def add_episode(request):
                 season_value = request.POST.get('season')
                 url = reverse('Season', args=[season_value])
                 messages.success(
-                            request,
-                            'Your request to add an episode has been submitted.'
-                            )
+                        request,
+                        'Your request to add an episode has been submitted.'
+                        )
                 return redirect(url)
 
     context = {'form': form, 'episode_data': episode}
@@ -99,17 +99,17 @@ def update_episode(request, pk):
                                 ValidationError("Plot cannot be empty"))
             else:
                 # create a log entry for the unedited episode
-                original_episode = Episode.objects.get(id=pk)
+                og_episode = Episode.objects.get(id=pk)
                 EpisodeLog.objects.create(
                     episode=original_episode,
-                    overall_episode_number=original_episode.overall_episode_number,
-                    season_episode_number=original_episode.season_episode_number,
-                    season=original_episode.season,
-                    title=original_episode.title,
-                    synopsis=original_episode.synopsis,
-                    plot=original_episode.plot,
-                    air_date=original_episode.air_date,
-                    stardate=original_episode.stardate,
+                    overall_episode_number=og_episode.overall_episode_number,
+                    season_episode_number=og_episode.season_episode_number,
+                    season=og_episode.season,
+                    title=og_episode.title,
+                    synopsis=og_episode.synopsis,
+                    plot=og_episode.plot,
+                    air_date=og_episode.air_date,
+                    stardate=og_episode.stardate,
                     approved=True
                 )
                 episode = form.save(commit=False)
@@ -286,21 +286,22 @@ def reject_edit_request_confirm(request, pk):
         if form_data.get('reject_confirm'):
             # Reload the episode object from the
             # EpisodeLog model to get the original state
-            original_episode_log = EpisodeLog.objects.filter(
+            original_episode = EpisodeLog.objects.filter(
                 episode=episode,
                 approved=True
             ).order_by('-timestamp').first()
             # Create a new instance of EpisodeLog with the original data
             episode_log = EpisodeLog.objects.create(
                 episode=episode,
-                overall_episode_number=original_episode_log.overall_episode_number,
-                season_episode_number=original_episode_log.season_episode_number,
-                season=original_episode_log.season,
-                title=original_episode_log.title,
-                synopsis=original_episode_log.synopsis,
-                plot=original_episode_log.plot,
-                air_date=original_episode_log.air_date,
-                stardate=original_episode_log.stardate,
+                overall_episode_number=original_episode.overall_episode_number,
+                season_episode_number=original_episode.season_episode_number,
+                season=original_episode.season,
+                title=original_episode.title,
+                synopsis=original_episode.synopsis,
+                plot=original_episode.plot,
+                air_date=original_episode.air_date,
+                stardate=original_episode
+                .stardate,
                 approved=True
             )
             # Update the original episode object

@@ -19,7 +19,6 @@ from fan_database import views
 from community import views
 
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fan_database.urls')),

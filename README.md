@@ -437,7 +437,26 @@ I have used the recommended [JShint Validator](https://jshint.com) to validate a
 | File | Screenshot | Notes |
 | --- | --- | --- |
 | script | ![screenshot](readmedoc/jsvalid/jshint-valid.png) | Pass: No Errors
-\
+
+
+### Python
+
+I have used the recommended [CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
+
+| File | Screenshot | Notes |
+| --- | --- | --- | --- |
+| settings.py | [screenshot](readmedoc/pythonlinter/settings-linter.png) | Pass: No Errors
+| urls.py (main) | [screenshot](readmedoc/pythonlinter/url-main-linter.png | Pass: No Errors)
+| forms.py (fan_database) | [screenshot](readmedoc/pythonlinter/form-database-linter.png) | Pass: No Errors
+| models.py (fan_database) | [screenshot](readmedoc/pythonlinter/modal-database-linter.png) | Pass: No Errors
+| urls.py (fan_database) | [screenshot](readmedoc/pythonlinter/urls-database-linter.png) | Pass: No Errors
+| views.py (fan_database) | [screenshot](readmedoc/pythonlinter/views-database-linter.png) | Pass: No Errors
+| forms.py (community) | [screenshot](readmedoc/pythonlinter/forms-community-linter.png) | Pass: No Errors
+| models.py (community) | [screenshot](readmedoc/pythonlinter/models-community-linter.png) | Pass: No Errors
+| urls.py (community) | [screenshot](readmedoc/pythonlinter/urls-community-linter.png) | Pass: No Errors
+| views.py (community) | [screenshot](readmedoc/pythonlinter/views-community-linter.png) | Pass: No Errors
+
+
 &nbsp; 
 
 

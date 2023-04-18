@@ -9,18 +9,24 @@ class Season(models.Model):
     end_date = models.DateField()
     episode_count = models.IntegerField()
     image = CloudinaryField("image", default='debug-image.jpg')
-    summary = models.TextField(default='Enter an summary on what happen in the season')
+    summary = models.TextField(
+        default='Enter an summary on what happen in the season'
+    )
 
     class Meta:
         ordering = ['season_number']
 
     @property
     def next_season(self):
-        return Season.objects.filter(season_number__gt=self.season_number).order_by('season_number').first()
+        return Season.objects.filter(
+            season_number__gt=self.season_number
+        ).order_by('season_number').first()
 
     @property
     def previous_season(self):
-        return Season.objects.filter(season_number__lt=self.season_number).order_by('-season_number').first()
+        return Season.objects.filter(
+            season_number__lt=self.season_number
+            ).order_by('-season_number').first()
 
     def __str__(self):
         return str(self.season_number)
@@ -32,8 +38,14 @@ class Episode(models.Model):
     season = models.ForeignKey(Season, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=220)
     image = CloudinaryField("image", default="debug-image.jpg", blank=True)
-    synopsis = models.TextField(default="Enter synopsis for episode, keep it brief and in one paragraph")
-    plot = models.TextField(default="Write a detail description of the episode's plot, use multiple paragraphs")
+    synopsis = models.TextField(
+        default="Enter synopsis for episode, "
+        "keep it brief and in one paragraph"
+        )
+    plot = models.TextField(
+        default="Write a detail description of the episode's plot, "
+        "use multiple paragraphs"
+    )
     air_date = models.DateField()
     stardate = models.DecimalField(max_digits=6, decimal_places=1)
     updated = models.DateTimeField(auto_now=True)
@@ -56,7 +68,10 @@ class EpisodeLog(models.Model):
     season = models.ForeignKey(Season, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=220)
     synopsis = models.TextField()
-    plot = models.TextField(default="Write a detail description of the episode's plot, use multiple paragraphs")
+    plot = models.TextField(
+        default="Write a detail description of the episode's plot, "
+                "use multiple paragraphs"
+    )
     air_date = models.DateField()
     stardate = models.DecimalField(max_digits=6, decimal_places=1)
     approved = models.BooleanField(default=False)
@@ -72,7 +87,8 @@ class ApprovalRequest(models.Model):
         ('delete', 'Delete')
     )
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    object_to_approve = models.ForeignKey(Episode, on_delete=models.SET_NULL, null=True)
+    object_to_approve = models.ForeignKey(
+        Episode, on_delete=models.SET_NULL, null=True)
     approved = models.BooleanField(default=False)
     reason = models.TextField(default="Enter inforamtion on the request")
     request_type = models.CharField(max_length=10, choices=REQUEST_TYPES,)
