@@ -4,7 +4,7 @@
     <div id="post-card">
         <h1 id="post-name">{{ post.name }}</h1>
 
-        <p>{{ post.description | safe }}</p>
+        <div>{{ post.description | safe }}</div>
 
 
         {% if request.user.is_authenticated %}
@@ -43,7 +43,7 @@
         <h3>Comments</h3>
         {% if request.user.is_authenticated %}
         <div class="comment-form">
-            <form action="" method="POST">
+            <form method="POST">
                 {% csrf_token %}
                 <textarea id="comment-input" name="body" placeholder="Write your comment here..." rows="4"
                     cols="22"></textarea>

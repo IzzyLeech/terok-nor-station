@@ -7,7 +7,8 @@
 
     <div class="row mt-3 mb-3">
         <div class="col-12 mx-auto">
-            <img src="{% static '/images/index-img.webp' %}" class="img-fluid" width="100%" height="100%" alt="space-station">
+            <img src="{% static '/images/index-img.webp' %}" class="img-fluid" width="1400" height="200"
+                alt="space-station">
         </div>
     </div>
 
@@ -17,16 +18,18 @@
         <div class="container">
             <button class="accordion text-center">About The Site</button>
             <div class="panel">
-            <p class="text-xs">Welcome to Terok Nor Station an collaborative project created by fans for fans of Star Trek Deep Space
-                Nine.
-                As an memeber of our community you can parcipate in
-                the creating an platform for fans of DS9 and help build out section of the website. Section's currently
-                being built are our season section that of our goal is to hold
-                an extensive collection of inforamtion on all the season of the show plus each episode. It you don't
-                want to
-                help in building the section, no problem come to our community
-                where you can discuss your favorite topics of the show.
-            </p>
+                <p class="text-xs">Welcome to Terok Nor Station an collaborative project created by fans for fans of
+                    Star Trek Deep Space
+                    Nine.
+                    As an memeber of our community you can parcipate in
+                    the creating an platform for fans of DS9 and help build out section of the website. Section's
+                    currently
+                    being built are our season section that of our goal is to hold
+                    an extensive collection of inforamtion on all the season of the show plus each episode. It you don't
+                    want to
+                    help in building the section, no problem come to our community
+                    where you can discuss your favorite topics of the show.
+                </p>
             </div>
         </div>
     </div>
@@ -35,16 +38,20 @@
         <div class="container">
             <button class="accordion text-center">Community</button>
             <div class="panel">
-            {% if request.user.is_authenticated %}
-            <p class="text-xs">Register member check out our <a href="{% url 'community' %}">Community Page</a> where you can interact with other member of the community.
-                You can browse the show discussion section where people discuss everything DS9 or you can keep updated with the development of the website.
-            </p>
-            {% else %}
-            <p class="text-xs">Want to interact with other members of the community? Create an account <a href="{% url 'sign-up' %}">Here</a>. Members with an account can submit posts 
-                in either section of the community page. Want to talk all thing DS9 create a post in the show discussion section or keep up on the knowledge of the continues 
-                construction of the website check out the site development section.
-            </p>
-            {% endif %}
+                {% if request.user.is_authenticated %}
+                <p class="text-xs">Register member check out our <a href="{% url 'community' %}">Community Page</a>
+                    where you can interact with other member of the community.
+                    You can browse the show discussion section where people discuss everything DS9 or you can keep
+                    updated with the development of the website.
+                </p>
+                {% else %}
+                <p class="text-xs">Want to interact with other members of the community? Create an account <a
+                        href="{% url 'sign-up' %}">Here</a>. Members with an account can submit posts
+                    in either section of the community page. Want to talk all thing DS9 create a post in the show
+                    discussion section or keep up on the knowledge of the continues
+                    construction of the website check out the site development section.
+                </p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -58,68 +65,67 @@
             <form method="POST" action="{% url 'search-query' %}">
                 {% csrf_token %}
                 <div class="input-group news-input">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-                <button class=" btn btn-outline-secondary ml-1" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        name="searched">
+                    <button class=" btn btn-outline-secondary ml-1" type="submit">Search</button>
                 </div>
             </form>
-            </div>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <h1 class="text-center page-header">Future Sections</h2>
-        <div class="row text-center">
-            <div class="col-md future-col">
-                <div class="card bg-dark text-light">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
+<div class="container">
+    <h1 class="text-center page-header">Future Sections</h1>
+    <div class="row text-center">
+        <div class="col-md future-col">
+            <div class="card bg-dark text-light">
+                <div class="card-body text-center">
+                    <div class="h1 mb-3">
                         <i class="fa-solid fa-person"></i>
-                        </div>
-                        <h3 class="card-title future-header">
-                            Characters
-                        </h3>
-                        <p class="card-text">The character section that we wish to add in the future will give detailed description on all you 
-                            favorite characters and other secondary character from Deep Space Nine.
-                        </p>
                     </div>
+                    <h3 class="card-title future-header">
+                        Characters
+                    </h3>
+                    <p class="card-text">The character section that we wish to add in the future will give detailed
+                        description on all you
+                        favorite characters and other secondary character from Deep Space Nine.
+                    </p>
                 </div>
             </div>
-            <div class="col-md future-col">
-                <div class="card bg-dark text-light">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
+        </div>
+        <div class="col-md future-col">
+            <div class="card bg-dark text-light">
+                <div class="card-body text-center">
+                    <div class="h1 mb-3">
                         <i class="fa-solid fa-microchip"></i>
-                        </div>
-                        <h3 class="card-title future-header">
-                            Technology
-                        </h3>
-                        <p class="card-text">The technology section that we wish to add in the future will implement  all of that different technology 
-                            used amongst the many cultures that are present in the Star Trek universe
-                        </p>
                     </div>
+                    <h3 class="card-title future-header">
+                        Technology
+                    </h3>
+                    <p class="card-text">The technology section that we wish to add in the future will implement all of
+                        that different technology
+                        used amongst the many cultures that are present in the Star Trek universe
+                    </p>
                 </div>
             </div>
-            <div class="col-md future-col">
-                <div class="card bg-dark text-light">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
+        </div>
+        <div class="col-md future-col">
+            <div class="card bg-dark text-light">
+                <div class="card-body text-center">
+                    <div class="h1 mb-3">
                         <i class="fa-solid fa-flask"></i>
-                        </div>
-                        <h3 class="card-title future-header">
-                            Science
-                        </h3>
-                        <p class="card-text">The science section that we wish to add in the future will cover the areas of astronomy, chemistry, biology and physics that exist 
-                            in the vast and unkowning quadrant's of Star Trek.
-                        </p>
                     </div>
+                    <h3 class="card-title future-header">
+                        Science
+                    </h3>
+                    <p class="card-text">The science section that we wish to add in the future will cover the areas of
+                        astronomy, chemistry, biology and physics that exist
+                        in the vast and unkowning quadrant's of Star Trek.
+                    </p>
                 </div>
             </div>
-        </div>    
         </div>
     </div>
-
-
-
 </div>
 
 {% endblock %}

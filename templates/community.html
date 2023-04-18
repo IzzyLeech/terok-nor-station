@@ -22,38 +22,36 @@
             </div>
         </div>
     </div>
-<div class="container" id="section-container">
-    <div class="row mt-2">
-        <div class="col text-center section-header">
-            <h3 id="section-header" class="text-sm">Browse Section</h3>
-            <hr>
+    <div class="container" id="section-container">
+        <div class="row mt-2">
+            <div class="col text-center section-header">
+                <h3 id="section-header" class="text-sm">Browse Section</h3>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row text-center" id="topic-section">
+            <div class="col">
+                <a href="{% url 'community' %}" class="text-xs section-font">All</a>
+            </div>
+            {% for section in sections %}
+            {% if forloop.counter0|divisibleby:2 %}
+        </div>
+
+        <div class="row text-center">
+            {% endif %}
+            <div class="col{% if sections|length == 2 %}-6{% endif %}">
+                <a href="{% url 'community' %}?{{ section.section|urlencode }}" class="text-xs section-font">{{ section.section }}</a>
+            </div>
+            {% endfor %}
         </div>
     </div>
 
-    <div class="row text-center" id="topic-section">
-        <div class="col">
-            <a href="{% url 'community' %}" class="text-xs section-font">All</a>
-    </div>
-        {% for section in sections %}
-        {% if forloop.counter0|divisibleby:2 %}
-    </div>
-
-    <div class="row text-center">
+    <div class="row">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'create-post' %}"><button>Create Post</button</a>
         {% endif %}
-        <div class="col{% if sections|length == 2 %}-6{% endif %}">
-            <a href="{% url 'community' %}?q={{section.section}}" class="text-xs section-font">{{ section.section }}</a>
-        </div>
-        {% endfor %}
     </div>
-</div>
-    
-<div class="row">
-    {% if request.user.is_authenticated %}
-    <button>
-    <a href="{% url 'create-post' %}">Create Post</a>
-    </button>
-    {% endif %}
-</div>
 
 
     <div class="row">
@@ -72,13 +70,12 @@
                     <p>Post name: <a href="{% url 'post' post.id %}">{{ post.name|truncatewords_html:5 }}</a></p>
                     <p><small>Posted by {{post.created_by.username}}</small></p>
                 </div>
-                    
             </div>
             <small>{{ post.section.name }}</small>
             <div class="row">
                 <div class="col border ">
                     <div class="post-description">
-                        <p>{{ post.description|safe|truncatewords_html:8 }}</p>
+                        {{ post.description|safe|truncatewords_html:8 }}
                     </div>
                 </div>
             </div>
@@ -86,46 +83,45 @@
                 <div class="col"><i class="fa-regular fa-thumbs-up green-icon"></i><span
                         id="likes-count-{{ post.id }}">{{ post.likes.count }}</span></div>
                 <div class="col"><i class="fa-regular fa-thumbs-down red-icon"></i><span
-                        id="likes-count-{{ post.id }}">{{ post.dislikes.count }}</span>
+                        id="dislikes-count-{{ post.id }}">{{ post.dislikes.count }}</span>
                 </div>
             </div>
+
             {% if request.user == post.created_by %}
             <div class="row">
                 <div class="col mt-3">
-                    <a href="{% url 'edit-post' post.id %}">Edit Post</a>
+                    <a href="{% url 'edit-post' post.id %}"><button>Edit Post</button></a>
                 </div>
-            {% endif %}    
-            {% if request.user == post.created_by or perms.community.delete_post %}
+                {% endif %}
+                {% if request.user == post.created_by or perms.community.delete_post %}
                 <div class="col mt-3">
-                    <a href="{% url 'delete-post' post.id %}">Delete Post</a>
+                    <a href="{% url 'delete-post' post.id %}"><button>Delete Post</button></a>
                 </div>
             </div>
-            {% endif %}
+                {% endif %}
 
-        </div>
         {% endfor %}
     </div>
+    </div>
 </div>
+        <!-- Display pagination links here -->
+        {% if posts.has_other_pages %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ posts.previous_page_number }}">&lsaquo; previous</a>
+                {% endif %}
 
-<!-- Display pagination links here -->
-{% if posts.has_other_pages %}
-<div class="pagination">
-    <span class="step-links">
-        {% if posts.has_previous %}
-        <a href="?page=1">&laquo; first</a>
-        <a href="?page={{ posts.previous_page_number }}">&lsaquo; previous</a>
+                <span class="current-page">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                </span>
+
+                {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">next &rsaquo;</a>
+                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
         {% endif %}
-
-        <span class="current-page">
-            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-        </span>
-
-        {% if posts.has_next %}
-        <a href="?page={{ posts.next_page_number }}">next &rsaquo;</a>
-        <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-{% endif %}
-
 {% endblock content %}

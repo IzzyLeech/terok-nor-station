@@ -24,3 +24,14 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+$(document).ready(function() {
+  $('#id_description').summernote({
+      // other options here
+      callbacks: {
+          onInit: function() {
+              $('#id_description').removeAttr('hidden');
+          }
+      }
+  });
+});

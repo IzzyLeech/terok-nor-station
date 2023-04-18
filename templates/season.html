@@ -2,10 +2,10 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="page-header" >SEASON {{ current_season.season_number }}</h2>
+    <h1 class="page-header">SEASON {{ current_season.season_number }}</h1>
     <div class="row flex-column-reverse flex-md-row">
         <div class="col-md-8 summary-season">
-            <p>{{ current_season.summary | safe }}</p>
+            {{ current_season.summary | safe }}
         </div>
         <div class="col-md-4 text-center season-info">
             <table class="table-bordered mx-auto">
@@ -54,14 +54,14 @@
     <h2>Episodes</h2>
     {% if request.user.is_authenticated %}
     <div>
-    <button><a href="{% url 'add-episode' %}">Add Episode</a></button>
-    {% if messages %}
-    <ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-    </ul>
-{% endif %}
+        <a href="{% url 'add-episode' %}"><button>Add Episode</button></a>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
     </div>
     {% endif %}
     <div class="row">
@@ -90,8 +90,10 @@
                     </tr>
                     <tr>
                         {% if request.user.is_authenticated %}
-                        <td colspan="1" class="ep-font"><button><a href="{% url 'update-episode' episode.id %}">Edit Episode</a></button></td>
-                        <td colspan="1" class="ep-font"><button><a href="{% url 'delete-episode' episode.id %}">Delete Episode</a></button></td>
+                        <td colspan="1" class="ep-font"><a href="{% url 'update-episode' episode.id %}"><button>Edit
+                                    Episode</button></a></td>
+                        <td colspan="1" class="ep-font"><a href="{% url 'delete-episode' episode.id %}"><button>Delete
+                                    Episode</button></a></td>
                         <td colspan="1" class="ep-font ">Created on {{ episode.created|date:'Y-m-d' }}</td>
                         <td colspan="2" class="ep-font">Edited on {{ episode.updated|date:'Y-m-d' }}</td>
                         {% endif %}

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
 <h1 class="page-header">Delete Request</h1>
-<form action="" method="POST" id="deleteForm">
+<form method="POST" id="deleteForm">
     {% csrf_token %}
     <p>Please give a reason for deletion:</p>
     <textarea name="reason"></textarea>

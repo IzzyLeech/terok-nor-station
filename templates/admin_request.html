@@ -79,8 +79,8 @@
                 <input type="hidden" name="req_{{ approval_request.id }}"  value="reject">
                 <button type="submit" class="btn btn-danger">Reject</button>
               </form>
+              </div>   
             </td>
-              </div>              
           </tr>
           {% empty %}
           <tr>
@@ -105,11 +105,11 @@
       <tbody>
         {% for edit_request in edit_requests %}
           <tr>
-            <div class="btn-group" role="group">
             <td>{{ edit_request.object_to_approve}}</td>
             <td>{{ edit_request.user.username }}</td>
             <td>{{edit_request.reason}}</td>
-            <td class="d-flex justify-content-between">
+            <td>
+              <div class="btn-group" role="group">
               <form method="post" action="{% url 'approve_edit_request_confirm' pk=edit_request.id %}">
                 {% csrf_token %}
                 <input type="hidden" name="req_{{ approval_request.id }}" value="approve">
@@ -130,6 +130,7 @@
         {% endfor %}
       </tbody>
     </table>
+</div>
 </div>
 
 {% endblock %}

@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %} 
-<form method="post" action="">
+<div class="container">
+<form method="post">
 {% csrf_token %}
-{{form}}
+{{form.as_p}}
 {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -10,10 +11,10 @@
         {% endfor %}
     </ul>
 {% endif %}
-<p>Have an account? Login<a href="/login">Here</a></p>
+<p>Have an account? Login <a href="/login">Here</a></p>
 <button type="submit" class="btn btn-success" >Register</button>
 </form>
-
+</div>
 
 
 {% endblock %}

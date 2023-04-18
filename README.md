@@ -383,7 +383,42 @@ Comment Modal
 
 ## Code Validation
 
+### HTML
 
+I have used the [HTML W3C Validator](https://validator.w3.org) to validate all of my HTML files.
+
+As my project uses Jinja syntax, such as `{% for loops %}`, `{% url 'home' %}`, and `{{ variable|filter }}`
+it will not validate properly if I copy and paste into the HTML validator straight from my source files.
+
+In order to properly validate my HTML pages with Jinja syntax for authenticated pages, I followed these steps:
+
+- Navigate to the deployed pages which require authentication
+- Right-click anywhere on the page, and select **View Page Source**.
+- This will display the entire "compiled" code, without any Jinja syntax.
+- Copy everything, and use the [validate by input](https://validator.w3.org/#validate_by_input) method.
+- Repeat this process for every page that requires a user to be logged-in/authenticated.
+
+| Page | Screenshot | Notes |
+| --- | --- | --- |
+| Home | ![screenshot](readmedoc/validhtml/home-valid.png) | Pass: No Errors
+| Season | ![screeshot](readmedoc/validhtml/season-valid.png) | Pass: No Errors
+| Community | ![screeshot](readmedoc/validhtml/community-valid.png) |Pass: No Errors
+| search query | ![screeshot](readmedoc/validhtml/search-valid.png) |Pass: No Errors
+| post | ![screeshot](readmedoc/validhtml/post-valid.png) | Pass: No Errors 
+| post form | ![screeshot](readmedoc/validhtml/post-form-valid.png) | Fail: All summernote errors
+| episode | ![screeshot](readmedoc/validhtml/episode-valid.png) | Pass: No Errors
+| episode form | ![screeshot](readmedoc/validhtml/episode-form-valid.png) | Fail: All summernote errors
+| delete | ![screeshot](readmedoc/validhtml/delete-valid.png) | Pass: No Errors
+| delete request | ![screeshot](readmedoc/validhtml/delete-request-valid.png) | Pass: No Errors
+| login | ![screeshot](readmedoc/validhtml/login-valid.png) | Pass: No Errors
+| sign up | ![screeshot](readmedoc/validhtml/sign-up-valid.png) | Fail: 4 errors 
+| admin request | ![screeshot](readmedoc/validhtml/admin-request-valid.png) | Pass: No Errors
+| approve edit | ![screeshot](readmedoc/validhtml/approve-edit-valid.png) | Pass: No Errors
+| approve add | ![screeshot](readmedoc/validhtml/approve-add-valid.png) | Pass: No Errors
+| approve delete | ![screeshot](readmedoc/validhtml/approve-delete-valid.png) | Pass: No Errors
+| reject edit | ![screeshot](readmedoc/validhtml/reject-edit-valid.png) | Pass: No Errors
+| reject add | ![screeshot](readmedoc/validhtml/reject-add-valid.png) | Pass: No Errors
+| reject delete | ![screeshot](readmedoc/validhtml/reject-delete-valid.png) | Pass: No Errors
 
 
 \
