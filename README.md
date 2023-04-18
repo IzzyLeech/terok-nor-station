@@ -104,7 +104,9 @@ I have used Balsamic to develop my wireframes for my website. I initially create
 The wireframes are below:
 
 ### [Mobile Wireframe](readmedoc/wireframe/teroknorstationmobile.bmpr)
+
 ### [Tablet Wireframe](readmedoc/wireframe/teroknorstationtablet.bmpr)
+
 ### [Desktop Wireframe](readmedoc/wireframe/teroknorstationdesktop.bmpr)
 
 \
@@ -117,10 +119,20 @@ The wireframes are below:
 ## Design Choices
 ### Fonts
 
+The font I have chosen are both from [Google Fonts](https://fonts.google.com/)
+
+The first font is [Sono](https://fonts.google.com/specimen/Sono) which will be the main font that will be seen throughout the website. It will be implemented on all font contnet. Reason from for picking this font is that it is clearly distinguishable from the header font that is very plain and simple as appose to Sono being a very striking font.
+
+The second font is [Merriweather](https://fonts.google.com/specimen/Merriweather) which will be used on all header on the website. Reason for picking the font is mainly due to it plain and simplicity outlook when shown.
 
 
 ### Colours
 
+For choosing my Colors for the website I used [ColorHexa](https://www.colorhexa.com/) and used to [Muzli Colors](https://colors.muz.li/) to create a pallet of the colors.
+
+The colors I choose
+
+[ColorPallet](readmedoc/colorpallet/muzli-colors.svg "Color Pallet" )
 
 
 ### Images
