@@ -56,6 +56,7 @@ class EpisodeLog(models.Model):
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     title = models.CharField(max_length=220)
     synopsis = models.TextField()
+    plot = models.TextField(default="Write a detail description of the episode's plot, use multiple paragraphs")
     air_date = models.DateField()
     stardate = models.DecimalField(max_digits=6, decimal_places=1)
     approved = models.BooleanField(default=False)

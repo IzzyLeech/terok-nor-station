@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
 :root {
-    --red:#ed0000;
+    --red:#FF7A7A;
     --green:#00f600;
     --white:#f8f8ff;
     --grey:#d3d3d3;
@@ -23,9 +23,18 @@ body {
 
 .container {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--grey, 0.8);
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px var(--black);
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.container-accord {
+    width: 100%;
+    background-color: var(--black);
+    padding: 20px;
+    box-shadow: 0 0 10px var(--black);
     margin-top: 1.2rem;
     margin-bottom: 1.2rem;
 }
@@ -38,7 +47,7 @@ h1,h2,h3,h4 {
 }
 
 .page-header {
-    color: var(--red) !important;
+    color: var(--black) !important;
     font-size: 3rem;
 }
 
@@ -208,6 +217,7 @@ footer .btn-floating:hover {
 
 .active, .accordion:hover {
     background-color: var(--grey);
+    color: var(--black);
 }
 
 .panel {
@@ -311,11 +321,17 @@ footer .btn-floating:hover {
 }
 
 
-
 /*Post view*/
 
+#post-name {
+    color: var(--white);
+    text-decoration: underline;
+}
+
 #post-card {
-    border: 2px solid var(--black);
+    border: 2px solid var(--white);
+    background-color: var(--black);
+    color: var(--white);
     padding: 2rem;
 }
 

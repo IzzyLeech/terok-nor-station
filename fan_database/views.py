@@ -107,6 +107,7 @@ def update_episode(request, pk):
                     season=original_episode.season,
                     title=original_episode.title,
                     synopsis=original_episode.synopsis,
+                    plot=original_episode.plot,
                     air_date=original_episode.air_date,
                     stardate=original_episode.stardate,
                     approved=True
@@ -297,6 +298,7 @@ def reject_edit_request_confirm(request, pk):
                 season=original_episode_log.season,
                 title=original_episode_log.title,
                 synopsis=original_episode_log.synopsis,
+                plot=original_episode_log.plot,
                 air_date=original_episode_log.air_date,
                 stardate=original_episode_log.stardate,
                 approved=True
@@ -308,6 +310,7 @@ def reject_edit_request_confirm(request, pk):
             episode.season = episode_log.season
             episode.title = episode_log.title
             episode.synopsis = episode_log.synopsis
+            episode.plot = episode_log.plot
             episode.air_date = episode_log.air_date
             episode.stardate = episode_log.stardate
             episode.approved = True

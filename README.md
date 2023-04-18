@@ -132,14 +132,54 @@ For choosing my Colors for the website I used [ColorHexa](https://www.colorhexa.
 
 The colors I choose
 
-[ColorPallet](readmedoc/colorpallet/muzli-colors.svg "Color Pallet" )
+![ColorPallet](readmedoc/colorpallet/muzli-colors.svg "Color Pallet" )
 
+| Hex Value | Root variable name | Text | Button | Background | Opposite Colour
+| -- | -- | -- | -- | -- | --
+| #FF7A7A | red | X |  X  | | black,
+| #00f600 | green |  | X | | black
+| #f8f8ff | white | X | X| | black,
+| #d3d3d3 | grey |  |  |   X | black ,
+| #141414 | black | x |  |  X | grey, white, red, green, 
+
+All of the desired colour combinations have passed the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/ "WebAIM") and the results can be seen below.
+
+| Colour 1 | Colour 2 | Results
+| -- | -- | --
+| red | black | [result](readmedoc/colortest/red-black-test.png)
+| green | black | [result](readmedoc/colortest/green-black-test.png)
+| white | black | [result](readmedoc/colortest/white-black-test.png)
+| grey | black | [result](readmedoc/colortest/black-grey-test.png)
 
 ### Images
 
+I have included some images that will render from local files.
+
+
+* The background image of space that is render on all pages behind the container
+
+![backgroundimage](static/images/background.jpg)
+
+* The welcome image on the index page
+
+![welcome](static/images/index-img.webp)
+
+* The debug image that will render if images from cloudniary can't be access
+
+![debug](static/images/debug-image.jpg)
+
+* The error page image
+
+![]()
+
+* The favicon
+
+![favicon](static/images/fav.ico)
 
 
 ### Structure
+
+
 
 
 \
