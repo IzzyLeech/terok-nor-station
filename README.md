@@ -421,6 +421,17 @@ In order to properly validate my HTML pages with Jinja syntax for authenticated 
 | reject delete | ![screeshot](readmedoc/validhtml/reject-delete-valid.png) | Pass: No Errors
 
 
+### CSS
+
+I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate my CSS file.
+
+| File | Screenshot | Notes |
+| --- | --- | --- |
+ style.css | ![screenshot](readmedoc/cssvalid/css-valid.png) | Pass: No errors
+
+
+
+
 \
 &nbsp; 
 
