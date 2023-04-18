@@ -288,7 +288,13 @@ Comment Modal
 | updated | | DateTimeField | auto_now=True
 | created | | DateTimeField | auto_now_add=True
 
+## App Flow
 
+### Non Register-User
+
+### Authenticated-User
+
+### Admin
 
 \
 &nbsp;

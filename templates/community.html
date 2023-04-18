@@ -86,10 +86,11 @@
                 <div class="col"><i class="fa-regular fa-thumbs-up green-icon"></i><span
                         id="likes-count-{{ post.id }}">{{ post.likes.count }}</span></div>
                 <div class="col"><i class="fa-regular fa-thumbs-down red-icon"></i><span
-                        id="likes-count-{{ post.id }}">{{ post.dislikes.count }}</span></div>
+                        id="likes-count-{{ post.id }}">{{ post.dislikes.count }}</span>
+                </div>
             </div>
-            <div class="row">
             {% if request.user == post.created_by %}
+            <div class="row">
                 <div class="col mt-3">
                     <a href="{% url 'edit-post' post.id %}">Edit Post</a>
                 </div>
