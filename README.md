@@ -83,12 +83,19 @@ A user of Terok Nor station could generally be a fan of Star Trek of all ages. I
 
 ### Requirements
 
+* Responsive Design for all screen sizes
+* A structured layout to easily view the website 
+* CRUD functionality for the community section and database section
+* User registration
 
 ### Expectations
-<!-- WHAT THE USER EXPECTS FROM THE PRODUCT -->
 
-* I expect to.....
-
+* I expect to be able to sign in and sign out of my account.
+* I expect to be able to add, edit and delete my post in the community section.
+* I expect to be able to make add, edit and delete request in the season page.
+* I expect as a site admin to handle the request to the database.
+* I expect to be able to comment on post in the community section.
+* I expect to be able to delete comment on a post.
 
 
 # Wireframes
