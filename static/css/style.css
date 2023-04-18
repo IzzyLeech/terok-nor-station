@@ -2,7 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
 :root {
-
+    --red:#ed0000;
+    --green:#00f600;
+    --white:#f8f8ff;
+    --grey:#d3d3d3;
+    --black:#141414;
 }
 
 html {
@@ -29,12 +33,12 @@ body {
 /* Header */
 
 h1,h2,h3,h4 {
-    color: black;
+    color: var(--black);
     font-family: 'Merriweather', sans-serif;
 }
 
 .page-header {
-    color: #FF0000 !important;
+    color: var(--red) !important;
     font-size: 3rem;
 }
 
@@ -83,12 +87,12 @@ h1,h2,h3,h4 {
   }
 
 nav.navbar {
-    background-color: #000;
+    background-color: var(--black);
     font-family: 'Sono', sans-serif;
   }
   
   nav.navbar .navbar-brand {
-    color: #fff;
+    color: var(--white);
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -99,7 +103,7 @@ nav.navbar {
   }
   
   nav.navbar .navbar-nav .nav-item .nav-link:hover {
-    color: crimson;
+    color: var(--red);
   }
   
   nav.navbar .navbar-nav .nav-item .dropdown-menu .dropdown-item {
@@ -107,12 +111,12 @@ nav.navbar {
   }
   
   nav.navbar .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
-    background-color: crimson;
+    background-color: var(--red);
   }
   
 
 #user-name {
-    color: crimson;
+    color: var();
     font-size: 1.5rem;
     margin-right: .5rem;
   }
@@ -122,13 +126,13 @@ nav.navbar {
 }
 
   footer {
-    background-color: #212529;
+    background-color: var(--black);
     color: #fff;
     padding: 2rem;
 }
 
 footer a {
-    color: #fff;
+    color: var(--white);
 }
 
 footer a:hover {
@@ -136,13 +140,13 @@ footer a:hover {
 }
 
 footer .btn-floating {
-    background-color: #fff;
-    color: #212529;
+    background-color: var(--white);
+    color: var(--black);
 }
 
 footer .btn-floating:hover {
-    background-color: #212529;
-    color: #fff;
+    background-color: var(--black);
+    color:var(--white);
 }
 
 .footer-link{
@@ -157,7 +161,7 @@ footer .btn-floating:hover {
     }
 
     #user-name {
-        color: crimson;
+        color: var(--red);
         font-size: 1rem;
         margin-right: 0;
     }
@@ -187,12 +191,12 @@ footer .btn-floating:hover {
 .future-header {
     font-size: 2.5rem;
     text-decoration: underline;
-    color: #FF0000;
+    color: var(--red);
 }
 
 .accordion {
-    background-color: black;
-    color: #FF0000;
+    background-color: var(--black);
+    color: var(--red);
     cursor: pointer;
     padding: 1.5rem;
     width: 100%;
@@ -203,13 +207,13 @@ footer .btn-floating:hover {
 }
 
 .active, .accordion:hover {
-    background-color: #ccc;
+    background-color: var(--grey);
 }
 
 .panel {
     padding: 0 1.5rem;
-    background-color: black;
-    color: #eee;
+    background-color: var(--black);
+    color: var(--grey);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -262,9 +266,9 @@ footer .btn-floating:hover {
 /* Community */
 .post-card {
     margin-top: 1rem;
-    background-color: black;
-    border: .3rem dashed white;
-    color: white;
+    background-color: var(--black);
+    border: .3rem dashed var(--white);
+    color: var(--white);
     height: 28rem; 
     display: flex;
     flex-direction: column;
@@ -283,17 +287,17 @@ footer .btn-floating:hover {
 
 
 #section-header{
-    color: #FF0000;
+    color: var(--red);
     text-decoration: underline;
 }
 
 .section-font{
     font-size: 1.6rem;
-    color: #FF0000;
+    color: var(--red);
 }
 
 #section-container {
-    background-color: #000;
+    background-color: var(--black);
 }
 
 @media screen and (max-width:768px) {
@@ -311,81 +315,81 @@ footer .btn-floating:hover {
 /*Post view*/
 
 #post-card {
-    border: 2px solid black;
+    border: 2px solid var(--black);
     padding: 2rem;
 }
 
 #comment-card {
-    background-color: grey;
-    color: white;
+    background-color: var(--grey);
+    color: var(--white);
     margin-top: .5rem;
     padding: 1rem;
-    box-shadow: .2rem .4rem .4rem .2rem #888888;
+    box-shadow: .2rem .4rem .4rem .2rem var(--grey);
     
 }
 
 #comment-input {
     width:100%;
-    border: .3rem solid #000;
+    border: .3rem solid var(--black);
     padding: 1rem;
     font-size: 1.4rem;
     font-family: 'Sono', sans-serif;
-    color: white;
-    background-color: #888888;
+    color: var(--white);
+    background-color: var(--grey);
 }
 
 textarea::placeholder {
-    color: white;
+    color: var(--white);
     font-style: italic;
 }
 
 /* styles for like/dislike button */
 
 .btn-unlike {
-    color: grey ;
+    color: var(--grey) ;
     border: none;
     background: transparent;
 }
 
 
 .btn-like {
-    color: #08a04b;
+    color: var(--green);
     border: none;
     background: transparent;
 }
 
 .btn-unlike:hover,
 .btn-unlike:active {
-    color: #08a04b;
+    color: var(--green);
     background: transparent;
     border: none;
 }
 
 .btn-undislike {
-    color: grey ;
+    color: var(--grey) ;
     border: none;
     background: transparent;
 }
 
 .btn-dislike {
-    color: #FF0000;
+    color: var(--red);
     background: transparent;
     border: none;
 }
 
 .btn-undislike:hover,
 .btn-undislike:active {
-    color: #FF0000;
+    color: var(--red);
     background: transparent;
     border: none;
 }
 
 .green-icon {
-    color: #08a04b;
+    color: var(--green);
 }
 
 .red-icon {
-    color: #FF0000;
+    color: var(--red);
 }
 
 /* Request page */
