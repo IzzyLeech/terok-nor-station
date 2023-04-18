@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const reasonForm = document.querySelector('#deleteForm');
+  var reasonForm = document.querySelector('#deleteForm');
   if (reasonForm) {
     reasonForm.addEventListener('submit', function(event) {
-      const reasonField = document.querySelector('textarea[name="reason"]');
+      var reasonField = document.querySelector('textarea[name="reason"]');
       if (reasonField.value.trim() === '') {
           alert('Please enter a reason for deletion');
           event.preventDefault();
@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 })
 
-const acc = document.getElementsByClassName("accordion");
+var acc = document.getElementsByClassName("accordion");
 var i;
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    const panel = this.nextElementSibling;
+    var panel = this.nextElementSibling;
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
     } else {
@@ -25,13 +25,3 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-$(document).ready(function() {
-  $('#id_description').summernote({
-      // other options here
-      callbacks: {
-          onInit: function() {
-              $('#id_description').removeAttr('hidden');
-          }
-      }
-  });
-});

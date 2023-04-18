@@ -427,11 +427,16 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 | File | Screenshot | Notes |
 | --- | --- | --- |
- style.css | ![screenshot](readmedoc/cssvalid/css-valid.png) | Pass: No errors
+|style.css | ![screenshot](readmedoc/cssvalid/css-valid.png) | Pass: No errors
 
 
+### Javascript
 
+I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
 
+| File | Screenshot | Notes |
+| --- | --- | --- |
+| script | ![screenshot](readmedoc/jsvalid/jshint-valid.png) | Pass: No Errors
 \
 &nbsp; 
 
