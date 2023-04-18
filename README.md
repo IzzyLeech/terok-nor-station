@@ -189,6 +189,106 @@ Diagram for the community app
 
 ![community-modal](readmedoc/modaldiagram/terok-nor-station-community%20modal.png)
 
+### Models Info
+
+Season Modal
+
+| Name | Key | Type | Other Details
+| -- | -- | -- | --
+| season_number | | IntegerField
+| start_date | | dateField
+| end_date | | dateField
+| episode_count | | IntergerField
+| image | | CloudinaryField | "image", default='debug-image.jpg'
+| summary | | Textfield | default='Enter an summary on what happen in the season'
+
+
+
+Episode Modal
+
+| Name | Key | Type | Other Details
+| -- | -- | -- | --
+| overall_episode_number | | IntegerField | 
+| season_episode_number | | IntegerField |
+| season | FK(Season) | | on_delete=models.CASCADE
+| title | | CharField | max_length=220 | 
+| image | | CloudinaryField | "image", default="debug-image.jpg", blank=True |
+| synopsis | | TextField | default="Enter synopsis for episode, keep it brief and in one paragraph" |
+| plot | | TextField | default="Write a detail description of the episode's plot, use multiple paragraphs" |
+| air_date | | DateField | 
+| stardate | | DecimalField | max_digits=6, decimal_places=1 |
+| updated | | DateTimeField | auto_now=True |
+|created | | DateTimeField | auto_now_add=True |
+|approved | | BooleanField | default=False |
+
+
+
+EpisodeLog Modal
+
+| Name | Key | Type | Other Details
+| -- | -- | -- | --
+| episode | FK(Episode) | | on_delete=models.CASCADE
+| user | FK(User) | | on_delete=models.SET_NULL, null=True
+| timestamp | | DateTimeField | auto_now_add=True
+| overall_episode_number | | IntegerField
+| season_episode_number | | IntegerField
+| season | FK(Season) | | on_delete=models.SET_NULL
+| title | | CharField | max_length=220
+| synopsis | | TextField | 
+| plot | | TextField | default="Write a detail description of the episode's plot, use multiple paragraphs"
+| air_date | | DateField |
+| stardate | | DecimalField | max_digits=6, decimal_places=1
+| approved | | BooleanField | default=False
+
+
+
+ApprovalRequest Modal
+
+| Name | Key | Type | Other Details
+| -- | -- | -- | --
+| user | FK(User) | | on_delete=models.CASCADE
+| object_to_approve | FK(Episode) |  | on_delete=models.SET_NULL
+| approved | | BooleanField | default=False
+| reason | | TextField | default="Enter inforamtion on the request"
+| request_type | | CharField | max_length=10, choices=REQUEST_TYPES, Request_types = "approval", "edit", "delete" |
+
+
+
+CommunitySection model
+
+| Name | Key | Type | Other Details
+| -- | -- | -- | --
+| section | | CharField | max_length=200
+
+
+
+Post Modal
+
+| Name | Key | Type | Other Details
+| -- | -- | -- | --
+| created_by | FK(User) | | on_delete=models.SET_NULL, null=True
+| section | FK(CommunitySection) | | on_delete=models.SET_NULL, null=True
+| name | | CharField | max_length=200
+| description | | TextField | null=True, blank=False
+| created | | DateTimeField | auto_now=True
+| updated | | DateTimeField | auto_now_add=True
+| pinned | | BooleanField | default=False
+| likes | | ManyToManyField | User, blank=True, related_name='post_likes'
+| dislikes | | ManyToManyField | User, blank=True, related_name='post_dislikes'
+
+
+
+Comment Modal
+
+| Name | Key | Type | Other Details
+| -- | -- | -- | --
+| user | FK(User) | | on_delete=models.SET_NULL, null=True
+| post | FK(Post) | | on_delete=models.SET_NULL, null=True
+| body | | TextField |
+| updated | | DateTimeField | auto_now=True
+| created | | DateTimeField | auto_now_add=True
+
+
 
 \
 &nbsp;

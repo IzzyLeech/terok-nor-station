@@ -9,7 +9,7 @@ from django_summernote.widgets import SummernoteWidget
 
 
 class EpisodeForm(ModelForm):
-    reason = forms.CharField(max_length=400, required=True)
+    reason = forms.CharField(max_length=400, required=True,)
 
     class Meta:
         model = Episode

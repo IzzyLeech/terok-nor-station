@@ -29,9 +29,9 @@ class Season(models.Model):
 class Episode(models.Model):
     overall_episode_number = models.IntegerField()
     season_episode_number = models.IntegerField()
-    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    season = models.ForeignKey(Season, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=220)
-    image = CloudinaryField("image", default="placeholder", blank=True)
+    image = CloudinaryField("image", default="debug-image.jpg", blank=True)
     synopsis = models.TextField(default="Enter synopsis for episode, keep it brief and in one paragraph")
     plot = models.TextField(default="Write a detail description of the episode's plot, use multiple paragraphs")
     air_date = models.DateField()
@@ -48,12 +48,12 @@ class Episode(models.Model):
 
 
 class EpisodeLog(models.Model):
-    episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
+    episode = models.ForeignKey(Episode, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     overall_episode_number = models.IntegerField()
     season_episode_number = models.IntegerField()
-    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    season = models.ForeignKey(Season, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=220)
     synopsis = models.TextField()
     plot = models.TextField(default="Write a detail description of the episode's plot, use multiple paragraphs")
@@ -71,8 +71,8 @@ class ApprovalRequest(models.Model):
         ('edit', 'Edit'),
         ('delete', 'Delete')
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    object_to_approve = models.ForeignKey(Episode, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    object_to_approve = models.ForeignKey(Episode, on_delete=models.SET_NULL, null=True)
     approved = models.BooleanField(default=False)
     reason = models.TextField(default="Enter inforamtion on the request")
     request_type = models.CharField(max_length=10, choices=REQUEST_TYPES,)
