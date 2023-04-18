@@ -1,7 +1,7 @@
 # Terok Nor Station
 
 # Goal for this Project
-My overall goal for my project is to create a fan website for Star Trek Deep Space Nine, where the user of the website can contribute to the development of the website by contributing data about the show. The user will be able to create an account so that they will be able to add, edit and delete information about the site and also be able to interact with other users of the website in the community section. The community section will be an open forum where user can discuss their enjoyment of the show and also give updates, and input on the development of the website.
+My overall goal for my project is to create a fan website for Star Trek Deep Space Nine, where the user of the website can contribute to the development of the website by contributing data about the show. The user will be able to create an account so that they will be able to add, edit and delete information about the site and also be able to interact with other users of the website in the community section. The community section will be an open forum where user can discuss their enjoyment of the show and also give updates, and input on the development of the website. The project will also have a admin-section where the admin can approve or reject request from user to add, edit or delete information from the website.
 
 # Table of Contents
 * [UX](#ux "UX")
@@ -38,62 +38,56 @@ My overall goal for my project is to create a fan website for Star Trek Deep Spa
         * [Deployment via Heroku](#deployment-via-heroku)
     * [Credits](#credits)
 # UX
-
-## User Goals
-<!-- DESCRIPTIONS OF END RESULTS THAT USERS WANT TO REACH -->
+A user of Terok Nor station could generally be a fan of Star Trek of all ages. It may be someone who wants to look up information about Deep Space Nine or someone who likes to gather information and create entries to the databases.
 
 ## User Stories
-<!-- INTERACTIONS THAT THE USER EXPECTS TO GO THROUGH TO COMPLETE THEIR GOALS -->
 
-* As a user, I want to......
+### Epic | Website Function
+
+* As a Site User I can use a navigation bar so that I can transverse to a different section of the website.
+* As a Site User I can have the ability to log out of my account so that I am not currently always sign in.
+* As a Site User I can create an account so that I can participate in the development of the fan database.
+* As a Site User I can access the links to social media of the website so that I can stay updated on the going on of the website.
+* As a User I can have access to a search bar so that I can quickly find the information that I am looking for.
+
+### Epic | Community
+
+* As a Site Admin I can pin posts to the top of the order of posts so that other users can see a post of important.
+* As a Site User I can like or unlike a post in the community section so that I can favorite content that I like.
+* As a User I can delete a comment in a post so that it doesn't exist anymore and can't be viewed.
+* As a Site User I can delete my post in the community section so that I can have that access to not show the post
+* As a Site User I can comment on posts in the community section so that I can discuss with other members of the community and also give information on the development of the database.
+* As a Star Trek DS9 I can interact with other fans of the show so that that we can discuss the show.
+* As a Site Admin I can pin posts to the top of the order of posts so that other users can see a post of important
+
+### Epic | Season
+
+* As a User I can select a specific season of the show so that I can view the data of that season
+
+### Epic | Episodes
+
+* As a Star Trek DS9 fan I can find information on specific episodes so that I can improve my knowledge of the show.
+* As a Site User I can be able to add information about my Star Trek DS9 so that so that I can share my knowledge and insights with other fans.
+* As a Site User I can be able to edit information about Star Trek DS9 so that so that I can make sure mistakes can be changed and that the information is correct for other users.
+* As a Site User I can be able to delete information about episodes from the database so that I can replace incorrect information or irrelevant information.
+
+### Epic | Site Admin
+
+* As a Site Admin I can approve of information that is being sent to the database so that the information is correct and relevant to Star Trek DS9.
+* As an Admin I can assign permission to users so that they can become moderator, that will be grant special permissions.
+* As an admin I can approve or reject requests for edits of episodes so that I can confirm if the edit is correct
+* As a Admin I can approve or reject so that I can control what is being deleted from the database
+
 
 ## User Requirements and Expectations
+
 ### Requirements
-<!-- WHAT THE USER REQUIRES FOR THE PRODUCT TO BE SUCCESSFUL -->
+
 
 ### Expectations
 <!-- WHAT THE USER EXPECTS FROM THE PRODUCT -->
 
 * I expect to.....
-
-
-## Site owners Goals
-<!-- OUTLINE OF STRUCTURE AND FEASIBILITY OF USER GOALS/ STORIES -->
-
-
-## Strategy
-### Strategy Outline
-The items are graded in a 0 - 5 system in both importance and feasibility as per the grading system below.
-
-&nbsp;
-
-| | Score - 0 | Score - 3 | Score - 5 |
-|--|--|--| -- |
-| Importance | Unwise use of time to address | Efforts should be made to accommodate these | Efforts MUST be made to address these
-| Feasibility | Unwise use of time to address| Efforts should be made to accommodate these | Efforts MUST be made to address these
-
-&nbsp;
-
-The outcome is calculated by combining the scores from the *Importance* and *Feasibility* ratings. This then gives a final strategy rating of what items and where to focus on.
-
-| | Score - 0 | Score - 5 | Score - 10 |
-|--|--|--| -- |
-| Item Description | Not viable | Efforts should be made | Efforts MUST be made
-
-&nbsp;
-
-### Strategy Description
-|Item Description | Importance Score | Feasibility Score | Outcome |
-| --------------- | ----------| -----------| ----------|
-| <!-- ADD ITEM -->| <!-- ADD IMPORTANCE SCORE --> | <!-- ADD FESIBILITY SCORE --> | <!-- TOTAL OF IMPORTANCE & FEASIBILITY --> |
-
-
-
-\
-&nbsp;
-[Back to Top](#table-of-contents)
-\
-&nbsp;
 
 
 
