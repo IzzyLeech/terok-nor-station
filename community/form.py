@@ -4,6 +4,7 @@ from django_summernote.widgets import SummernoteWidget
 from .models import Post
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Fieldset, Div
+from django.core.exceptions import ValidationError
 
 
 class PostForm(ModelForm):
@@ -14,6 +15,12 @@ class PostForm(ModelForm):
             'description': SummernoteWidget(),
         }
         exclude = ['created_by', 'likes', 'dislikes']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if not self.has_changed():
+            raise ValidationError("You haven't made any changes to the post.")
+        return cleaned_data
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)

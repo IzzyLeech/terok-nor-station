@@ -150,7 +150,12 @@ def delete_episode(request, pk):
             request_type='delete',
             reason=reason
         )
+        messages.success(
+                        request,
+                        'Your request to delete an episode has been submitted.'
+                        )
         approval_request.save()
+
         return redirect(reverse('Season', kwargs={'pk': season_id}))
     return render(request, 'delete_request.html', {'obj': episode})
 

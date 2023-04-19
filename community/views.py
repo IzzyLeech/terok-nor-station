@@ -9,8 +9,6 @@ from django.core.paginator import Paginator
 from django.core.exceptions import ValidationError
 from bs4 import BeautifulSoup
 
-# Create your views here.
-
 
 def community_view(request):
     q = request.GET.get('q') if request.GET.get('q') is not None else ''
@@ -70,13 +68,18 @@ def delete_post(request, pk):
 @login_required()
 def edit_post(request, pk):
     post = get_object_or_404(Post, id=pk)
-    form = PostForm(instance=post)
 
     if request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, instance=post, user=request.user)
         if form.is_valid():
             form.save()
+            if form.cleaned_data['pinned'] and request.user.is_superuser:
+                post.pinned = True
+                post.save()
             return redirect('community')
+    else:
+        form = PostForm(instance=post, user=request.user)
+
     context = {'form': form}
     return render(request, 'post_form.html', context)
 

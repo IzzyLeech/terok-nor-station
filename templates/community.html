@@ -41,7 +41,8 @@
         <div class="row text-center">
             {% endif %}
             <div class="col{% if sections|length == 2 %}-6{% endif %}">
-                <a href="{% url 'community' %}?{{ section.section|urlencode }}" class="text-xs section-font">{{ section.section }}</a>
+                <a href="{% url 'community' %}?{{ section.section|urlencode }}"
+                    class="text-xs section-font">{{ section.section }}</a>
             </div>
             {% endfor %}
         </div>
@@ -62,14 +63,14 @@
         {% endif %}
         <div class="col-lg-4 col-md-6 mb-4 border border-dark post-card">
             <div class="row">
-            <div class="col-6">
-                <p>{{ post.section.section }}</p>
-            </div>
-            {% if post.pinned %}
-            <div class="col-6 border border-white text-center">
-            <p><strong>PINNED</strong></p>
-            </div>
-            {% endif %}
+                <div class="col-6">
+                    <p>{{ post.section.section }}</p>
+                </div>
+                {% if post.pinned %}
+                <div class="col-6 border border-white text-center">
+                    <p><strong>PINNED</strong></p>
+                </div>
+                {% endif %}
             </div>
             <div class="row">
                 <div class="col post-name">
@@ -92,46 +93,49 @@
                 </div>
             </div>
 
-            {% if request.user == post.created_by %}
+            {% if request.user == post.created_by or perms.community.delete_post %}
+            <div class="row">
+                {% if request.user == post.created_by %}
+                <div class="col">
+                    <a href="{% url 'edit-post' post.id %}"><button>Edit Post</button></a>
+                </div>
+                {% else %}
+                <div class="col"></div>
+                {% endif %}
+                <div class="col">
+                    <a href="{% url 'delete-post' post.id %}"><button>Delete Post</button></a>
+                </div>
+            </div>
+            {% else %}
             <div class="row">
                 <div class="col">
                     <a href="{% url 'edit-post' post.id %}"><button>Edit Post</button></a>
                 </div>
-            
-                {% if request.user == post.created_by or perms.community.delete_post %}
-                <div class="col">
-                    <a href="{% url 'delete-post' post.id %}"><button>Delete Post</button></a>
-                </div>
-                {% endif %}
-            </div>
-            {% else %}
-            <div class="row">
-                    <div class="col"></div>
-                    <div class="col"></div>
+                <div class="col"></div>
             </div>
             {% endif %}
-    </div>
+        </div>
         {% endfor %}
     </div>
 </div>
-        <!-- Display pagination links here -->
-        {% if posts.has_other_pages %}
-        <div class="pagination">
-            <span class="step-links">
-                {% if posts.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ posts.previous_page_number }}">&lsaquo; previous</a>
-                {% endif %}
-
-                <span class="current-page">
-                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-                </span>
-
-                {% if posts.has_next %}
-                <a href="?page={{ posts.next_page_number }}">next &rsaquo;</a>
-                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
-        </div>
+<!-- Display pagination links here -->
+{% if posts.has_other_pages %}
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ posts.previous_page_number }}">&lsaquo; previous</a>
         {% endif %}
+
+        <span class="current-page">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">next &rsaquo;</a>
+        <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
 {% endblock content %}

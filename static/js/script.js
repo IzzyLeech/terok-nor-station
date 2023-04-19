@@ -11,6 +11,20 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 })
 
+document.addEventListener('DOMContentLoaded', function() {
+  var commentForm = document.querySelector('.comment-form form');
+  if (commentForm) {
+    commentForm.addEventListener('submit', function(event) {
+      var commentInput = document.querySelector('#comment-input');
+      if (commentInput.value.trim() === '') {
+          alert('Please enter a comment');
+          event.preventDefault();
+      }
+    });
+  }
+});
+
+
 var acc = document.getElementsByClassName("accordion");
 var i;
 for (i = 0; i < acc.length; i++) {

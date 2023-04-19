@@ -342,7 +342,7 @@ footer .btn-floating:hover {
 
 #comment-card {
     background-color: var(--grey);
-    color: var(--white);
+    color: var(--black);
     margin-top: .5rem;
     padding: 1rem;
     box-shadow: .2rem .4rem .4rem .2rem var(--grey);
@@ -355,7 +355,7 @@ footer .btn-floating:hover {
     padding: 1rem;
     font-size: 1.4rem;
     font-family: 'Sono', sans-serif;
-    color: var(--white);
+    color: var(--black);
     background-color: var(--grey);
 }
 

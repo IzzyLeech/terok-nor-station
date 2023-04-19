@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <div class="container">
 <h1 class="page-header">Delete Request</h1>
@@ -9,10 +10,9 @@
     <textarea id="reason-text" name="reason"></textarea>
     <br>
     <p>Are you sure you want to send a request to delete "{{obj}}"?</p>
-    <button class="btn btn-primary type="submit" name="delete" value="true">Yes, send request</button>
-    <a href="{{request.META.HTTP_REFERER}}"><button class="btn btn-secondary">Go Back</button></a>
+    <button class="btn btn-primary" type="submit" name="delete" value="true">Yes, send request</button>
 </form>
-
+    <a href="{{request.META.HTTP_REFERER}}"><button class="btn btn-secondary mt-2">Go Back</button></a>
 </div>
 
 {% endblock content %}

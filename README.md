@@ -502,6 +502,132 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Register | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-search-desk.png) | No Major Warnings |
 | Register | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-register-mobile.png) | No Major Warnings |
 
+
+## Defensive Programming
+
+Defensive programming was manually tested with the below user acceptance testing:
+
+| Page | User Action | Expected Result | Pass/Fail | Comments |
+| --- | --- | --- | --- | --- |
+| **Home Page** | | | | |
+| | Click on Logo in the navbar | Redirects to Home page | Pass | |
+| | Click on Login link in the navbar | Redirects to Sign In Page | Pass | |
+| | Click on logout link in navbar | Redirects to Sign In Page | Pass ||  
+| | Click on sign up link in the community info | Redirects User to Register Page | Pass | |
+| | Click on Home link in the navbar | Redirects to Home page | Pass | |
+| | Click on a Season of the show link in the navbar | Redirects to the season of the show | Pass | |
+| | Click on the community link in the navbar | Redirects to the community page | Pass |
+| | Click the twitter icon in footer | Redirect to the twitter home page | Pass | |
+| | Click the youtube icon in footer | Redirect to the youtube home page | Pass | |
+| | Click the instagram icon in footer | Redirect to the instagram home page | Pass | |
+| | Enter a valid search queary | Redirects to the search page with result | Pass |
+| | Enter a nonvalid search queary | Redirects to the search page with no result found message | Pass |  |
+| | As admin click on Admin request list | Redirects to the Admin request page | Pass |  |
+| **Sign Up** | | | | |
+| | Enter valid email address | Field will only accept email address format | Pass | |
+| | Enter valid password (twice) | Field will only accept password format | Pass | |
+| | Click already have an account link | Redirects to sign in page | Pass | |
+| **Log In** | | | | |
+| | Enter valid password | Field will only accept password format | Pass | |
+| | Click Login button on login page | Redirects user to Home page | Pass | |
+| | Click don't have a account link | Redirects to login page | Pass | |
+| **Season Page** | | | | |
+| | Click Next Season link in the infobox | Redirects user to the next season of the show | Pass | |
+| | Click Add Episode Button | Redirects user to the episodes form page | Pass | |
+| | Click Episode Title | Redirects the user to the episdoe page of that episode | Pass |
+| | Click Edit Episode button | Redirects to the form of that episode | Pass | |
+| | Click Delete Episode button | Redirects to the delete request page | Pass | |
+| **Add Episode Page** | | | | |
+| | Click Create Episode button with all fields inputted | Redirects to the Season that was filled out on the form | Pass | Messages of Your request to add an episode has been submitted. is placed underneath the Add Episode button
+| | Click Create Episode button with all fields inputted except the Imagefield | Redirects to the Season that was filled out on the form | Messages of Your request to add an episode has been submitted. is placed underneath the Add Episode button
+| | Click Create Episode button with Overall episode number not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Season episode number not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Season not selected | Message of please select item | Pass | |
+| | Click Create Episode button with Title not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Air date not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Stardate not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Reason not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Plot not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Plot filled with whitespace | Message of please fill out field | Pass | |
+| | Click Create Episode button with Synopsis filled with whitespace | Message of please fill out field | Pass | |
+| | Click Create Episode button with Synopsis filled not filled out | Message of please fill out field | Pass | |
+| | Click the go back button | redirects the user back to where they click the create episode button | Pass | |
+| **Update Episode Page** | | | | |
+| | Click Create Episode with the reason field not filled out | Message of please fill out field | Pass | |
+Click Create Episode button with all fields inputted | Redirects to the Season that was filled out on the form | Pass | Messages of Your request to edit an episode has been submitted. is placed underneath the Add Episode button
+| | Click Create Episode button with all fields inputted except the Imagefield | Redirects to the Season that was filled out on the form | Messages of Your request to edit an episode has been submitted. is placed underneath the Add Episode button
+| | Click Create Episode button with Overall episode number not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Season episode number not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Season not selected | Message of please select item | Pass | |
+| | Click Create Episode button with Title not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Air date not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Stardate not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Plot not filled out | Message of please fill out field | Pass | |
+| | Click Create Episode button with Plot filled with whitespace | Message of please fill out field | Pass | |
+| | Click Create Episode button with Synopsis filled with whitespace | Message of please fill out field | Pass | |
+| | Click Create Episode button with Synopsis filled not filled out | Message of please fill out field | Pass | |
+| | Click the go back button | redirects the user back to where they click the create episode button | Pass | |
+| **Delete Episode Page** | | | | |
+| | Click Yes send request with reason field filled out | Redirects to the Season that was filled out on the form | Pass | Messages of Your request to delete an episode has been submitted. is placed underneath the Add Episode button | |
+| | Click Yes send request with reason field not filled out or with white space | message displayed Please enter a reason for deletion | Pass | | 
+| | Click the go back button | Redirects to the season page where the Delete episode button was clicked | Pass | |
+| **Community Page** | | | | |
+| | Click the Show Discusion link | All post that have the show discussion section tags will be displayed only | Pass | | 
+| | Click the All link | All post will be displayed | Pass | | 
+| | Click the Site Development link | All post that have the site development section tag will be displayed only | Pass | |
+| | Click the Create Post button | Redirect to the create post page | Pass | |
+| | Click the Edit Post button of a post | Redirects to that post's data | Pass | 
+| | Click the Delete Post button of a post | Redirects to the delete page | Pass | 
+| | Click the Post title link | Redirect to the post page | Pass | |
+| | As user with delete perms click the delete post button | Redirects to the delete page | Pass | |
+| **Post Page** | | | | |
+| | Click the like button | Like button turns green and the number counter adds 1 | Pass | |
+| | Click the dislike button | Dislike button turn red and the number counter adds 1 | Pass | |
+| | Click the like button when the dislike button has been clicked before | Like button turns Green number counter adds 1 and the dislike button turns grey and the number counter subtract one | Pass |  |
+| | Click the dislike button when the like button has been clicked before | dislike button turns red number counter adds 1 and the like button turns grey and the number counter subtract one | Pass |  
+| | Click the submit button when there is no input in the textfield | An alert message is displayed with the comment PLease enter a comment | Pass |  | 
+| | Click the submit button when there is whitespace in the text field | An alert message is displayed with the comment PLease enter a comment | Pass |
+| | Click the submit button when there is text in the text field | The comment should render in beneath the textfield | Pass | |
+| | Click the delete comment button on a comment in the comments | Redirect to the delete page | Pass | |
+| **Delete Comment Page** | | | | |
+| | Click the confirm button | redirect to the post and the comment is deleted | Pass | |
+| | Click the go back button | redirect to the post | Pass |  |
+| **Edit Post Page** | | | | |
+| | Click the create Post button when no data has been changed | Validation error message will show displaying You haven't made any changes to the post | Pass |  |
+| | Click the create post button when data has changed | Redirect to the community page and the changes have been saved | Pass | |
+| | Click the go back button | Redirect to the community page | Pass | |
+| **Create Post Page** | | | | |
+| | Click the create post button with data entered | Redirects to the community page with the post saving | Pass | |
+| | Click the create button with section not picked | Alert to pick a item in the section | Pass | |
+| | Click the create button with Name not entered or whitespace enter| Alert to enter a name in the field | Pass | |
+| | Click the create button with description not entered or whitespace enter | Alert to user this field is required | Pass | |
+| | Click the create button with the pinned button selected | Post will be pinned to the top of post | Pass | |
+| | Click the go back button | redirect the user back to the community page | Pass | |
+| **Admin Page** | | | | |
+| | Click on the approve delete request button | redirect to the approve delete request page | Pass |  |
+| | Click on the approve add request button | redirect to the approve add request page | Pass |  |
+| | Click on the approve edit request button | redirect to the approve edit request page | Pass |  |
+| | Click on the reject edit request button | redirect to the reject edit request page | Pass |  |
+| | Click on the reject add request button | redirect to the reject add request page | Pass |  |
+| | Click on the reject delete request button | redirect to the reject delete request page | Pass |  |
+| **Approve Delete request page** | | | | |
+| | Click on Yes Approve button | Redirect to the admin-request page and delete the episode | Pass |  |
+| | Click on the No, go back button | Redirect to the admin-request page | Pass |  | 
+| **Reject Delete request page** | | | | |
+| | Click on Yes reject button | Redirect to the admin-request page and keeps the episode | Pass |  |
+| | Click on the No, go back button | Redirect to the admin-request page | Pass |  | 
+| **Approve add request page** | | | | |
+| | Click on Yes Approve button | Redirect to the admin-request page and add the episode | Pass |  |
+| | Click on the No, go back button | Redirect to the admin-request page | Pass |  | 
+| **Reject add request page** | | | | |
+| | Click on Yes reject button | Redirect to the admin-request page and delete the episode that was submitted | Pass |  |
+| | Click on the No, go back button | Redirect to the admin-request page | Pass |  | 
+| **Approve edit request page** | | | | |
+| | Click on Yes Approve button | Redirect to the admin-request page and add the edited episode | Pass |  |
+| | Click on the No, go back button | Redirect to the admin-request page | Pass |  | 
+| **Reject edit request page** | | | | |
+| | Click on Yes reject button | Redirect to the admin-request page and delete the edited episode| Pass |  |
+| | Click on the No, go back button | Redirect to the admin-request page | Pass |  | 
 &nbsp; 
 
 

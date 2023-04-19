@@ -31,7 +31,7 @@
             <form method="post" action="{% url 'approve_delete_request_confirm' delete_request.pk %}">
               {% csrf_token %}
               <input type="hidden" name="action" value="approve" >
-              <button type="submit" class="btn btn-primary mr-2">Approve</button>
+              <button type="submit" class="btn btn-primary">Approve</button>
             </form>
             <form method="post" action="{% url 'reject_delete_request_confirm' delete_request.pk %}">
               {% csrf_token %}
@@ -72,7 +72,7 @@
               <form method="post" action="{% url 'approve_add_request_confirm' approval_request.pk %}">
                 {% csrf_token %}
                 <input type="hidden" name="req_{{ approval_request.id }}" value="approve" >
-                <button type="submit" class="btn btn-primary mr-2">Approve</button>
+                <button type="submit" class="btn btn-primary">Approve</button>
               </form>
               <form method="post" action="{% url 'reject_add_request_confirm' approval_request.pk %}">
                 {% csrf_token %}
@@ -113,7 +113,7 @@
               <form method="post" action="{% url 'approve_edit_request_confirm' pk=edit_request.id %}">
                 {% csrf_token %}
                 <input type="hidden" name="req_{{ approval_request.id }}" value="approve">
-                <button type="submit" class="btn btn-primary">Approve</button>
+                <button type="submit" class="btn btn-primary mr-2">Approve</button>
               </form>
               <form method="post" action="{% url 'reject_edit_request_confirm' pk=edit_request.id %}">
                 {% csrf_token %}

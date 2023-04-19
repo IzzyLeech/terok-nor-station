@@ -6,28 +6,37 @@ from .models import Episode
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Fieldset, Div, Row, Column
 from django_summernote.widgets import SummernoteWidget
+from django.core.exceptions import ValidationError
 
 
 class EpisodeForm(ModelForm):
-    reason = forms.CharField(max_length=400, required=True,)
+    reason = forms.CharField(max_length=400, required=True)
 
     class Meta:
         model = Episode
         fields = [
-                'overall_episode_number',
-                'season_episode_number',
-                'season',
-                'title',
-                'plot',
-                'synopsis',
-                'air_date',
-                'stardate',
-                'image'
-            ]
+            'overall_episode_number',
+            'season_episode_number',
+            'season',
+            'title',
+            'plot',
+            'synopsis',
+            'air_date',
+            'stardate',
+            'image'
+        ]
         widgets = {
             'plot': SummernoteWidget(),
         }
         exclude = ['approved']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if any(field in self.changed_data for field in self.fields
+                if field != 'reason'):
+            return cleaned_data
+        else:
+            raise ValidationError("You haven't made any changes to the post.")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

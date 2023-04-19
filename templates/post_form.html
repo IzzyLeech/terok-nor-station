@@ -6,6 +6,7 @@
 
 <div class="container">
     {% crispy form  %}
+    <a href="{{request.META.HTTP_REFERER}}"><button class="btn btn-secondary mt-2">Go Back</button></a>
 </div>
 
 {% endblock content %}
