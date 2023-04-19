@@ -14,7 +14,7 @@
             {% if not episode.image%}
             <img src="{% static 'images/debug-image.jpg' %}" alt="title-img" class="img-fluid">
             {% else %}
-            <img src="{{ episode.image.url }}" alt="title-img" class="img-fluid">
+            <img src="{{ episode.image.url }}" alt="title-img" class="img-fluid" width="550" height="450">
             {% endif %}
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
@@ -29,9 +29,9 @@
             </ul>
           </div>
           <div class="col-sm-8">
-            <h5 class="card-title">Synopsis</h5>
+            <h3 class="card-title">Synopsis</h3>
             <p class="card-text">{{ episode.synopsis }}</p>
-            <h5 class="card-title">Plot</h5>
+            <h3 class="card-title">Plot</h3>
               <div class="card-text">{{ episode.plot | safe }}</div>
           </div>
         </div>

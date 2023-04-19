@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    background-image: url('/static/images/background.jpg');
+    background-image: url('/static/images/background.webp');
     background-size: cover;
     background-position: center;
     font-size: 1.6rem;
@@ -132,6 +132,7 @@ nav.navbar {
 
 .log-link {
     margin-right: 1rem;
+    margin-left: 1rem;
 }
 
   footer {
@@ -167,12 +168,14 @@ footer .btn-floating:hover {
 
     nav.navbar .navbar-nav .nav-item .nav-link {
         font-size: 1.3rem;
+        padding-left: 1rem;
     }
 
     #user-name {
         color: var(--red);
         font-size: 1rem;
         margin-right: 0;
+        margin-left: .5rem;
     }
     
     .log-link {
@@ -186,6 +189,8 @@ footer .btn-floating:hover {
     nav.navbar .navbar-brand {
         font-size: 1.6rem;
     }
+
+
 
     .navbar-toggler {
         padding: 1.8rem;
@@ -279,7 +284,7 @@ footer .btn-floating:hover {
     background-color: var(--black);
     border: .3rem dashed var(--white);
     color: var(--white);
-    height: 28rem; 
+    height: 25rem; 
     display: flex;
     flex-direction: column;
     justify-content: space-between
@@ -287,12 +292,12 @@ footer .btn-floating:hover {
 
 
 .post-description {
-        height: 8rem;
+        height: 100%;
         overflow: hidden;
 }
 
 .post-name{
-    height: 10rem;
+    height: 5rem;
 }
 
 

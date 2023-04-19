@@ -101,7 +101,7 @@ def update_episode(request, pk):
                 # create a log entry for the unedited episode
                 og_episode = Episode.objects.get(id=pk)
                 EpisodeLog.objects.create(
-                    episode=original_episode,
+                    episode=og_episode,
                     overall_episode_number=og_episode.overall_episode_number,
                     season_episode_number=og_episode.season_episode_number,
                     season=og_episode.season,
@@ -438,7 +438,7 @@ def login_view(request):
         try:
             user = User.objects.get(username=username)
         except User.DoesNotExist:
-            messages.error(request, 'User does not exist')
+            messages.error(request, 'Incorrect Username')
 
         user = authenticate(request, username=username, password=password)
 

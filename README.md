@@ -457,6 +457,51 @@ I have used the recommended [CI Python Linter](https://pep8ci.herokuapp.com) to 
 | views.py (community) | [screenshot](readmedoc/pythonlinter/views-community-linter.png) | Pass: No Errors
 
 
+## Lighthouse Audit
+
+I've tested my deployed project using the Lighthouse Audit tool to check for any major issues.
+
+| Page | Size | Screenshot | Notes |
+| --- | --- | --- | --- |
+| Home | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-home-desk.png) | No major warnings |
+| Home | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-home-mobile.png) | No major Warnings |
+| Season | Destop | ![screenshot](readmedoc/lighthouse/lighthouse-season-desk.png) | No Major Warning |
+| Season | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-season-mobile.png) | No Major Warning |
+| Episode | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-episode-desk.png) | No Major Warning |
+| Episode | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-episode-mobile.png) | No Major Warning |
+| Episde Form | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-episodeform-desktop.png) | Minor Warnings due to summernote |
+| Episde Form | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-episodeform-mobile.png) | Minor Warnings due to summernote |
+| Delete Request | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-deleterequest-desk.png) | No Major Warning |
+| Delete Request | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-deleterequest-mobile.png) | No Major Warning |
+| Community | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-community-desktop.png) | No Major Warning |
+| Community | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-community-mobile.png) | No Major Warning |
+| Post | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-post-desk.png) | No Major Warning |
+| Post | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-post-mobile.png) | Minor Warnings |
+| Create Post | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-createpost-desk.png) | Minor Warnings |
+| Create Post | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-createpost-mobile.png) | Minor Warnings |
+| Delete | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-delete-desk.png) | No Major Warning |
+| Delete | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-delete-mobile.png) | No Major Warning |
+| Admin Request | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-admin-desk.png) | No Major Warning |
+| Admin Request | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-admin-mobile.png) | No Major Warning |
+| Add Approve | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-addapprove-desk.png) | No Major Warning |
+| Add Approve | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-addapprove-mobile.png) | Minor Warnings |
+| Edit Approve | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-approveedit-desk.png) | No Major Warninga |
+| Edit Approve | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-approvedit-mobile.png) | Minor Warnings |
+| Delete Approve | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-deleteapprove-desk.png) | No Major Warnings |
+| Delete Approve | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-deleteapprove-mobile.png) | Minor Warnings |
+| Add Reject | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-addreject-desk.png) | No Major Warnings |
+| Add Reject | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-addreject-mobile.png) | Minor Warnings |
+| Edit Reject | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-editreject-desk.png) | No Major Warnings | 
+| Edit Reject | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-editreject-mobile.png) | Minor Warnings |
+| Delete Reject | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-deletereject-desk.png) | No Major Warnings |
+| Delete Reject | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-deletereject-mobile.png) | Minor Warnings |
+| Search | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-search-desk.png) | No Major Warnings |
+| Search | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-season-mobile.png) | No Major Warnings |
+| Sign In | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-login-desk.png) | No Major Warnings |
+| Sign In | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-login-mobile.png) | No Major Warnings |
+| Register | Desktop | ![screenshot](readmedoc/lighthouse/lighthouse-search-desk.png) | No Major Warnings |
+| Register | Mobile | ![screenshot](readmedoc/lighthouse/lighthouse-register-mobile.png) | No Major Warnings |
+
 &nbsp; 
 
 

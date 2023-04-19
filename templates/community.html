@@ -49,7 +49,7 @@
 
     <div class="row">
         {% if request.user.is_authenticated %}
-        <a href="{% url 'create-post' %}"><button>Create Post</button</a>
+        <a href="{% url 'create-post' %}"><button>Create Post</button></a>
         {% endif %}
     </div>
 
@@ -61,17 +61,22 @@
     <div class="row">
         {% endif %}
         <div class="col-lg-4 col-md-6 mb-4 border border-dark post-card">
+            <div class="row">
+            <div class="col-6">
+                <p>{{ post.section.section }}</p>
+            </div>
             {% if post.pinned %}
+            <div class="col-6 border border-white text-center">
             <p><strong>PINNED</strong></p>
+            </div>
             {% endif %}
-            <p>{{ post.section.section }}</p>
+            </div>
             <div class="row">
                 <div class="col post-name">
                     <p>Post name: <a href="{% url 'post' post.id %}">{{ post.name|truncatewords_html:5 }}</a></p>
                     <p><small>Posted by {{post.created_by.username}}</small></p>
                 </div>
             </div>
-            <small>{{ post.section.name }}</small>
             <div class="row">
                 <div class="col border ">
                     <div class="post-description">
@@ -89,19 +94,24 @@
 
             {% if request.user == post.created_by %}
             <div class="row">
-                <div class="col mt-3">
+                <div class="col">
                     <a href="{% url 'edit-post' post.id %}"><button>Edit Post</button></a>
                 </div>
-                {% endif %}
+            
                 {% if request.user == post.created_by or perms.community.delete_post %}
-                <div class="col mt-3">
+                <div class="col">
                     <a href="{% url 'delete-post' post.id %}"><button>Delete Post</button></a>
                 </div>
-            </div>
                 {% endif %}
-
-        {% endfor %}
+            </div>
+            {% else %}
+            <div class="row">
+                    <div class="col"></div>
+                    <div class="col"></div>
+            </div>
+            {% endif %}
     </div>
+        {% endfor %}
     </div>
 </div>
         <!-- Display pagination links here -->
