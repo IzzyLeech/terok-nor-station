@@ -11,9 +11,13 @@ from bs4 import BeautifulSoup
 
 
 def community_view(request):
-    q = request.GET.get('q') if request.GET.get('q') is not None else ''
+    q = request.GET.get('q') or ''
+    section = request.GET.get('section') or ''
 
-    posts = Post.objects.filter(Q(section__section__icontains=q))
+    if section:
+        posts = Post.objects.filter(section__section__icontains=section)
+    else:
+        posts = Post.objects.all()
 
     paginator = Paginator(posts, 8)
     page_number = request.GET.get('page')

@@ -329,12 +329,230 @@ Comment Modal
 
 ## Existing Features
 
+- **Landing Page**
+    - This is the page that the user lands on when the arrive on the site for the first time or before they've logged in if they don't have an active session. The user will see an image greeting them to Terok Nor Station
+
+    ![screenshot](readmedoc/features/feat-landingpage.png)
+
+    - Underneath the image there is a panel that is clickable that will reveal information about the website.
+
+    - Closed
+
+    ![screenshot](readmedoc/features/feat-about-accord.png)
+
+    - Open
+
+    ![screenshot](readmedoc/features/feat-about-accord-open.png)
+
+    - Below the about panel is the community panel which gives inforamtion on the community section and it requirments to use.
+
+    - If the user is not a register user, they will receive inforamtion that they need to sign up to use the community if they want to post. There will be a link that will bring the user to registration.
+
+    ![screenshot](readmedoc/features/feat-about-community-non-user.png)
+
+    - If the user is a register user, they will receive inforamtion on what the community section has to offer and there will be a link that will bring you to the community section.
+
+    ![screenshot](readmedoc/features//feat-about-community-user.png)
+
+    - The next feature of the landing page is a search were user will be able to search for episode that are currently avaible on the inforamtion.
+
+    ![screenshot](readmedoc/features/feat-search.png)
+
+    - When the user enter a episode that is present in the database they will be direct to a page the will display the infobox for that episode. If the user want to get more inforamtion they can click on the title link of the episode. All search will query any related word from all the episode title so multiple result can be given.
+
+    ![screenshot](readmedoc/features/feat-search-result.png)
+
+    - If no results are found for the query that is searched, the user will receive a message detail;ing that No item found for "query"
+
+    ![screenshot](readmedoc/features/feat-search-noresult.png)
+
+    - The last feature of the landing page is a section that will detail future section that are planned for the website
+
+    ![screenshot](readmedoc/features/feat-future.png)
+
+    - Accruing features that are present throughtout all the pages of the navigation bar and the social link.
+
+    - The navigation bar will allow the user to move to area to area that have importants and need quick acces to. These areas are Home, Season, Community, and the Admin request list (Admin access only). In the right handcorner of the navbar there will be a log in link for for someone not signed in and an logout link for people who are signed up.
+
+    - View for not signed in
+
+    ![screenshot](readmedoc/features/feat-notsignin.png)
+
+    - View for signed in
+
+    ![screenshot](readmedoc/features/feat-signedin.png)
+
+    - Hamburger menu in effect
+
+    ![screenshot](readmedoc/features/feat-navbar-ham.png)
+
+    - Dropdown menu for the season page that will bring the user to the season they clicked. Everytime the admin adds a season to the database the dropdown will add the next season.
+
+    ![screenshot](readmedoc/features/feat-navbar-dropdown.png)
+
+    - The footer of all pages will display the link of the social media of the site and also the link to the site
+
+    ![screenshot](readmedoc/features/feat-footer.png)
+
+- **Login** 
+
+    - When the user clicks the login link they will be redirected to the login page. They can enter their username and password to login. If they are succesful in logging in they will be redirected to the Home page. It the user is not a register there will be a link that will bring them to registration for an account. If the user clicks the logout link in the navbar they will be redirected to the login page. 
+
+    ![screenshot](readmedoc/features/feat-login.png)
+
+
+- **Register**
+
+    - If the user clicks the registration link either in the navbar or in the community panel they will be brought to the registraition form to sign up for an account. There they can enter their custom username, an email that is optional, the password and password confirmation. Once registration is complete the user will be redirected to the Home page.
+
+    ![screenshot](readmedoc/features/feat-register.png)
+
+- **Season**
+
+    - If a user or non-user selects a season from the dropdown menu for the season in the navbar they will be redirected to the season page. On this page the user will be able to view all episode that have been approved by the admin. If they are a register user they will have then functionality to make requests for add ,update and delete episode's. 
+
+    - When the user arrives on the season page they will be shown the summary of the season and the infobox of the season. At the end of the info box the user will be able to tranverse through all the present season on the website.
+
+    ![screenshot](readmedoc/features/feat-season-view.png)
+
+    ![screenshot](readmedoc/features/feat-seasoninfobox.png)
+
+    - Below the season summary and info box the episode list is present, all the episode that are currently available on the website will be present. The view will be different for register user and non-register user. For non-register user the funtionality to add update and delete will not be available althought they will still be able to view the content.
+
+    ![screenshot](readmedoc/features/feat-season-episodelist.png)
+
+    ![screenshot](readmedoc/features/feat-season-nonuser-episode.png) 
+
+    - If a register user wants to add an episode to the season they can click the Add episode button above the episode list.
+
+    ![screenshot](readmedoc/features/feat-addepisodebutton.png)
+
+    - Once the user click the Add episode button they will be redirected to the episode from. 
+
+    - On the episode form page the user can enter the inforamtion into the required field(all field except the image field are required).
+
+    ![screenshot](readmedoc/features/feat-episodeform-add.png)
+
+    - When the user has filled out the required fields and submitted the episode for request, they will be redirect to the season page that they picked on the episode form and an message will appear underneath the add episode button that their request has been submitted.
+
+    ![screenshot](readmedoc/features/feat-addrequestsubmit.png)
+
+    - If a register user wants to edit an episode from the episode list they can click the edit episode button that is underneath the entry for the episode.
+
+    ![screenshot](readmedoc/features/feat-editepisodebutton.png)
+
+    - Once the user click the edit episode button they will be redirected to the episode form of that episode.
+
+    ![screenshot](readmedoc/features/feat-episodeedit.png)
+
+    - In the above example it displays the episode form for a preexisting episode, I have add an image and plot to the form.
+
+    - When the user has enter the edited information, they can submit the request by pressing the create episode button. They will then be redirected to the season page of the episode that was updated and a message will be displayed below the Add episode button detailing the request was submitted. The edit episode will be removed from the episode list while the request is active.
+
+    ![screenshot](readmedoc/features/feat-updatemessage.png)
+
+    - If a register user wants to delete an episode from the episode list they can click the delete episode button that is underneath the entry for the episode.
+
+    ![screenshot](readmedoc/features/feat-deleteepisodebutton.png)
+
+    - Once the user clicks the delete episode button they will be redirected to the delete request page.
+
+    ![screenshot](readmedoc/features/feat-deleterequest.png)
+
+    - In the delete request page, the user will need to give a reason for deletion so it can be evaluated by the admin for approval or rejection
+
+    - When the request has been submitted, an message will be display below the Add episode button that the request for deletion has been submitted
+
+    ![screenshot](readmedoc/features/feat-deletesubmit.png)
+
+     
+- **Episode**
+
+    - If a user click on a episode title link that are found in search query or on the season page that the episdoe belongs to they will be redirected to the episode view page that will detail the episode with the content that is submitted to the website. This content includes the image title of the episode from the show, the title of the show, the season of the episode, the season episode number, the overall episode number of the show , a synopis of the episode, the air date of the episode, the stardate of the episode and the plot of that episode.
+
+    ![screenshot](readmedoc/features/feat-episode-view.png)
+
+- **Community**
+
+    - If the user clicks the community link in the navbar they will be redirected to the community page.
+
+    ![screenshot](readmedoc/features/feat-community.png)
+
+    - The Community Guideline is displayed at the top of the community page, to access the guidelines click the panel.
+
+    ![screenshot](readmedoc/features/feat-future.png)
+
+    - If the user would like to display the post of a section they can click between the show discussion or site development link to display the post of that section. If they want to display all section the can click the all link
+
+    - All post
+
+    ![screenshot](readmedoc/features/feat-allpost.png)
+
+    - Show Discussion
+
+    ![screenshot](readmedoc/features/feat-showdiscuss.png)
+
+
+    - Site Devlopmet
+
+    ![screenshot](readmedoc/features/feat-sitedevelop.png)
+
+    - If a user would like to create a post they can click the Create Post button
+
+    ![screenshot](readmedoc/features/feat-create-post.png)
+
+    - When on the create post page the user can select the section of the post, the title of the post and the description post. When these fields are fill out the user can click the Create Post button to submit the post.
+
+    ![screenshot](readmedoc/features/feat-postform.png)
+
+    - If the user would like to edit his post they can select the Edit post button.
+
+    ![screenshot](readmedoc/features/feat-editpost.png)
+
+    - The user can then edit the post they have selected, they must change something in a field in the post or else an message will be displayed that no field has changed and won't let the user create post
+
+    - The user can also delete post by clicking the Delete Post button. They will be redirect to the delete page to confirm their delete or go back. 
+
+    ![screenshot](readmedoc/features/feat-deletepost.png)
+
+    ![screenshot](readmedoc/features/feat-deleteview.png)
+
+    - If the user wants to view the post they can click the Post's Title, they will then be redirected to the post page
+
+    ![screenshot](readmedoc/features/feat-postview.png)
+
+    - In the post page the user can like or dislike the post by clicking the thumb icon
+
+    ![screenshot](readmedoc/features/feat-like.png)
+
+    ![screenshot](readmedoc/features/feat-dislike.png)
+
+    - The user can also comment on post, to do this type text in the comment field and press Submit
+
+    ![screenshot](readmedoc/features/feat-adding%20comment.png)
+
+    ![screenshot](readmedoc/features/feat-commentadded.png)
+
+    - If the user would like to delete their comment they can click the Delete Comment button. They will be then redirect to approve the deletion or go back
+
+    ![screenshot](readmedoc/features/feat-deletecomment.png)
+
+- **Admin request**
+
+
 
 &nbsp;
 
 ## Features to be Implemented
 
+As it a fandom encyclopedia of a show there are many extra features that I would like to add in the future.
 
+- I would like to add more area's of content of the show i.e characters, technolgy, science, culture/races , a detail page for the dominion war and developmet of the show.
+- I would like to user profile, so user can see if their request have been approved or rejected. This will be used to implement a badge system for user who have received badges for the amount of add's they have had approved and also with edits.
+- I would like to add more content from the Star Trek universe i.e the shows, games and movies,
+- I would like to add a dark mode to the website for people who prefer a dark background when using the website.
+- I would like to perms to user that will be able to ban user from the website if they don't follow the community guidelines.
+- I would like to add an activity feed to inform user of the recent activity of the website i.e what has been updated, what has been updated, and what has been deleted. 
 
 \
 &nbsp;
@@ -691,7 +909,7 @@ The following are user stories I wasn't able to implement but could be added wit
 
 # Deployment
 
-The live deployed application can be found deployed on [Heroku]()
+The live deployed application can be found deployed on [Heroku](https://terok-nor-station.herokuapp.com/)
 
 ## ElephantSQL Database
 

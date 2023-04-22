@@ -71,7 +71,10 @@ class EpisodeForm(ModelForm):
 
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(
+                        required=False,
+                        widget=forms.EmailInput(
+                            attrs={'placeholder': 'Optional'}))
 
     class Meta:
         model = User

@@ -282,12 +282,11 @@ footer .btn-floating:hover {
 .post-card {
     margin-top: 1rem;
     background-color: var(--black);
-    border: .3rem dashed var(--white);
     color: var(--white);
-    height: 25rem; 
+    height: 32rem; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 
@@ -315,16 +314,25 @@ footer .btn-floating:hover {
     background-color: var(--black);
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:990px) {
 
     .post-name {
         font-size: 1.3rem;
+        height: 9rem;
     }
 
     .post-description {
         font-size: 1.3rem;
     }
     
+}
+
+@media screen and (max-width:760) {
+    
+    .post-name {
+        font-size: 1.3rem;
+        height: 3rem;
+    }
 }
 
 /* Post Form */
