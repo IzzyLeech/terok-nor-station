@@ -326,60 +326,34 @@ Comment Modal
 \
 &nbsp;
 
-# Technologies used
 
-## Languages
+## Tools and Technologies used
 
-
-## Libraries and Frameworks
-
-
-
-## Tools
-
+- [HTML](https://en.wikipedia.org/wiki/HTML) used for the main site content.
+- [CSS](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout.
+- [CSS :root variables](https://www.w3schools.com/css/css3_variables.asp) used for reusable styles throughout the site.
+- [Bootstrap](https://getbootstrap.com) used as the front-end CSS framework for modern responsiveness and pre-built components.
+- [jQuery](https://jquery.com/) used for the hamburger menu and the dropdown menu.
+- [JavaScript](https://www.javascript.com) used for user interaction on the site for automatically closing Django Messages and to handle the notification dropdown and notification delete functions.
+- [Python](https://www.python.org) used as the back-end programming language.
+- [Git](https://git-scm.com) used for version control.
+- [GitHub](https://github.com) used for secure online code storage.
+- [Gitpod](https://gitpod.io) used as a cloud-based IDE for development.
+- [Django](https://www.djangoproject.com) used as the Python framework for the site.
+- [PostgreSQL](https://www.postgresql.org) used as the relational database management.
+- [ElephantSQL](https://www.elephantsql.com) used as the Postgres database.
+- [Heroku](https://www.heroku.com) used for hosting the deployed back-end site.
+- [Cloudinary](https://cloudinary.com) used for online static file storage.
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) used to check contrast between colours on the site
+- [Balsamiq](https://balsamiq.com/wireframes) used to design my site wireframes.
+- [Convertio](https://convertio.co/png-webp/) used to convert images to webp.
+- [XConvert](https://www.xconvert.com/compress-webp) used to compress images
+- [Color-Hex](https://www.color-hex.com/) used to pick colors
+- [Color Hunt](https://colorhunt.co/) used to create a color pallet
+- [Kapwing](https://www.kapwing.com/tools/add-text/image) used to edit images.
 
 
 # Testing
-
-
-
-&nbsp;
-
-| Age | Tech Experience | Task Completed | Comments/ Improvements
-| --- | ----------      | -------------  | --------
-
-
-&nbsp;
-
-
-
-### UX Testing
-
-| Requirements & Expectations | Implemented | Tested | Comments
-| ------------ | ----------- | ------ | --------
-
-
-&nbsp;
-
-&nbsp;
-
-| User Goals | Implemented | Tested | Comments
-| ------------ | ----------- | ------ | --------
-
-
-&nbsp;
-
-&nbsp;
-
-| Site Owners Goals | Implemented | Tested | Comments
-| ------------ | ----------- | ------ | --------
-
-
-\
-&nbsp;
-[Back to Top](#table-of-contents)
-\
-&nbsp;
 
 ## Code Validation
 
@@ -704,7 +678,7 @@ The following are user stories I wasn't able to implement but could be added wit
 
 
 
- 
+
 ### Clone the repo with GitPod
 * Log in to your GitHub account
 * Follow this link to access this repository - ******* ENTER LINK HERE *******
@@ -717,44 +691,6 @@ The following are user stories I wasn't able to implement but could be added wit
 * Open your [GitPod workspaces](https://gitpod.io/workspaces "GitPod workspaces")
 * Select the three dots to the right-hand side of your workspace and select **Pin**
 
-<!-- Add as required -->
-<!--
-### Set up your Workspace
-
-### Deployment via Heroku
-
-* Visit [heroku.com](https://www.heroku.com/home "Heroku")
-* Create a new account or sign in
-* From the dashboard, select **New** and then **Create new app**
-* Enter an individual app name into the text box, select a region from the dropdown and then press **Create app**
-* A Heroku app has now been created and the **Deploy** tab is opened. 
-* Select the **Settings** tab
-* Click on the **Reveal Config Vars** button
--->
-
-
-<!-- ADD OR ADJUST CONFIGS -->
-<!--
-* In the textbox with KEY as the placeholder, enter *CREDS*
-* In the textbox with VALUE as the placeholder, enter the content from the creds.json file and press **Add**
-* In the textbox with KEY as the placeholder, enter *PORT*
-* In the textbox with VALUE as the placeholder, enter *8000*
-* press **Add**
-* In the buildpacks section of the settings tab, click on **Add Buildpack**, select **python** and then save changes
-* Click on **Add Buildpack** again, select **node.js** and then save changes
-* When they are on the dashboard, ensure that python is above node.js on the list
--->
-
-
-<!-- END OF CONFIGS -->
-<!--
-* Open the **Deploy** tab
-* In the deployment method section, select **GitHub** and confirm the connection.
-* Enter the repo-name into the text box and click **Search**. When the correct repo appears below, click **Connect**
-* In the Automatic deploys section, click **Enable Automatic Deploys**. This updates every time GitHub code is pushed
-* To complete the process click on the **Deploy Brach** button in the Manual deploy section, this will take a few seconds to complete while Heroku builds the app
-* A message will appear informing you that the app was successfully deployed and a **View** button will bring you to the live site
--->
 
 \
 &nbsp;
