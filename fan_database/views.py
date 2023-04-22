@@ -425,7 +425,6 @@ def sign_up(request):
             return redirect('Home')
     else:
         form = RegisterForm()
-        messages.error(request, 'An error occured during registration')
 
     return render(request, 'registration/sign_up.html', {"form": form})
 

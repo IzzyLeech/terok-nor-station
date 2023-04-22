@@ -27,16 +27,16 @@
           <td>{{ delete_request.user }}</td>
           <td>{{delete_request.reason}}</td>
           <td>
-            <div class="btn-group" role="group">
+            <div class="btn-group " role="group">
             <form method="post" action="{% url 'approve_delete_request_confirm' delete_request.pk %}">
               {% csrf_token %}
               <input type="hidden" name="action" value="approve" >
-              <button type="submit" class="btn btn-primary">Approve</button>
+              <button type="submit" class="btn btn-primary p-2 m-2">Approve</button>
             </form>
             <form method="post" action="{% url 'reject_delete_request_confirm' delete_request.pk %}">
               {% csrf_token %}
               <input type="hidden" name="action" value="reject" >
-              <button type="submit" class="btn btn-danger">Reject</button>
+              <button type="submit" class="btn btn-danger p-2 m-2">Reject</button>
             </form>
             </div>
           </td>
@@ -72,12 +72,12 @@
               <form method="post" action="{% url 'approve_add_request_confirm' approval_request.pk %}">
                 {% csrf_token %}
                 <input type="hidden" name="req_{{ approval_request.id }}" value="approve" >
-                <button type="submit" class="btn btn-primary">Approve</button>
+                <button type="submit" class="btn btn-primary p-2 m-2">Approve</button>
               </form>
               <form method="post" action="{% url 'reject_add_request_confirm' approval_request.pk %}">
                 {% csrf_token %}
                 <input type="hidden" name="req_{{ approval_request.id }}"  value="reject">
-                <button type="submit" class="btn btn-danger">Reject</button>
+                <button type="submit" class="btn btn-danger p-2 m-2">Reject</button>
               </form>
               </div>   
             </td>
@@ -113,12 +113,12 @@
               <form method="post" action="{% url 'approve_edit_request_confirm' pk=edit_request.id %}">
                 {% csrf_token %}
                 <input type="hidden" name="req_{{ approval_request.id }}" value="approve">
-                <button type="submit" class="btn btn-primary mr-2">Approve</button>
+                <button type="submit" class="btn btn-primary p-2 m-2">Approve</button>
               </form>
               <form method="post" action="{% url 'reject_edit_request_confirm' pk=edit_request.id %}">
                 {% csrf_token %}
                 <input type="hidden" name="req_{{ approval_request.id }}" value="reject">
-                <button type="submit" class="btn btn-danger">Reject</button>
+                <button type="submit" class="btn btn-danger p-2 m-2">Reject</button>
               </form>
             </div>
             </td>

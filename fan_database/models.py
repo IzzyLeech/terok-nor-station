@@ -8,7 +8,7 @@ class Season(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     episode_count = models.IntegerField()
-    image = CloudinaryField("image", default='debug-image.jpg')
+    image = CloudinaryField()
     summary = models.TextField(
         default='Enter an summary on what happen in the season'
     )

@@ -27,6 +27,7 @@ class EpisodeForm(ModelForm):
         ]
         widgets = {
             'plot': SummernoteWidget(),
+            'air_date': forms.TextInput(attrs={'placeholder': 'YYYY-MM-DD'}),
         }
         exclude = ['approved']
 

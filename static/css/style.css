@@ -297,7 +297,7 @@ footer .btn-floating:hover {
 }
 
 .post-name{
-    height: 5rem;
+    height: 6rem;
 }
 
 
@@ -317,6 +317,13 @@ footer .btn-floating:hover {
 
 @media screen and (max-width:768px) {
 
+    .post-name {
+        font-size: 1.3rem;
+    }
+
+    .post-description {
+        font-size: 1.3rem;
+    }
     
 }
 

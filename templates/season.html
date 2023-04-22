@@ -54,7 +54,7 @@
     <h2>Episodes</h2>
     {% if request.user.is_authenticated %}
     <div>
-        <a href="{% url 'add-episode' %}"><button>Add Episode</button></a>
+        <a href="{% url 'add-episode' %}"><button class="btn btn-success mb-2">Add Episode</button></a>
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -90,9 +90,9 @@
                     </tr>
                     <tr>
                         {% if request.user.is_authenticated %}
-                        <td colspan="1" class="ep-font"><a href="{% url 'update-episode' episode.id %}"><button>Edit
+                        <td colspan="1" class="ep-font"><a href="{% url 'update-episode' episode.id %}"><button class="btn btn-primary">Edit
                                     Episode</button></a></td>
-                        <td colspan="1" class="ep-font"><a href="{% url 'delete-episode' episode.id %}"><button>Delete
+                        <td colspan="1" class="ep-font"><a href="{% url 'delete-episode' episode.id %}"><button class="btn btn-danger">Delete
                                     Episode</button></a></td>
                         <td colspan="1" class="ep-font ">Created on {{ episode.created|date:'Y-m-d' }}</td>
                         <td colspan="2" class="ep-font">Edited on {{ episode.updated|date:'Y-m-d' }}</td>

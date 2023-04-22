@@ -11,7 +11,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-4">
-            {% if not episode.image%}
+            {% if not episode.image.url %}
             <img src="{% static 'images/debug-image.jpg' %}" alt="title-img" class="img-fluid">
             {% else %}
             <img src="{{ episode.image.url }}" alt="title-img" class="img-fluid" width="550" height="450">

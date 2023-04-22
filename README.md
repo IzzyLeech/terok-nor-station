@@ -158,7 +158,7 @@ I have included some images that will render from local files.
 
 * The background image of space that is render on all pages behind the container
 
-![backgroundimage](static/images/background.jpg)
+![backgroundimage](static/images/background.webp)
 
 * The welcome image on the index page
 
@@ -631,13 +631,67 @@ Click Create Episode button with all fields inputted | Redirects to the Season t
 &nbsp; 
 
 
+## User Story Testing
+
+The following are user stories I've implemented with screenshots to prove
+
+| User Story | Screenshot |
+| --- | --- |
+| As a Site User I can create an account so that I can participate in the development of the fan database. | ![screenshot](readmedoc/user-story/userstory-regform.png)
+| As a Site User I can use a navigation bar so that I can transverse to a different section of the website | ![screenshot](readmedoc/user-story/userstory-navbar.png)
+| As a Site User I can be able to add information about my Star Trek DS9 so that so that I can share my knowledge and insights with other fans. | ![screenshot](readmedoc/user-story/userstory-addform.png)
+| As a Site User I can be able to edit information about Star Trek DS9 so that so that I can make sure mistakes can be changed and that the information is correct for other users. | ![screenshot](readmedoc/user-story/user-story-editepisode.png)
+| As a Star Trek DS9 fan I can find information on specific episodes so that I can improve my knowledge of the show. | ![screenshot](readmedoc/user-story/user-story-view%20episode.png)
+| As a Star Trek DS9 I can interact with other fans of the show so that that we can discuss the show | ![screenshot](readmedoc/user-story/userstory-communityview.png)
+| As a Site User I can post entries in the community section so that I create an opportunity to interact with other members of the community | ![screenshot](readmedoc/user-story/user-story-postform.png)
+| As a Site User I can delete my post in the community section so that I can have that access to not show the post. | ![screenshot](readmedoc/user-story/userstory-deletepost.png)
+| As a Site Admin I can approve of information that is being sent to the database so that the information is correct and relevant to Star Trek DS9 | ![screenshot](readmedoc/user-story/userstory-adminrequest.png)
+| As a Site User I can access the links to social media of the website so that I can stay updated on the going on of the website | ![screenshot](readmedoc/user-story/userstory-sociallinks.png)
+| As a Site User I can like or unlike a post in the community section so that I can favorite content that I like | ![screenshot](readmedoc/user-story/userstory-like.png)
+| As a Site User I can comment on posts in the community section so that I can discuss with other members of the community and also give information on the development of the database. | ![screenshot](readmedoc/user-story/userstory-commentsection.png)
+| As a Site User I can have the ability to log out of my account so that I am not currently always sign in. | ![screenshot](readmedoc/user-story/userstory-logout.png)
+| As a User I can select a specific season of the show so that I can view the data of that season | ![screenshot](readmedoc/user-story/userstory-selectstory.png)
+| As a User I can have access to a search bar so that I can quickly find the information that I am looking for. | ![screenshot](readmedoc/user-story/userstory-search.png)
+| As a User I can delete a comment in a post so that it doesn't exist anymore and can't be viewed | ![screenshot](readmedoc/user-story/userstory-deletecomment.png)
+| As an Admin I can assign permission to users so that they can become moderator, that will be grant special permissions | ![screenshot](readmedoc/user-story/userstory-perms.png)
+| As an Admin I can see all the delete requests so that I can monitor how many requests there are | ![screenshot](readmedoc/user-story/userstory-adminviewdelete.png)
+| As a Site Admin I can see all the add requests so that I monitor how many add request their is to the database | ![screenshot](readmedoc/user-story/userstory-adminrequestadd.png)
+| As an Admin I can see all the requests for edits so that I can see what has been requests for approval or reject | ![screenshot](readmedoc/user-story/userstory-adminrequestedit.png)
+| As a Site Admin I can pin posts to the top of the order of posts so that other users can see a post of important | ![screenshot](readmedoc/user-story/user-story-pinned.png)
+| As a Site User I can Dislike/Undislike posts so that I can Dislike content I don't like | ![screenshot](readmedoc/user-story/userstory-dislike.png)
+| As an Admin I can approve and reject requests to add episodes to the database so that I can have final say on if the episode is suitable to be submitted | ![screenshot](readmedoc/user-story/userstory-approveadd.png)
+| As an Admin I can approve and reject requests to add episodes to the database so that I can have final say on if the episode is suitable to be submitted | ![screenshot](readmedoc/user-story/userstory-rejectadd.png)
+| As an admin I can approve or reject requests for edits of episodes so that I can confirm if the edit is correct | ![screenshot](readmedoc/user-story/userstory-editapprove.png)
+| As an admin I can approve or reject requests for edits of episodes so that I can confirm if the edit is correct | ![screenshot](readmedoc/user-story/userstory-rejectedit.png)
+| As a Admin I can approve or reject delete quests so that I can control what is being deleted from the database | ![screenshot](readmedoc/user-story/user-story-deleteapprove.png)
+| As a Admin I can approve or reject delete quests so that I can control what is being deleted from the database | ![screenshot](readmedoc/user-story/user-story-deleteapprove.png)
+
+**Open Issues**
+
+The following are user stories I wasn't able to implement but could be added with more time
+
+| User Story | Screenshot |
+| --- | --- |
+| As a Fan of Star Trek I can be able to search the site's database for specific information about characters so that I can learn more about the show
+
 ## Bugs
 
-
-
+| Bug | Status |
+| --- | --- |
+| [When the user clicks to make a delete requests, on the delete request page the go back button will not bring the user back until the reason field is inputted](https://github.com/IzzyLeech/terok-nor-station/issues/49) | Closed
+| [Currently the delete but is not show for a user who has perms to delete post in the community section](https://github.com/IzzyLeech/terok-nor-station/issues/48) | Closed
+| [when a user is not signed in, the first post will be in position but all the other post will stack on top of each other in a column](https://github.com/IzzyLeech/terok-nor-station/issues/47) | Closed
+| [Javascript for decription field not working due to summernote](https://github.com/IzzyLeech/terok-nor-station/issues/40) | Closed
+| [Rejecting delete request](https://github.com/IzzyLeech/terok-nor-station/issues/24) | Closed
+| [Redirect not working after creating, editing and deleting an episode](https://github.com/IzzyLeech/terok-nor-station/issues/22) | Closed
+| []()
 ## Unfixed Bugs
 
-
+| Bug | Note |
+| --- | --- |
+| [Summernote field for description in post form](https://github.com/IzzyLeech/terok-nor-station/issues/52) |
+| [Summernote Field for plot in episode form.](https://github.com/IzzyLeech/terok-nor-station/issues/51) | 
+| [Image field will not save file that is inputted](https://github.com/IzzyLeech/terok-nor-station/issues/53) | Alternative for this problem image will be inputted by admin in the Admin panel
 
 \
 &nbsp;
@@ -647,7 +701,7 @@ Click Create Episode button with all fields inputted | Redirects to the Season t
 
 # Deployment
 
-<!-- ADD LIVE LINK HERE -->
+
 
 
  
