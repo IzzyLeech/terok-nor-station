@@ -14,9 +14,11 @@
                         <td>SEASON {{ current_season.season_number }}</td>
                     </tr>
                     <tr class="image-container">
-
+                    {% if debug_flag %}
+                        <td><img class="img-fluid" src="{% static 'images/debug-image.jpg' %}" alt="season-image" width="150" height="550"></td>
+                    {% else %}    
                         <td><img class="img-fluid" src="{{ current_season.image.url }}" alt="season-image"></td>
-
+                    {% endif %}
                     </tr>
                     <tr>
                         <td>Episodes: {{ current_season.episode_count }}</td>

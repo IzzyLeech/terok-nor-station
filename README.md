@@ -539,6 +539,55 @@ Comment Modal
 
 - **Admin request**
 
+    - When a user click on the Admin request list that is only visible and accessible with user with the status superuser they will be redirect to the the request page that will hold all the current request for adding , deleting and editting episode. The requests are detailed in their own table to seperate each request topic.
+
+    ![screenshot](readmedoc/features/feat-adminpage.png)
+
+    - The admin can choose the action of approve or reject the request by clicking either the approve or reject button
+
+    ![screenshot](readmedoc/features/feat-actionbutton.png)
+
+    - When the admin clicking either button they will be redirected to the confirmation page for their action. On this page the Admin will see the information of the episode. For add request the Admin will see the the Episode form filled out and a reason for submission. On the delete request page the admin will see all the information of the episode that has been submitted for deletion and a reason for the episode to be deleted and on the edit request page the admin will see the episode that has been edited and a reason for the edit. When the Admin had made their decision they can click the Yes approve button on the Approve request page or the Yes reject button on the reject request page. If a add request is approved it will be placed in season page that it is attached to and if it is rejected te entry is deleted. If a delete request is approved the episode is deleted from the season page that it is a attached to and if it is reject no change occur to the episode. If a edit request is approved the episode is render back to the season page it is attached to and if it is reject the original episode before edit is place back on the season page.
+
+    - Approve delete request page
+
+    ![screenshot](readmedoc/features/feat-approvedelete.png)
+
+    - Reject delete request page
+
+    ![screenshot](readmedoc/features/feat-rejectdelete.png)
+
+    - Approve add request page
+
+    ![screenshot](readmedoc/features/feat-approveadd.png)
+
+    - Approve request button
+
+    ![screenshot](readmedoc/features/feat-approveaddbutton.png)
+
+    - Reject add request page
+
+    ![screnshot](readmedoc/features/feat-rejectadd.png)
+
+    - Reject request button
+
+    ![screnshot](readmedoc/features/feat-rejectaddbutton.png)
+
+    - Approve edit request page
+
+    ![screenshot](readmedoc/features/feat-approveedit.png)
+
+    - Approve request button
+
+    ![screenshot](readmedoc/features/feat-approveeditbutton.png)
+
+    - Reject edit request page
+
+    ![screnshot](readmedoc/features/feat-rejectedit.png)
+
+    - Reject request button
+
+    ![screnshot](readmedoc/features/feat-rejecteditbutton.png)
 
 
 &nbsp;
