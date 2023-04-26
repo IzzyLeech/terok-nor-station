@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    background-image: url('/static/images/background.webp');
+    background-image: url('/static/images/debug-image.jpg');
     background-size: cover;
     background-position: center;
     font-size: 1.6rem;
