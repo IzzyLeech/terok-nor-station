@@ -22,7 +22,7 @@ from community import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fan_database.urls')),
-    path('communitypage', include('community.urls')),
+    path('communitypage/', include('community.urls')),
     path('summernote/', include('django_summernote.urls')),
-    path('accounts', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
