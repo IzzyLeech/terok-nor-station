@@ -35,6 +35,8 @@ DEBUG = os.environ.get("DEVELOPMENT")
 
 ALLOWED_HOSTS = ["terok-nor-station.herokuapp.com", "localhost"]
 
+SITE_ID = 1
+
 
 # Application definition
 
