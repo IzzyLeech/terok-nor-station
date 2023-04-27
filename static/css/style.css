@@ -326,7 +326,7 @@ footer .btn-floating:hover {
     
 }
 
-@media screen and (max-width:760) {
+@media screen and (max-width:760px) {
     
     .post-name {
         font-size: 1.3rem;
@@ -432,4 +432,39 @@ textarea::placeholder {
 .request-question {
     font-size: 1.2rem;
     text-decoration: underline;
+}
+
+
+/* Error page */
+
+.image-container {
+    position: relative;
+}
+
+.text-container {
+    position: absolute;
+    top: 66%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    background-color: var(--grey);
+    color: var(--black);
+    font-size: 1.2rem;
+    padding: 20px;
+    box-shadow: 0 0 10px var(--black);
+    z-index: 2; 
+}
+
+.img-fluid {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+@media screen and (max-width:760px) {
+
+    .text-container{
+        top: 50%;
+    }
 }
