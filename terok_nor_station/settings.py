@@ -31,8 +31,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get("DEVELOPMENT")
-DEBUG = False
+DEBUG = os.environ.get("DEVELOPMENT")
+
 ALLOWED_HOSTS = ["terok-nor-station.herokuapp.com", "localhost"]
 
 SITE_ID = 1
