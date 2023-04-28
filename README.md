@@ -1,5 +1,7 @@
 # Terok Nor Station
 
+![screenshot](readmedoc/features/amiresponsive.png)
+
 # Goal for this Project
 My overall goal for my project is to create a fan website for Star Trek Deep Space Nine, where the user of the website can contribute to the development of the website by contributing data about the show. The user will be able to create an account so that they will be able to add, edit and delete information about the site and also be able to interact with other users of the website in the community section. The community section will be an open forum where user can discuss their enjoyment of the show and also give updates, and input on the development of the website. The project will also have a admin-section where the admin can approve or reject request from user to add, edit or delete information from the website.
 
@@ -999,6 +1001,7 @@ Deployment steps are as follows, after account setup:
 | `DATABASE_URL` | insert your own ElephantSQL database URL here |
 | `DISABLE_COLLECTSTATIC` | 1 (*this is temporary, and can be removed for the final deployment*) |
 | `SECRET_KEY` | this can be any random secret key |
+| `PORT` | 8000 |
 
 Heroku needs two additional files in order to deploy properly.
 - requirements.txt
@@ -1045,7 +1048,7 @@ os.environ.setdefault("CLOUDINARY_URL", "insert your own Cloudinary API key here
 os.environ.setdefault("DATABASE_URL", "insert your own ElephantSQL database URL here")
 os.environ.setdefault("SECRET_KEY", "this can be any random secret key")
 # local environment only (do not include these in production/deployment!)
-os.environ.setdefault("DEBUG", "True")
+DEVELOPMENT = "1"
 ```
 
 Once the project is cloned or forked, in order to run it locally, you'll need to follow these steps:
